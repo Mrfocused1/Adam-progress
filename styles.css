@@ -733,14 +733,17 @@ body {
    TESTIMONIALS
    ========================================================= */
 .testimonial {
+  display: block;
   background: rgba(17,17,17,0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid #1a1a1a;
   border-radius: 4px;
-  padding: 24px 26px;
+  padding: 24px 26px 20px;
   position: relative;
   transition: all .3s ease;
+  text-decoration: none;
+  color: inherit;
 }
 .testimonial:hover {
   border-color: rgba(217,4,41,0.5);
@@ -748,6 +751,17 @@ body {
   box-shadow: 0 20px 50px -20px rgba(217,4,41,0.35);
   transform: translateY(-3px);
 }
+.testi-source {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #1a1a1a;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.22em;
+  font-size: 11px;
+  color: #A0A0A0;
+  transition: color .25s ease;
+}
+.testimonial:hover .testi-source { color: #FF2D2D; }
 .testi-head {
   display: flex; align-items: center; gap: 12px;
   margin-bottom: 16px;

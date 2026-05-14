@@ -61,6 +61,118 @@ body {
   transform: translateY(-2px);
 }
 
+/* ====== HAMBURGER ====== */
+.nav-toggle {
+  width: 38px; height: 38px;
+  border: 1px solid #2A2A2A;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all .25s ease;
+}
+.nav-toggle:hover { border-color: #D90429; background: rgba(217,4,41,0.08); }
+.nav-toggle span {
+  width: 16px; height: 1.6px;
+  background: #F2F2F2;
+  display: block;
+  transition: transform .3s ease, opacity .25s ease, background .25s ease;
+}
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(5.6px) rotate(45deg); background: #FF2D2D; }
+.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav-toggle.is-open span:nth-child(3) { transform: translateY(-5.6px) rotate(-45deg); background: #FF2D2D; }
+
+/* ====== MOBILE NAV OVERLAY ====== */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  background: rgba(5,5,5,0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.mobile-nav.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-nav-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+.mobile-link {
+  font-family: 'Anton', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.04em;
+  color: #F2F2F2;
+  text-decoration: none;
+  transition: color .25s ease, transform .25s ease;
+  position: relative;
+}
+.mobile-link:hover, .mobile-link:active {
+  color: #FF2D2D;
+  transform: translateX(4px);
+}
+.mobile-link::before {
+  content: '';
+  position: absolute;
+  left: -20px; top: 50%;
+  width: 0; height: 1px;
+  background: #D90429;
+  transform: translateY(-50%);
+  transition: width .3s ease;
+}
+.mobile-link:hover::before { width: 14px; }
+
+.mobile-socials {
+  margin-top: 14px;
+  display: flex;
+  gap: 14px;
+}
+
+/* ====== BACK TO TOP ====== */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px; height: 48px;
+  border-radius: 999px;
+  background: rgba(217,4,41,0.9);
+  color: #fff;
+  border: 1px solid #FF2D2D;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease, background .25s ease, box-shadow .25s ease;
+  z-index: 40;
+  box-shadow: 0 12px 30px -10px rgba(217,4,41,0.7);
+}
+.back-to-top.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  background: #FF2D2D;
+  box-shadow: 0 18px 40px -10px rgba(255,45,45,0.85);
+  transform: translateY(-3px);
+}
+
 /* =========================================================
    HERO
    ========================================================= */

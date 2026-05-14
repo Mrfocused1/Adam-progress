@@ -1,6 +1,48 @@
 /* ADAM PROGRESS — site interactions */
 
 /* ============================================================
+   Mobile hamburger menu
+   ============================================================ */
+const navToggle = document.getElementById('navToggle');
+const mobileNav = document.getElementById('mobileNav');
+function setMobileNav(open) {
+  if (!navToggle || !mobileNav) return;
+  navToggle.classList.toggle('is-open', open);
+  navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  mobileNav.classList.toggle('is-open', open);
+  mobileNav.setAttribute('aria-hidden', open ? 'false' : 'true');
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+if (navToggle) {
+  navToggle.addEventListener('click', () => setMobileNav(!mobileNav.classList.contains('is-open')));
+}
+if (mobileNav) {
+  mobileNav.querySelectorAll('.mobile-link').forEach(link =>
+    link.addEventListener('click', () => setMobileNav(false))
+  );
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && mobileNav?.classList.contains('is-open')) setMobileNav(false);
+});
+
+/* ============================================================
+   Back-to-top floating button
+   ============================================================ */
+const backToTop = document.getElementById('backToTop');
+function toggleBackToTop() {
+  if (!backToTop) return;
+  const hero = document.getElementById('home');
+  const threshold = hero ? hero.offsetHeight * 0.6 : window.innerHeight * 0.6;
+  backToTop.classList.toggle('is-visible', window.scrollY > threshold);
+}
+if (backToTop) {
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  window.addEventListener('scroll', toggleBackToTop, { passive: true });
+  toggleBackToTop();
+}
+
+/* ============================================================
    Sticky nav style change on scroll
    ============================================================ */
 const header = document.getElementById('siteHeader');

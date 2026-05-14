@@ -68,16 +68,46 @@
     </nav>
 
     <div class="flex items-center gap-4 text-text2">
-      <a aria-label="Instagram" href="https://www.instagram.com/tibaba.prg/" target="_blank" rel="noopener" class="social-ico">
+      <a aria-label="Instagram" href="https://www.instagram.com/tibaba.prg/" target="_blank" rel="noopener" class="social-ico hidden sm:inline-flex">
         <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.4.3 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.4.2-1 .3-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 1-1.5s.9-.8 1.5-1c.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 0-1.6.2-1.9.3-.5.2-.8.4-1.2.8s-.6.7-.8 1.2c-.1.3-.3.9-.3 1.9-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c0 1 .2 1.6.3 1.9.2.5.4.8.8 1.2s.7.6 1.2.8c.3.1.9.3 1.9.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1 0 1.6-.2 1.9-.3.5-.2.8-.4 1.2-.8s.6-.7.8-1.2c.1-.3.3-.9.3-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c0-1-.2-1.6-.3-1.9-.2-.5-.4-.8-.8-1.2s-.7-.6-1.2-.8c-.3-.1-.9-.3-1.9-.3-1.2-.1-1.6-.1-4.7-.1zm0 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm5.2-2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg>
       </a>
-      <a aria-label="TikTok" href="https://www.tiktok.com/@adam.prg84" target="_blank" rel="noopener" class="social-ico">
+      <a aria-label="TikTok" href="https://www.tiktok.com/@adam.prg84" target="_blank" rel="noopener" class="social-ico hidden sm:inline-flex">
         <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><path d="M19.6 8.5a6.7 6.7 0 0 1-4-1.3v7.4a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1V12a3 3 0 1 0 2 2.8V2h2.5a4.1 4.1 0 0 0 4.2 4z"/></svg>
       </a>
-      
+
+      <!-- Hamburger (mobile only) -->
+      <button type="button" id="navToggle" class="nav-toggle md:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
+
+  <!-- Mobile menu (full screen overlay) -->
+  <div id="mobileNav" class="mobile-nav md:hidden" aria-hidden="true">
+    <nav class="mobile-nav-inner">
+      <a href="#home"    class="mobile-link">HOME</a>
+      <a href="#about"   class="mobile-link">ABOUT</a>
+      <a href="#stats"   class="mobile-link">STATS</a>
+      <a href="#fights"  class="mobile-link">FIGHTS</a>
+      <a href="#content" class="mobile-link">CONTENT</a>
+      <a href="#media"   class="mobile-link">MEDIA</a>
+      <a href="#contact" class="mobile-link">CONTACT</a>
+      <div class="mobile-socials">
+        <a aria-label="Instagram" href="https://www.instagram.com/tibaba.prg/" target="_blank" rel="noopener" class="social-ico">
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.4.3 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.4.2-1 .3-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 1-1.5s.9-.8 1.5-1c.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4z"/></svg>
+        </a>
+        <a aria-label="TikTok" href="https://www.tiktok.com/@adam.prg84" target="_blank" rel="noopener" class="social-ico">
+          <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><path d="M19.6 8.5a6.7 6.7 0 0 1-4-1.3v7.4a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1V12a3 3 0 1 0 2 2.8V2h2.5a4.1 4.1 0 0 0 4.2 4z"/></svg>
+        </a>
+      </div>
+    </nav>
+  </div>
 </header>
+
+<!-- Back-to-top floating button -->
+<button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 
 
 <!-- ============== HERO ============== -->

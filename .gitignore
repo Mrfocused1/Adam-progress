@@ -1,0 +1,8 @@
+.DS_Store
+*.log
+node_modules/
+.vscode/
+.idea/
+
+# Internal reference (not part of the shipped site)
+assets/hero-mockup-ref.png

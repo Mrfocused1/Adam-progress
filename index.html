@@ -240,7 +240,6 @@
         <p class="font-sub text-red tracking-[0.4em] text-sm mb-3">THE NUMBERS</p>
         <h3 class="font-display text-4xl md:text-5xl tracking-tight">REACH · INFLUENCE · IMPACT</h3>
       </div>
-      <a href="#content" class="hidden md:inline-flex text-red font-sub tracking-[0.3em] text-sm items-center gap-2 hover:text-redHot transition">VIEW FULL STATS ›</a>
     </div>
 
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-border">
@@ -1443,44 +1442,96 @@
 
       <div class="mt-10 flex flex-wrap gap-4">
         <a href="#contact" class="btn-primary"><span class="play-dot"></span>WORK WITH ME</a>
-        <a href="mailto:adamprogressmma@gmail.com" class="btn-secondary">REQUEST MEDIA KIT</a>
+        <a href="#contact" class="btn-secondary">REQUEST MEDIA KIT</a>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ============== FINAL CTA ============== -->
+<!-- ============== FINAL CTA + CONTACT FORM ============== -->
 <section id="contact" class="relative overflow-hidden">
   <div class="absolute inset-0">
     <img src="assets/training.jpg" alt="" class="w-full h-full object-cover opacity-30 scale-110"/>
-    <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/60"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-ink to-transparent"></div>
     <div class="absolute right-0 bottom-0 w-[50%] h-[60%] rounded-full bg-red/30 blur-[140px]"></div>
   </div>
 
-  <div class="relative max-w-[1400px] mx-auto px-6 lg:px-10 py-32 lg:py-40">
-    <div class="max-w-3xl reveal">
-      <p class="font-sub text-red tracking-[0.4em] text-sm mb-4">LET'S WORK TOGETHER</p>
-      <h3 class="font-display text-6xl md:text-7xl lg:text-8xl leading-[0.9] tracking-tight">
-        LET'S BUILD<br/>SOMETHING<br/><span class="font-brush text-red text-[0.95em] inline-block -rotate-2 brush-text">Legendary.</span>
-      </h3>
+  <div class="relative max-w-[1400px] mx-auto px-6 lg:px-10 py-28 lg:py-32">
+    <div class="grid lg:grid-cols-12 gap-12 items-start">
 
-      <div class="mt-12 grid sm:grid-cols-2 gap-8 max-w-2xl">
-        <div class="contact-block">
-          <p class="contact-label">BOOKINGS & INQUIRIES</p>
-          <a href="mailto:adamprogressmma@gmail.com" class="contact-value">adamprogressmma@gmail.com</a>
-        </div>
-        <div class="contact-block">
-          <p class="contact-label">BASED IN</p>
-          <p class="contact-value">Hamburg, Germany<br/><span class="text-text2 text-sm">Available worldwide</span></p>
+      <!-- LEFT — typography + info -->
+      <div class="lg:col-span-6 reveal">
+        <p class="font-sub text-red tracking-[0.4em] text-sm mb-4">LET'S WORK TOGETHER</p>
+        <h3 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.9] tracking-tight">
+          LET'S BUILD<br/>SOMETHING<br/><span class="font-brush text-red text-[0.95em] inline-block -rotate-2 brush-text">Legendary.</span>
+        </h3>
+
+        <div class="mt-10 space-y-6">
+          <div class="contact-block">
+            <p class="contact-label">BOOKINGS & INQUIRIES</p>
+            <a href="mailto:adamprogressmma@gmail.com" class="contact-value">adamprogressmma@gmail.com</a>
+          </div>
+          <div class="contact-block">
+            <p class="contact-label">BASED IN</p>
+            <p class="contact-value">Hamburg, Germany<br/><span class="text-text2 text-sm">Available worldwide</span></p>
+          </div>
+          <div class="contact-block">
+            <p class="contact-label">DM</p>
+            <a href="https://www.instagram.com/tibaba.prg/" target="_blank" rel="noopener" class="contact-value">@tibaba.prg <span class="text-text2 text-sm">· Instagram</span></a>
+          </div>
         </div>
       </div>
 
-      <div class="mt-10 flex flex-wrap gap-4">
-        <a href="mailto:adamprogressmma@gmail.com?subject=Partnership%20Inquiry%20-%20Adam%20Progress" class="btn-primary">LET'S WORK TOGETHER</a>
-        <a href="https://www.instagram.com/tibaba.prg/" target="_blank" rel="noopener" class="btn-secondary">DM ON INSTAGRAM</a>
+      <!-- RIGHT — Contact form -->
+      <div class="lg:col-span-6 reveal">
+        <form id="contactForm" class="contact-form" novalidate>
+          <p class="font-sub text-red tracking-[0.3em] text-xs mb-6">SEND A MESSAGE ›</p>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-name">NAME</label>
+              <input type="text" id="cf-name" name="name" required autocomplete="name" placeholder="Your name"/>
+            </div>
+            <div class="form-field">
+              <label for="cf-email">EMAIL</label>
+              <input type="email" id="cf-email" name="email" required autocomplete="email" placeholder="you@brand.com"/>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-company">COMPANY / BRAND</label>
+              <input type="text" id="cf-company" name="company" autocomplete="organization" placeholder="Optional"/>
+            </div>
+            <div class="form-field">
+              <label for="cf-type">INQUIRY TYPE</label>
+              <select id="cf-type" name="type" required>
+                <option value="">Select…</option>
+                <option value="Partnership">Partnership</option>
+                <option value="Sponsorship">Sponsorship</option>
+                <option value="Media / Press">Media / Press</option>
+                <option value="Appearance / Booking">Appearance / Booking</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="cf-msg">MESSAGE</label>
+            <textarea id="cf-msg" name="message" rows="5" required placeholder="Tell Adam about your brand, the campaign idea, timeline, and budget."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary"><span class="play-dot"></span>SEND MESSAGE</button>
+          </div>
+
+          <p id="cf-status" class="form-status" role="status" aria-live="polite"></p>
+          <p class="form-fine">By submitting you'll be sending an email to <span class="text-text">adamprogressmma@gmail.com</span>. No data is stored on this site.</p>
+        </form>
       </div>
+
     </div>
   </div>
 </section>

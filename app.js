@@ -141,6 +141,47 @@ document.querySelectorAll('.js-ig-card').forEach(card => {
 });
 
 /* ============================================================
+   Contact form — composes a mailto: with form data
+   ============================================================ */
+const cf = document.getElementById('contactForm');
+if (cf) {
+  cf.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const status = document.getElementById('cf-status');
+
+    const name    = cf.name.value.trim();
+    const email   = cf.email.value.trim();
+    const company = cf.company.value.trim();
+    const type    = cf.type.value;
+    const message = cf.message.value.trim();
+
+    if (!name || !email || !type || !message) {
+      status.textContent = 'Please complete all required fields.';
+      status.className   = 'form-status is-error';
+      return;
+    }
+
+    const subject = `[${type}] Inquiry from ${name}${company ? ' · ' + company : ''}`;
+    const body = [
+      `From:    ${name}`,
+      `Email:   ${email}`,
+      company ? `Company: ${company}` : null,
+      `Type:    ${type}`,
+      '',
+      message,
+      '',
+      '— Sent via adamprogress.com contact form',
+    ].filter(Boolean).join('\n');
+
+    const mailto = `mailto:adamprogressmma@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    status.textContent = 'Opening your email client…';
+    status.className   = 'form-status is-success';
+    window.location.href = mailto;
+  });
+}
+
+/* ============================================================
    Set data-text attribute for textured chrome (used by ::after)
    ============================================================ */
 document.querySelectorAll('.textured-chrome').forEach(el => {

@@ -840,6 +840,107 @@ img.avatar { display: block; }
 }
 
 /* =========================================================
+   CONTACT FORM
+   ========================================================= */
+.contact-form {
+  background: rgba(13,13,13,0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid #2A2A2A;
+  border-radius: 6px;
+  padding: 28px 28px 24px;
+  box-shadow: 0 30px 80px -30px rgba(0,0,0,0.9), 0 0 60px -30px rgba(217,4,41,0.3);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+@media (max-width: 640px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+
+.form-field { display: flex; flex-direction: column; margin-bottom: 16px; }
+.form-row .form-field { margin-bottom: 0; }
+
+.form-field label {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.22em;
+  font-size: 11px;
+  color: #A0A0A0;
+  margin-bottom: 6px;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid #2A2A2A;
+  border-radius: 3px;
+  color: #F2F2F2;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 11px 14px;
+  transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+  width: 100%;
+}
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #555;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: #D90429;
+  background: rgba(0,0,0,0.6);
+  box-shadow: 0 0 0 3px rgba(217,4,41,0.15);
+}
+.form-field input:invalid:not(:placeholder-shown),
+.form-field textarea:invalid:not(:placeholder-shown),
+.form-field select:invalid:not(:focus) {
+  border-color: rgba(217,4,41,0.3);
+}
+.form-field select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23A0A0A0' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.form-field textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.5;
+}
+
+.form-actions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.form-actions .btn-primary { border: 0; cursor: pointer; }
+
+.form-status {
+  margin-top: 14px;
+  font-size: 13px;
+  min-height: 18px;
+}
+.form-status.is-success { color: #FF2D2D; }
+.form-status.is-error   { color: #FF2D2D; }
+
+.form-fine {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #777;
+  line-height: 1.5;
+}
+
+/* =========================================================
    CONTACT
    ========================================================= */
 .contact-block {

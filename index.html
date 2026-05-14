@@ -267,18 +267,26 @@
       </div>
     </div>
 
-    <!-- trusted by strip -->
+    <!-- promotions + press -->
     <div class="mt-16 reveal">
-      <p class="font-sub text-red tracking-[0.4em] text-xs mb-6">TRUSTED BY & FEATURED IN</p>
-      <div class="flex flex-wrap items-center gap-x-12 gap-y-6 text-text2/70">
-        <span class="brand-logo font-display text-3xl">DAZN</span>
-        <span class="brand-logo font-display italic text-3xl tracking-tighter">ESPN</span>
-        <span class="brand-logo font-display text-2xl tracking-widest">EVERLAST</span>
-        <span class="brand-logo font-display text-2xl tracking-wide">GYMSHARK</span>
-        <span class="brand-logo font-display text-2xl tracking-widest">LEONE 1947</span>
-        <span class="brand-logo font-display text-3xl tracking-wide">PRIME</span>
+      <p class="font-sub text-red tracking-[0.4em] text-xs mb-6">PROMOTIONS HE'S FOUGHT FOR</p>
+      <div class="flex flex-wrap items-center gap-x-12 gap-y-6 text-text2/70 mb-10">
         <span class="brand-logo font-display text-2xl tracking-widest">DBX</span>
         <span class="brand-logo font-display text-2xl tracking-widest">FIGHTZUMI</span>
+        <span class="brand-logo font-display text-2xl tracking-widest">IHC MMA</span>
+        <span class="brand-logo font-display text-2xl tracking-widest">PATONG STADIUM</span>
+        <span class="brand-logo font-display text-2xl tracking-widest">GIGAFIGHTS</span>
+      </div>
+
+      <p class="font-sub text-red tracking-[0.4em] text-xs mb-6">FEATURED IN</p>
+      <div class="flex flex-wrap items-center gap-x-10 gap-y-5 text-text2/70">
+        <span class="brand-logo font-display italic text-2xl tracking-tight">YAHOO SPORTS</span>
+        <span class="brand-logo font-display text-2xl tracking-widest">MMA MANIA</span>
+        <span class="brand-logo font-display text-2xl tracking-widest">BOXING SOCIAL</span>
+        <span class="brand-logo font-display text-2xl tracking-widest">SHERDOG</span>
+        <span class="brand-logo font-display text-2xl tracking-widest">FIGHTBOOK MMA</span>
+        <span class="brand-logo font-display text-2xl tracking-widest">FIGHTMAG</span>
+        <span class="brand-logo font-display text-2xl tracking-widest">TIGER MUAY THAI</span>
       </div>
     </div>
   </div>
@@ -304,12 +312,13 @@
     <!-- Tabs -->
     <div class="fight-tabs reveal" role="tablist">
       <button type="button" class="fight-tab is-active" role="tab" data-tab="full" aria-selected="true">FULL FIGHTS</button>
+      <button type="button" class="fight-tab"          role="tab" data-tab="reels"  aria-selected="false">REELS</button>
       <button type="button" class="fight-tab"          role="tab" data-tab="shorts" aria-selected="false">SHORTS</button>
     </div>
 
     <!-- Panel: FULL FIGHTS -->
     <div class="fight-panel is-active" data-panel="full">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
         <article class="fight-card-sm reveal js-local-player" data-video-src="assets/dbx6-tibaba-vs-lacaze.mp4" data-poster="assets/dbx6-poster.jpg">
           <div class="fight-thumb">
@@ -364,6 +373,24 @@
           </div>
         </article>
 
+        <article class="fight-card-sm reveal js-yt-player" data-video-id="XJvXQ4820jk">
+          <div class="fight-thumb">
+            <img src="https://img.youtube.com/vi/XJvXQ4820jk/maxresdefault.jpg" alt="Tibaba Progress vs Blake Lacaze - Pelea Completa - DBX 6" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
+            <div class="yt-overlay absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+            <button type="button" class="yt-play-btn absolute inset-0 flex items-center justify-center w-full h-full" aria-label="Play full fight - Spanish">
+              <span class="play-btn"></span>
+            </button>
+            <div class="yt-caption absolute top-3 left-3 flex gap-2">
+              <span class="badge badge-win">KO · ES</span>
+              <span class="badge badge-event">DBX 6</span>
+            </div>
+          </div>
+          <div class="fight-body-sm">
+            <h4 class="font-display text-xl tracking-tight leading-none">PELEA COMPLETA · ES</h4>
+            <p class="text-text2 text-xs mt-2 tracking-wide">vs Lacaze · Spanish broadcast · 5:49</p>
+          </div>
+        </article>
+
       </div>
 
       <!-- DBX 6 recap article link -->
@@ -374,6 +401,144 @@
         </div>
         <span class="font-sub text-redHot tracking-[0.3em] text-xs whitespace-nowrap">READ ›</span>
       </a>
+    </div>
+
+    <!-- Panel: REELS (Instagram fight clips) -->
+    <div class="fight-panel" data-panel="reels" hidden>
+      <p class="text-text2 text-sm mb-5">Instagram-exclusive fight clips and reactions — viral footage of Adam's striking, sparring, and DBX 6 highlights.</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+
+        <article class="short-play-card reveal js-ig-card" data-cat="fight" data-sc="DTkHKOHk6HH">
+          <div class="short-vert-thumb ig-thumb">
+            <img src="assets/instagram/thumbs/DTkHKOHk6HH.jpg" alt="Being this tall is a hack" loading="lazy"/>
+            <span class="ig-cat">REEL</span>
+            <span class="ig-metric">▶ 5.4M</span>
+            <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+          </div>
+          <div class="short-meta">
+            <p class="font-sub tracking-wide text-text">"BEING THIS TALL IS A HACK"</p>
+            <p class="text-text2 text-xs mt-1">Thailand sparring · 5.4M views</p>
+          </div>
+        </article>
+
+        <article class="short-play-card reveal js-ig-card" data-cat="fight" data-sc="DVVUbryk87p">
+          <div class="short-vert-thumb ig-thumb">
+            <img src="assets/instagram/thumbs/DVVUbryk87p.jpg" alt="David vs Goliath training" loading="lazy"/>
+            <span class="ig-cat">REEL</span>
+            <span class="ig-metric">▶ 2.3M</span>
+            <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+          </div>
+          <div class="short-meta">
+            <p class="font-sub tracking-wide text-text">"DAVID vs GOLIATH"</p>
+            <p class="text-text2 text-xs mt-1">Thailand · 2.3M views</p>
+          </div>
+        </article>
+
+        <article class="short-play-card reveal js-ig-card" data-cat="fight" data-sc="DSffrHeDFvm">
+          <div class="short-vert-thumb ig-thumb">
+            <img src="assets/instagram/thumbs/DSffrHeDFvm.jpg" alt="Right hand power Southpaw angles" loading="lazy"/>
+            <span class="ig-cat">REEL</span>
+            <span class="ig-metric">▶ 1.1M</span>
+            <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+          </div>
+          <div class="short-meta">
+            <p class="font-sub tracking-wide text-text">"RIGHT HAND POWER. SOUTHPAW ANGLES."</p>
+            <p class="text-text2 text-xs mt-1">Sparring · 1.1M views</p>
+          </div>
+        </article>
+
+        <article class="short-play-card reveal js-ig-card" data-cat="fight" data-sc="DQkJ3lKERgS">
+          <div class="short-vert-thumb ig-thumb">
+            <img src="assets/instagram/thumbs/DQkJ3lKERgS.jpg" alt="Tibaba takes the Fightzumi title" loading="lazy"/>
+            <span class="ig-cat">REEL</span>
+            <span class="ig-metric">▶ 513K</span>
+            <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+          </div>
+          <div class="short-meta">
+            <p class="font-sub tracking-wide text-text">"A NEW STAR IS HERE"</p>
+            <p class="text-text2 text-xs mt-1">FZM 5.0 title · 513K views</p>
+          </div>
+        </article>
+
+        <article class="short-play-card reveal js-ig-card" data-cat="fight" data-sc="DXDRG28jWjK">
+          <div class="short-vert-thumb ig-thumb">
+            <img src="assets/instagram/thumbs/DXDRG28jWjK.jpg" alt="KO of the Night DBX6" loading="lazy"/>
+            <span class="ig-cat">REEL</span>
+            <span class="ig-metric">▶ KO</span>
+            <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+          </div>
+          <div class="short-meta">
+            <p class="font-sub tracking-wide text-text">"KO OF THE NIGHT" — DBX 6</p>
+            <p class="text-text2 text-xs mt-1">Vicious R2 body shot</p>
+          </div>
+        </article>
+
+        <article class="short-play-card reveal js-ig-card" data-cat="fight" data-sc="DXI-xRHDAo_">
+          <div class="short-vert-thumb ig-thumb">
+            <img src="assets/instagram/thumbs/DXI-xRHDAo_.jpg" alt="Tristan Tate ringside" loading="lazy"/>
+            <span class="ig-cat">REEL</span>
+            <span class="ig-metric">▶ 106K</span>
+            <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+          </div>
+          <div class="short-meta">
+            <p class="font-sub tracking-wide text-text">"PHENOMENAL PERFORMANCE"</p>
+            <p class="text-text2 text-xs mt-1">Tristan Tate ringside · DBX 6</p>
+          </div>
+        </article>
+
+        <article class="short-play-card reveal js-ig-card" data-cat="fight" data-sc="DW-fq68jXeh">
+          <div class="short-vert-thumb ig-thumb">
+            <img src="assets/instagram/thumbs/DW-fq68jXeh.jpg" alt="Problem in the DBX ring" loading="lazy"/>
+            <span class="ig-cat">REEL</span>
+            <span class="ig-metric">▶ 115K</span>
+            <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+          </div>
+          <div class="short-meta">
+            <p class="font-sub tracking-wide text-text">"A PROBLEM IN THE DBX RING"</p>
+            <p class="text-text2 text-xs mt-1">DBX 6 highlight</p>
+          </div>
+        </article>
+
+        <article class="short-play-card reveal js-ig-card" data-cat="fight" data-sc="DXSqlevSzK8">
+          <div class="short-vert-thumb ig-thumb">
+            <img src="assets/instagram/thumbs/DXSqlevSzK8.jpg" alt="Jon Jones impressed" loading="lazy"/>
+            <span class="ig-cat">REEL</span>
+            <span class="ig-metric">▶ JON JONES</span>
+            <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+          </div>
+          <div class="short-meta">
+            <p class="font-sub tracking-wide text-text">"BEST PROSPECT IN COMBAT SPORTS"</p>
+            <p class="text-text2 text-xs mt-1">Per Jon Jones · DBX 6</p>
+          </div>
+        </article>
+
+        <article class="short-play-card reveal js-ig-card" data-cat="fight" data-sc="DW-gj5nCJ9j">
+          <div class="short-vert-thumb ig-thumb">
+            <img src="assets/instagram/thumbs/DW-gj5nCJ9j.jpg" alt="Level of striking from 6'8" loading="lazy"/>
+            <span class="ig-cat">REEL</span>
+            <span class="ig-metric">▶ STRIKING</span>
+            <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+          </div>
+          <div class="short-meta">
+            <p class="font-sub tracking-wide text-text">"THIS LEVEL OF STRIKING FROM 6'8""</p>
+            <p class="text-text2 text-xs mt-1">DBX 6</p>
+          </div>
+        </article>
+
+        <article class="short-play-card reveal js-ig-card" data-cat="fight" data-sc="DXnM9tIzXQ-">
+          <div class="short-vert-thumb ig-thumb">
+            <img src="assets/instagram/thumbs/DXnM9tIzXQ-.jpg" alt="Andrew Tate impressed" loading="lazy"/>
+            <span class="ig-cat">REEL</span>
+            <span class="ig-metric">▶ A. TATE</span>
+            <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+          </div>
+          <div class="short-meta">
+            <p class="font-sub tracking-wide text-text">"ANDREW TATE IMPRESSED"</p>
+            <p class="text-text2 text-xs mt-1">DBX 6 KO reaction</p>
+          </div>
+        </article>
+
+      </div>
     </div>
 
     <!-- Panel: SHORTS -->
@@ -572,6 +737,631 @@
 </section>
 
 
+<!-- ============== FROM THE FEED (Instagram) ============== -->
+<section id="feed" class="relative py-28 lg:py-32 bg-ink2 border-y border-border overflow-hidden">
+  <div class="absolute left-1/4 -translate-x-1/2 top-0 w-[40%] h-[60%] rounded-full bg-red/10 blur-[160px]"></div>
+
+  <div class="relative max-w-[1400px] mx-auto px-6 lg:px-10">
+    <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 gap-6 reveal">
+      <div>
+        <p class="font-sub text-red tracking-[0.4em] text-sm mb-3">FROM THE FEED</p>
+        <h3 class="font-display text-5xl md:text-6xl tracking-tight leading-[0.95]">
+          THE <span class="text-red brush-underline">FULL</span> LIBRARY.
+        </h3>
+        <p class="text-text2 mt-4 max-w-xl">Fights, training, behind-the-scenes, commentary, motivation. Pulled live from <a href="https://www.instagram.com/tibaba.prg/" target="_blank" rel="noopener" class="text-text underline decoration-red underline-offset-4">@tibaba.prg</a> — 32.8K followers, 5–10M+ views / month.</p>
+      </div>
+
+      <a href="https://www.instagram.com/tibaba.prg/" target="_blank" rel="noopener" class="text-red font-sub tracking-[0.3em] text-sm hover:text-redHot transition">VIEW ALL ON INSTAGRAM ›</a>
+    </div>
+
+    <!-- Filter chips -->
+    <div class="ig-filters reveal" role="tablist">
+      <button type="button" class="ig-chip is-active" data-filter="all">ALL</button>
+      <button type="button" class="ig-chip" data-filter="fight">FIGHTS</button>
+      <button type="button" class="ig-chip" data-filter="training">TRAINING</button>
+      <button type="button" class="ig-chip" data-filter="bts">BEHIND THE SCENES</button>
+      <button type="button" class="ig-chip" data-filter="commentary">COMMENTARY</button>
+      <button type="button" class="ig-chip" data-filter="motivation">MOTIVATION</button>
+      <button type="button" class="ig-chip" data-filter="lifestyle">LIFESTYLE</button>
+    </div>
+
+<div class="ig-grid">
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DSffrHeDFvm">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DSffrHeDFvm.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 1.1M</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">Right hand power. Southpaw angles.  Would you fight this at 18? 👀👇 #tr…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DSffrHeDFvm/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DUQm28YEzLQ">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DUQm28YEzLQ.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 583.1K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">+99 reach 😭  For more fight content like this follow ➡️ @devin.radianu…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DUQm28YEzLQ/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DQkJ3lKERgS">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DQkJ3lKERgS.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 513.5K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">A new star is here - Tibaba (@tibaba.prg) takes away the Fightzumi int…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DQkJ3lKERgS/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DV9OANcEZDg">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DV9OANcEZDg.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 279.9K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">6’7 @tibaba.prg training hard for his Dirty Boxing debut on April 10th…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DV9OANcEZDg/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DWzYJ06ErW4">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DWzYJ06ErW4.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 231.9K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">David vs. Goliath 😭 6’8 striking sensation @tibaba.prg is back in acti…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DWzYJ06ErW4/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DWE4J41gl9w">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DWE4J41gl9w.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 117.1K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">6’7 @tibaba.prg makes his Dirty Boxing debut in Miami on April 10th! 🤯…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DWE4J41gl9w/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DXI-xRHDAo_">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DXI-xRHDAo_.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 106.1K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">Tristan Tate was ringside to witness Tibaba Progress put on a PHENOMEN…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DXI-xRHDAo_/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DW-fq68jXeh">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DW-fq68jXeh.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 115.2K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">@tibaba.prg is a PROBLEM in the DBX ring. 😳 #dbx6</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DW-fq68jXeh/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DXSqlevSzK8">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DXSqlevSzK8.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 76.2K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">Best prospect in all of combat sports?! 👀  @tibaba.prg performance imp…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DXSqlevSzK8/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DRh63SNkxob">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DRh63SNkxob.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 75.5K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">Silence before the storm — then the Berserker awakens.  #motivation #b…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DRh63SNkxob/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DRcnIR0E3-b">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DRcnIR0E3-b.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 70.8K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">„2,02 m of discipline. 84 kg of hard work. Every rep, every round, eve…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DRcnIR0E3-b/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DXcXiHEAoMa">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DXcXiHEAoMa.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 50.2K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">@tibaba.prg IS A PROBLEM. 😤  Rewatch his full fight on our YouTube cha…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DXcXiHEAoMa/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DKCPylRTZlN">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DKCPylRTZlN.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 55.3K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">Our coaches can’t be the only ones?🤣🤣😅😅  Phuket Fight Club | Champions…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DKCPylRTZlN/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="fight" data-sc="DXDRG28jWjK">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DXDRG28jWjK.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">FIGHT</span>
+      <span class="ig-metric">▶ 50.6K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">@tibaba.prg takes home KO of the Night with a VICIOUS second-round bod…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DXDRG28jWjK/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="training" data-sc="DTkHKOHk6HH">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DTkHKOHk6HH.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">TRAINING</span>
+      <span class="ig-metric">▶ 5.4M</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">Being this tall is a hack 😭  #muaythai #thailand #sparring #funny #mar…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DTkHKOHk6HH/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="training" data-sc="DVVUbryk87p">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DVVUbryk87p.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">TRAINING</span>
+      <span class="ig-metric">▶ 2.3M</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">David vs Goliath - - - #muaythai #training #thailand</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DVVUbryk87p/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="training" data-sc="DTfslPgE5HW">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DTfslPgE5HW.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">TRAINING</span>
+      <span class="ig-metric">▶ 1.1M</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">I&#x27;m lucky he went easy on me 😅  #muaythai #giant #thailand #sparring #…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DTfslPgE5HW/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="training" data-sc="DSNema6E4pO">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DSNema6E4pO.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">TRAINING</span>
+      <span class="ig-metric">▶ 180.3K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">6’7/2.04| 77/84/ 18 Southpaw MMA.  #sparring #muaythai #kickboxing #mm…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DSNema6E4pO/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="training" data-sc="DPorqSEkzpk">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DPorqSEkzpk.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">TRAINING</span>
+      <span class="ig-metric">▶ 87.9K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">6’7“ | 18 | Southpaw| MMA &amp; K1 Fighter 🥊  Training hard in Thailand 🇹🇭…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DPorqSEkzpk/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="training" data-sc="DS0ZvQukyMi">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DS0ZvQukyMi.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">TRAINING</span>
+      <span class="ig-metric">▶ 68.7K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">“No gym. No ring. Just work. Shadowboxing on the mountain. 🇹🇭” #trendi…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DS0ZvQukyMi/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="training" data-sc="DRun-hFE4Il">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DRun-hFE4Il.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">TRAINING</span>
+      <span class="ig-metric">▶ 57.0K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">“Out here in the desert, it’s just me, the heat, and the grind.” #duba…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DRun-hFE4Il/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="training" data-sc="DQzZxRmEx8i">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DQzZxRmEx8i.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">TRAINING</span>
+      <span class="ig-metric">▶ 38.9K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">6’7” | 18 | Southpaw MMA/Boxing/K-1 Fighter based in Thailand | Future…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DQzZxRmEx8i/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="training" data-sc="DKRi1nkiCye">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DKRi1nkiCye.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">TRAINING</span>
+      <span class="ig-metric">▶ 24.4K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">🚨 PART 2 🚨   Strong mindset , manifestation , discipline and consisten…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DKRi1nkiCye/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="training" data-sc="DKkFpxKTnRd">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DKkFpxKTnRd.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">TRAINING</span>
+      <span class="ig-metric">▶ 21.1K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">#motivation #muaythai #thailand #mma #selfdefense #boxing #sport #tren…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DKkFpxKTnRd/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="training" data-sc="DWcc05dExht">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DWcc05dExht.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">TRAINING</span>
+      <span class="ig-metric">❤ 1.0K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">💯🥷⚔️ Train/Eat/Sleep↩️↪️ #lifestyle #thailand #phuket</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DWcc05dExht/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="training" data-sc="DSDM0wjkyWd">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DSDM0wjkyWd.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">TRAINING</span>
+      <span class="ig-metric">❤ 587</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">Dubai x London — two cities, one mission.“ #dubai #london #training #r…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DSDM0wjkyWd/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="training" data-sc="DMQDlDwSjzq">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DMQDlDwSjzq.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">TRAINING</span>
+      <span class="ig-metric">❤ 409</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">@tibaba.67er The tallest fighter in Thailand all the way from Germany…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DMQDlDwSjzq/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="bts" data-sc="DRw8tKZjDwz">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DRw8tKZjDwz.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">BEHIND THE SCENES</span>
+      <span class="ig-metric">▶ 98.8K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">ANOTHER DAY IN THAILAND 🇹🇭  #muaythai #thailand #phuket</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DRw8tKZjDwz/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="bts" data-sc="DXKSPrgjJJO">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DXKSPrgjJJO.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">BEHIND THE SCENES</span>
+      <span class="ig-metric">▶ 22.6K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">Walkout At @dirtyboxing From Mr.Aura Himself❄️ #trendingreels #mma #bo…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DXKSPrgjJJO/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DUtNprxk9bu">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DUtNprxk9bu.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 1.4M</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">2.04/84KG Future Champion. #trendingreels #mma #boxing #sport #muaytha…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DUtNprxk9bu/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DUv9qXCE-xH">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DUv9qXCE-xH.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 430.0K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">2.04|84Kg Future Champion. #trendingreels #mma #boxing #muaythai #spor…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DUv9qXCE-xH/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DUTjPf4jJ1F">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DUTjPf4jJ1F.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 114.3K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">2.04|84KG-2.01|93KG 2 Future Champions In Diffrent Weightclass#trendin…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DUTjPf4jJ1F/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DTiuHGxE3qJ">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DTiuHGxE3qJ.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 98.3K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">2.04/84KG/Future Champ.  #trendingreels #sport #boxing #mma #muaythai</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DTiuHGxE3qJ/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DU6G4h5k9PI">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DU6G4h5k9PI.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 102.1K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">18|2.04|84Kg Future  Champion Follow For More. #trendingreels #mma #bo…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DU6G4h5k9PI/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DUBYQlJk1PF">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DUBYQlJk1PF.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 79.7K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">2.04/84KG Southpaw Future Champ in The Making Get Ready Guys #trending…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DUBYQlJk1PF/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DRm2y7fkwyb">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DRm2y7fkwyb.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 74.3K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">„When two 2.02m giants turn the ring into a chess match.“ @alexmrabet…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DRm2y7fkwyb/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DR463iNk0-e">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DR463iNk0-e.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 66.3K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">„On the rooftop in 40°C… the work doesn’t stop. 🔥🥊“ #mma #boxing #spor…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DR463iNk0-e/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DRzwH0CE-0c">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DRzwH0CE-0c.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 65.1K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">6’7” | | Southpaw MMA &amp; K-1 Fighter based in Thailand | Future Champio…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DRzwH0CE-0c/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DWPICZaE8PE">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DWPICZaE8PE.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 54.3K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">2.04/6,8 84Kg Future Champion #trendingreels #mma #muaythai #boxing #t…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DWPICZaE8PE/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DSpPPhLCFW1">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DSpPPhLCFW1.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 62.8K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">No excuses, just work 😎 @tibaba.prg   Follow @muaythaimagic The Home O…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DSpPPhLCFW1/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DW4Y4j8kw8x">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DW4Y4j8kw8x.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 45.7K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">2.04/84Kg Future Of MMA @dirtyboxing  #trendingreels #mma #boxing #spo…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DW4Y4j8kw8x/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DIZpuUaz11j">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DIZpuUaz11j.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 44.3K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">#muaythai #boxing #mma #motivation #sport #future #selfdefense</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DIZpuUaz11j/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="motivation" data-sc="DQe4i_HjMIn">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DQe4i_HjMIn.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">MOTIVATION</span>
+      <span class="ig-metric">▶ 40.0K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">6’7” | 18 | Southpaw MMA &amp; K-1 Fighter based in Thailand | Future Cham…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DQe4i_HjMIn/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="commentary" data-sc="DXaEDHXgg7M">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DXaEDHXgg7M.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">COMMENTARY</span>
+      <span class="ig-metric">▶ 207.2K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">“I love violence!” @ninamariedaniele   Nina gave her genuine thoughts…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DXaEDHXgg7M/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="commentary" data-sc="DSxrLDtE82h">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DSxrLDtE82h.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">COMMENTARY</span>
+      <span class="ig-metric">▶ 172.5K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">77kg shouldn’t move like this. Thoughts? #trendingreels #mma #boxing #…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DSxrLDtE82h/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DSStchFjPCQ">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DSStchFjPCQ.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 4.1M</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">2,02 m in a welter/middleweight frame.  @tigermuaythai  Speed advantag…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DSStchFjPCQ/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DSXuHLwE8uI">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DSXuHLwE8uI.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 1.5M</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">2.03m / 77kg Should this be allowed? #trendingreels #boxing #sport #mm…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DSXuHLwE8uI/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DW-eVuvANhn">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DW-eVuvANhn.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 1.3M</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">That spinning back fist 🤯</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DW-eVuvANhn/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DT5e-wQkxQJ">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DT5e-wQkxQJ.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 1.3M</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">Is this Fair Not.  #trendingreels #mma #boxing #sport #thailand</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DT5e-wQkxQJ/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DPQg7NxgC3H">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DPQg7NxgC3H.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 1.1M</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">TIBABA IS SOUTHPAW STANCE MACHINE ☝🏻 #gazzzchamp</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DPQg7NxgC3H/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DTGVXbrExOf">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DTGVXbrExOf.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 900.9K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">Fair or Not #trendingreels #boxing #mma #sport #thailand</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DTGVXbrExOf/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DWhJ40fE2A1">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DWhJ40fE2A1.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 789.3K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">6,8 At Middleweight 🙈😱. #trendingreels #mma #muaythai #kickboxing #tha…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DWhJ40fE2A1/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DQJjkcCDUl2">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DQJjkcCDUl2.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 553.5K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">อดัม สูง 202 ซม. อยากเจอนาบิล เด็ก 17 ปี จากเยอรมันมาซ้อมมวยไทย และเดิ…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DQJjkcCDUl2/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DSaV4dBkzbY">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DSaV4dBkzbY.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 495.0K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">77kg at this speed.  Allowed or not?  #foryou #trendingreels #boxing #…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DSaV4dBkzbY/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DW6neowk2jC">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DW6neowk2jC.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 714.7K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">The 6’7 phenom Tibaba Progress is on weight and ready to go!  📺 LIVE &amp;…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DW6neowk2jC/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DT0iXUykwCE">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DT0iXUykwCE.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 555.2K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">2.04 With This Speed #trendingreels #sport #mma #boxing #sport</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DT0iXUykwCE/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DW7jc6pEV9z">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DW7jc6pEV9z.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 445.6K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">Where are they finding these guys 😭</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DW7jc6pEV9z/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DTQptQhE4cQ">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DTQptQhE4cQ.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 346.3K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">Fair or not? 👀 2.04m / 84kg vs 1.96m / 95kg Skill &gt; Size. What do you…</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DTQptQhE4cQ/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+  <article class="ig-card js-ig-card" data-cat="lifestyle" data-sc="DPxwS3Aktcx">
+    <div class="ig-thumb">
+      <img loading="lazy" src="assets/instagram/thumbs/DPxwS3Aktcx.jpg" alt="Adam Progress Instagram post" />
+      <span class="ig-cat">LIFESTYLE</span>
+      <span class="ig-metric">▶ 300.4K</span>
+      <button type="button" class="ig-play" aria-label="Play"><span class="play-btn"></span></button>
+    </div>
+    <p class="ig-caption">1 million views- easy ☝🏻 #gazzzchamp</p>
+    <a class="ig-link" href="https://www.instagram.com/p/DPxwS3Aktcx/" target="_blank" rel="noopener" aria-label="Open on Instagram">↗</a>
+  </article>
+</div>
+
+  </div>
+</section>
+
+
 <!-- ============== WHY PARTNER ============== -->
 <section class="relative py-28 lg:py-32 bg-ink2 border-y border-border overflow-hidden">
 
@@ -600,7 +1390,7 @@
 
       <div class="mt-10 flex flex-wrap gap-4">
         <a href="#contact" class="btn-primary"><span class="play-dot"></span>WORK WITH ME</a>
-        <a href="mailto:tibaba.prg@gmail.com" class="btn-secondary">REQUEST MEDIA KIT</a>
+        <a href="mailto:adamprogressmma@gmail.com" class="btn-secondary">REQUEST MEDIA KIT</a>
       </div>
     </div>
   </div>
@@ -626,7 +1416,7 @@
       <div class="mt-12 grid sm:grid-cols-2 gap-8 max-w-2xl">
         <div class="contact-block">
           <p class="contact-label">BOOKINGS & INQUIRIES</p>
-          <a href="mailto:tibaba.prg@gmail.com" class="contact-value">tibaba.prg@gmail.com</a>
+          <a href="mailto:adamprogressmma@gmail.com" class="contact-value">adamprogressmma@gmail.com</a>
         </div>
         <div class="contact-block">
           <p class="contact-label">BASED IN</p>
@@ -635,7 +1425,7 @@
       </div>
 
       <div class="mt-10 flex flex-wrap gap-4">
-        <a href="mailto:tibaba.prg@gmail.com?subject=Partnership%20Inquiry%20-%20Adam%20Progress" class="btn-primary">LET'S WORK TOGETHER</a>
+        <a href="mailto:adamprogressmma@gmail.com?subject=Partnership%20Inquiry%20-%20Adam%20Progress" class="btn-primary">LET'S WORK TOGETHER</a>
         <a href="https://www.instagram.com/tibaba.prg/" target="_blank" rel="noopener" class="btn-secondary">DM ON INSTAGRAM</a>
       </div>
     </div>

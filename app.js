@@ -98,6 +98,49 @@ if (portrait && window.matchMedia('(pointer:fine)').matches) {
 }
 
 /* ============================================================
+   Instagram feed — filter chips + click-to-play embed
+   ============================================================ */
+const igChips = document.querySelectorAll('.ig-chip');
+const igCards = document.querySelectorAll('.ig-card');
+
+igChips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    const filter = chip.dataset.filter;
+    igChips.forEach(c => c.classList.toggle('is-active', c === chip));
+    igCards.forEach(card => {
+      const match = filter === 'all' || card.dataset.cat === filter;
+      card.classList.toggle('is-hidden', !match);
+    });
+  });
+});
+
+document.querySelectorAll('.js-ig-card').forEach(card => {
+  const play = card.querySelector('.ig-play');
+  if (!play) return;
+  play.addEventListener('click', (e) => {
+    e.preventDefault();
+    const sc = card.dataset.sc;
+    if (!sc) return;
+
+    const thumb = card.querySelector('.ig-thumb');
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.instagram.com/p/${sc}/embed/captioned/`;
+    iframe.allow = 'autoplay; encrypted-media';
+    iframe.allowFullscreen = true;
+    iframe.loading = 'lazy';
+    iframe.scrolling = 'no';
+
+    // Fade out overlays + thumb, then mount iframe
+    const toFade = thumb.querySelectorAll('img, .ig-cat, .ig-metric, .ig-play');
+    toFade.forEach(el => { el.style.transition = 'opacity .25s ease'; el.style.opacity = '0'; });
+    setTimeout(() => {
+      toFade.forEach(el => el.remove());
+      thumb.appendChild(iframe);
+    }, 250);
+  });
+});
+
+/* ============================================================
    Set data-text attribute for textured chrome (used by ::after)
    ============================================================ */
 document.querySelectorAll('.textured-chrome').forEach(el => {

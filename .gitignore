@@ -6,3 +6,7 @@ node_modules/
 
 # Internal reference (not part of the shipped site)
 assets/hero-mockup-ref.png
+
+# Instagram scrape metadata (build-time only, not loaded by the site)
+assets/instagram/_profile.json
+assets/instagram/posts_data.json

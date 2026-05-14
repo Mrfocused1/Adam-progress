@@ -63,10 +63,12 @@ body {
 
 /* ====== HAMBURGER ====== */
 .nav-toggle {
+  position: relative;
+  z-index: 55;             /* sit above mobile-nav overlay */
   width: 38px; height: 38px;
   border: 1px solid #2A2A2A;
   border-radius: 999px;
-  background: transparent;
+  background: rgba(5,5,5,0.85);
   cursor: pointer;
   display: inline-flex;
   flex-direction: column;
@@ -74,6 +76,10 @@ body {
   justify-content: center;
   gap: 4px;
   transition: all .25s ease;
+}
+.nav-toggle.is-open {
+  background: rgba(20,20,20,0.95);
+  border-color: #D90429;
 }
 .nav-toggle:hover { border-color: #D90429; background: rgba(217,4,41,0.08); }
 .nav-toggle span {
@@ -90,10 +96,10 @@ body {
 .mobile-nav {
   position: fixed;
   inset: 0;
-  background: rgba(5,5,5,0.96);
+  background: rgba(5,5,5,0.97);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  z-index: 45;
+  z-index: 48;             /* below the toggle (55) so the X stays clickable */
   display: flex;
   align-items: center;
   justify-content: center;

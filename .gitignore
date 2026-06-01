@@ -11,3 +11,7 @@ assets/hero-mockup-ref.png
 assets/instagram/_profile.json
 assets/instagram/posts_data.json
 .vercel/
+
+# Git worktrees (local isolation, not part of the site)
+.worktrees/
+tmp/

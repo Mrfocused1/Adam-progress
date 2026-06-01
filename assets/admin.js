@@ -7,51 +7,42 @@ const ALLOWED = ['tibaba.prg@gmail.com', 'paulshonowo2@gmail.com'];
 const $ = (id) => document.getElementById(id);
 const setStatus = (el, msg, kind) => { el.textContent = msg; el.className = 'status' + (kind ? ' is-' + kind : ''); };
 
-function cooldown(btn, secs, baseLabel) {
-  btn.disabled = true;
-  const tick = () => {
-    if (secs <= 0) { btn.disabled = false; btn.textContent = baseLabel; return; }
-    btn.textContent = `${baseLabel} (${secs}s)`; secs--; setTimeout(tick, 1000);
-  };
-  tick();
-}
+let recovering = /type=recovery/.test(location.hash);  // arrived via a password-reset link
 
-async function sendCode() {
+async function login() {
   const email = $('email').value.trim().toLowerCase();
+  const password = $('password').value;
   if (!ALLOWED.includes(email)) { setStatus($('loginStatus'), 'That email is not authorized.', 'error'); return; }
-  const btn = $('sendCode');
-  if (btn.disabled) return;
-  btn.disabled = true; btn.textContent = 'Sending…';
-  const { error } = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: true, emailRedirectTo: window.location.origin + '/admin' } });
-  if (error) {
-    const rate = /rate limit|too many|429/i.test(error.message);
-    setStatus($('loginStatus'), rate
-      ? 'Email limit reached (a few per hour). Wait a couple of minutes — or use “I already have a code” if one already arrived.'
-      : error.message, 'error');
-    cooldown(btn, rate ? 60 : 15, 'Send me a code');   // stop repeated clicks from burning the quota
-    return;
-  }
-  btn.textContent = 'Send me a code'; btn.disabled = false;
-  $('step-email').hidden = true; $('step-code').hidden = false;
-  setStatus($('loginStatus'), 'Code sent. Check your email (including spam).', 'success');
-}
-
-async function verifyCode() {
-  const email = $('email').value.trim().toLowerCase();
-  const token = $('code').value.trim();
-  if (!email) { setStatus($('loginStatus'), 'Enter your email first.', 'error'); return; }
-  // Accept both email-OTP and magic-link codes.
-  let { error } = await supabase.auth.verifyOtp({ email, token, type: 'email' });
-  if (error) ({ error } = await supabase.auth.verifyOtp({ email, token, type: 'magiclink' }));
-  if (error) { setStatus($('loginStatus'), error.message, 'error'); return; }
+  if (!password) { setStatus($('loginStatus'), 'Enter your password.', 'error'); return; }
+  const btn = $('loginBtn'); btn.disabled = true; const label = btn.querySelector('.txt'); if (label) label.textContent = 'Logging in…';
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  btn.disabled = false; if (label) label.textContent = 'Log in';
+  if (error) { setStatus($('loginStatus'), /invalid login/i.test(error.message) ? 'Wrong email or password.' : error.message, 'error'); return; }
   await showDashboard();
 }
 
-function showCodeStep() {
-  $('step-email').hidden = true;
-  $('step-code').hidden = false;
-  setStatus($('loginStatus'), '', '');
-  $('code').focus();
+async function forgot() {
+  const email = $('email').value.trim().toLowerCase();
+  if (!ALLOWED.includes(email)) { setStatus($('loginStatus'), 'Enter your authorized email above first.', 'error'); return; }
+  const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin + '/admin' });
+  if (error) { setStatus($('loginStatus'), error.message, 'error'); return; }
+  setStatus($('loginStatus'), 'Reset link sent — check your email (incl. spam). Open it to set a new password.', 'success');
+}
+
+function showResetForm() {
+  recovering = true;
+  $('loginView').hidden = false; $('dashView').hidden = true;
+  $('step-login').hidden = true; $('step-reset').hidden = false;
+  setStatus($('loginStatus'), 'Set a new password to finish.', 'success');
+}
+
+async function setNewPassword() {
+  const pw = $('newPassword').value;
+  if (pw.length < 6) { setStatus($('loginStatus'), 'Password must be at least 6 characters.', 'error'); return; }
+  const { error } = await supabase.auth.updateUser({ password: pw });
+  if (error) { setStatus($('loginStatus'), error.message, 'error'); return; }
+  recovering = false;
+  await showDashboard();
 }
 
 async function showDashboard() {
@@ -68,19 +59,24 @@ async function logout() {
   location.reload();
 }
 
-$('sendCode')?.addEventListener('click', sendCode);
-$('verifyCode')?.addEventListener('click', verifyCode);
-$('haveCode')?.addEventListener('click', showCodeStep);
+$('loginBtn')?.addEventListener('click', login);
+$('password')?.addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+$('forgotBtn')?.addEventListener('click', forgot);
+$('setPwBtn')?.addEventListener('click', setNewPassword);
 
 // Show a confirmation after a logout reload.
 if (sessionStorage.getItem('ap_signedout')) {
   sessionStorage.removeItem('ap_signedout');
-  setStatus($('loginStatus'), 'Signed out. Enter your email to get a new code.', 'success');
+  setStatus($('loginStatus'), 'Signed out. Enter your email and password to log back in.', 'success');
 }
 
-// Auto-resume an existing session (and handle magic-link return).
-supabase.auth.getSession().then(({ data }) => { if (data.session) showDashboard(); });
-supabase.auth.onAuthStateChange((_e, session) => { if (session) showDashboard(); });
+// Recovery link → show set-new-password form. Otherwise auto-resume an existing session.
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === 'PASSWORD_RECOVERY') { showResetForm(); return; }
+  if (session && !recovering) showDashboard();
+});
+if (recovering) showResetForm();
+else supabase.auth.getSession().then(({ data }) => { if (data.session) showDashboard(); });
 
 window.__adminLogout = logout;          // wired to the Log out button in Task 7
 let DOC = null;           // working copy of the content document

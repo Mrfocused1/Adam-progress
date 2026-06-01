@@ -21,17 +21,18 @@
       </div>
       <p class="brand-sub">Content control panel</p>
 
-      <div id="step-email">
+      <div id="step-login">
         <label>Email</label>
-        <input id="email" type="email" autocomplete="email" placeholder="you@gmail.com"/>
-        <button id="sendCode" class="btn"><span class="dot"></span>Send me a code</button>
-        <button type="button" id="haveCode" class="linkbtn">I already have a code →</button>
+        <input id="email" type="email" autocomplete="username" placeholder="you@gmail.com"/>
+        <label>Password</label>
+        <input id="password" type="password" autocomplete="current-password" placeholder="••••••••"/>
+        <button id="loginBtn" class="btn"><span class="dot"></span><span class="txt">Log in</span></button>
+        <button type="button" id="forgotBtn" class="linkbtn">Forgot password?</button>
       </div>
-      <div id="step-code" hidden>
-        <label>6-digit code (from your email)</label>
-        <input id="code" inputmode="numeric" placeholder="123456"/>
-        <button id="verifyCode" class="btn"><span class="dot"></span>Verify &amp; log in</button>
-        <p class="muted">You can also click the login link in the same email.</p>
+      <div id="step-reset" hidden>
+        <label>New password</label>
+        <input id="newPassword" type="password" autocomplete="new-password" placeholder="at least 6 characters"/>
+        <button id="setPwBtn" class="btn"><span class="dot"></span><span class="txt">Set new password</span></button>
       </div>
       <p id="loginStatus" class="status" role="status" aria-live="polite"></p>
     </div>

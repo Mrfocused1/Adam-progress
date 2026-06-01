@@ -273,6 +273,11 @@ input:focus {
 .section-link {
   position: relative;
   display: block;
+  width: 100%;
+  text-align: left;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
   padding: 0.6rem 0.9rem;
   border-radius: 9px;
   color: var(--muted);

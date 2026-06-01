@@ -44,6 +44,7 @@
       <span id="saveState" class="unsaved" hidden>● Unsaved changes</span>
       <div class="dash-actions">
         <a href="index.html" target="_blank" class="btn ghost">View live site ↗</a>
+        <button id="changePwBtn" class="btn ghost">Change password</button>
         <button id="saveBtn" class="btn"><span class="dot"></span>Save changes</button>
         <button id="logoutBtn" class="btn ghost">Log out</button>
       </div>
@@ -53,6 +54,21 @@
       <main id="panel" class="panel"></main>
     </div>
     <p id="dashStatus" class="status" role="status" aria-live="polite"></p>
+
+    <div id="pwModal" class="modal" hidden>
+      <div class="modal-card">
+        <h3 class="modal-title">Change password</h3>
+        <label>New password</label>
+        <input id="changeNewPw" type="password" autocomplete="new-password" placeholder="at least 6 characters"/>
+        <label>Confirm new password</label>
+        <input id="changeNewPw2" type="password" autocomplete="new-password" placeholder="re-type it"/>
+        <p id="pwStatus" class="status" role="status" aria-live="polite"></p>
+        <div class="modal-actions">
+          <button id="pwCancel" class="btn ghost">Cancel</button>
+          <button id="pwSave" class="btn"><span class="dot"></span><span class="txt">Update password</span></button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <script type="module" src="assets/admin.js"></script>

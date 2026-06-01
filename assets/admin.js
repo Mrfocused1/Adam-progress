@@ -64,6 +64,23 @@ $('password')?.addEventListener('keydown', e => { if (e.key === 'Enter') login()
 $('forgotBtn')?.addEventListener('click', forgot);
 $('setPwBtn')?.addEventListener('click', setNewPassword);
 
+// Change password from inside the dashboard (no email needed).
+function openPwModal() { $('changeNewPw').value = ''; $('changeNewPw2').value = ''; setStatus($('pwStatus'), '', ''); $('pwModal').hidden = false; $('changeNewPw').focus(); }
+function closePwModal() { $('pwModal').hidden = true; }
+async function changePassword() {
+  const a = $('changeNewPw').value, b = $('changeNewPw2').value;
+  if (a.length < 6) { setStatus($('pwStatus'), 'Password must be at least 6 characters.', 'error'); return; }
+  if (a !== b) { setStatus($('pwStatus'), "Passwords don't match.", 'error'); return; }
+  const { error } = await supabase.auth.updateUser({ password: a });
+  if (error) { setStatus($('pwStatus'), error.message, 'error'); return; }
+  setStatus($('pwStatus'), 'Password updated ✓ — use it next time you log in.', 'success');
+  setTimeout(closePwModal, 1400);
+}
+$('changePwBtn')?.addEventListener('click', openPwModal);
+$('pwCancel')?.addEventListener('click', closePwModal);
+$('pwSave')?.addEventListener('click', changePassword);
+$('pwModal')?.addEventListener('click', e => { if (e.target.id === 'pwModal') closePwModal(); });
+
 // Show a confirmation after a logout reload.
 if (sessionStorage.getItem('ap_signedout')) {
   sessionStorage.removeItem('ap_signedout');

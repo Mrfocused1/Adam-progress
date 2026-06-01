@@ -7,13 +7,33 @@ const ALLOWED = ['tibaba.prg@gmail.com', 'paulshonowo2@gmail.com'];
 const $ = (id) => document.getElementById(id);
 const setStatus = (el, msg, kind) => { el.textContent = msg; el.className = 'status' + (kind ? ' is-' + kind : ''); };
 
+function cooldown(btn, secs, baseLabel) {
+  btn.disabled = true;
+  const tick = () => {
+    if (secs <= 0) { btn.disabled = false; btn.textContent = baseLabel; return; }
+    btn.textContent = `${baseLabel} (${secs}s)`; secs--; setTimeout(tick, 1000);
+  };
+  tick();
+}
+
 async function sendCode() {
   const email = $('email').value.trim().toLowerCase();
   if (!ALLOWED.includes(email)) { setStatus($('loginStatus'), 'That email is not authorized.', 'error'); return; }
+  const btn = $('sendCode');
+  if (btn.disabled) return;
+  btn.disabled = true; btn.textContent = 'Sending…';
   const { error } = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: true, emailRedirectTo: window.location.origin + '/admin' } });
-  if (error) { setStatus($('loginStatus'), error.message, 'error'); return; }
+  if (error) {
+    const rate = /rate limit|too many|429/i.test(error.message);
+    setStatus($('loginStatus'), rate
+      ? 'Email limit reached (a few per hour). Wait a couple of minutes — or use “I already have a code” if one already arrived.'
+      : error.message, 'error');
+    cooldown(btn, rate ? 60 : 15, 'Send me a code');   // stop repeated clicks from burning the quota
+    return;
+  }
+  btn.textContent = 'Send me a code'; btn.disabled = false;
   $('step-email').hidden = true; $('step-code').hidden = false;
-  setStatus($('loginStatus'), 'Code sent. Check your email.', 'success');
+  setStatus($('loginStatus'), 'Code sent. Check your email (including spam).', 'success');
 }
 
 async function verifyCode() {

@@ -1,7 +1,7 @@
 import { supabase } from './lib/supabase.js';
 import { CONTENT_SCHEMA, DEFAULT_CONTENT } from './lib/schema.js';
 import { CONTENT_ROW_ID } from './lib/supabase.js';
-import { getByPath, setByPath, escapeHtml } from './lib/apply.js';
+import { escapeHtml } from './lib/apply.js';
 
 const ALLOWED = ['tibaba.prg@gmail.com', 'paulshonowo2@gmail.com'];
 const $ = (id) => document.getElementById(id);
@@ -49,7 +49,12 @@ let CURRENT = CONTENT_SCHEMA[0].key;
 function markDirty() { DIRTY = true; $('saveState').hidden = false; }
 
 async function initDashboard() {
-  const { data } = await supabase.from('site_content').select('data').eq('id', CONTENT_ROW_ID).single();
+  const { data, error } = await supabase.from('site_content').select('data').eq('id', CONTENT_ROW_ID).single();
+  // If we genuinely failed to load (network/RLS) — as opposed to an empty row —
+  // warn loudly: editing+saving now would overwrite live content with defaults.
+  if (error && error.code !== 'PGRST116') {
+    setStatus($('dashStatus'), 'Could not load current content (' + error.message + '). Reload before editing to avoid overwriting the live site.', 'error');
+  }
   DOC = (data && data.data) ? structuredClone(data.data) : structuredClone(DEFAULT_CONTENT);
   // Backfill any missing keys from defaults so new schema sections always render.
   for (const k of Object.keys(DEFAULT_CONTENT)) if (!(k in DOC)) DOC[k] = structuredClone(DEFAULT_CONTENT[k]);
@@ -124,8 +129,7 @@ async function save() {
   setStatus($('dashStatus'), 'Saving…');
   const { data: { session } } = await supabase.auth.getSession();
   const { error } = await supabase.from('site_content')
-    .update({ data: DOC, updated_at: new Date().toISOString(), updated_by: session?.user?.email })
-    .eq('id', CONTENT_ROW_ID);
+    .upsert({ id: CONTENT_ROW_ID, data: DOC, updated_at: new Date().toISOString(), updated_by: session?.user?.email });
   if (error) { setStatus($('dashStatus'), 'Save failed: ' + error.message, 'error'); return; }
   DIRTY = false; $('saveState').hidden = true;
   setStatus($('dashStatus'), 'Saved ✓ — live now.', 'success');

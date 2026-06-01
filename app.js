@@ -219,7 +219,9 @@ if (cf) {
       '— Sent via adamprogress.com contact form',
     ].filter(Boolean).join('\n');
 
-    const mailto = `mailto:adamprogressmma@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // Use the (possibly admin-edited) bookings email shown on the page, falling back to the default.
+    const to = document.querySelector('[data-edit="contact.email"]')?.textContent?.trim() || 'adamprogressmma@gmail.com';
+    const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     status.textContent = 'Opening your email client…';
     status.className   = 'form-status is-success';

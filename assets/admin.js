@@ -170,7 +170,9 @@ function mediaField(value, field, onChange) {
   const wrap = document.createElement('div'); wrap.className = 'field';
   wrap.innerHTML = `<label>${escapeHtml(field.label)}</label>`;
   const preview = document.createElement(field.type === 'video' ? 'video' : 'img');
-  preview.className = 'thumb'; if (field.type === 'video') preview.controls = true;
+  preview.className = 'thumb';
+  // Don't auto-download big video files just for a preview — load on play only.
+  if (field.type === 'video') { preview.controls = true; preview.preload = 'none'; preview.muted = true; }
   // Only show the preview when there's a source, so empty fields don't render a broken-image icon.
   const setPreview = (src) => { if (src) { preview.src = src; preview.hidden = false; } else { preview.removeAttribute('src'); preview.hidden = true; } };
   setPreview(value);

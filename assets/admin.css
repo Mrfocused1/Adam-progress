@@ -215,6 +215,16 @@ input:focus {
 }
 .linkbtn:hover { color: var(--text); }
 
+.login-note {
+  margin: 1.1rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.login-note b { color: var(--text); font-weight: 600; }
+
 /* ---------- Dashboard ---------- */
 .dash-bar {
   display: flex;

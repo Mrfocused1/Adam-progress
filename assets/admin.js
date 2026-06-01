@@ -135,14 +135,37 @@ async function save() {
   setStatus($('dashStatus'), 'Saved ✓ — live now.', 'success');
 }
 
-// Placeholder media field (Task 8 replaces this with upload support).
+async function uploadFile(file, section) {
+  const safe = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+  const path = `${section}/${Date.now()}-${safe}`;
+  const { error } = await supabase.storage.from('media').upload(path, file, { upsert: false });
+  if (error) throw error;
+  const { data } = supabase.storage.from('media').getPublicUrl(path);
+  return data.publicUrl;
+}
+
 function mediaField(value, field, onChange) {
   const wrap = document.createElement('div'); wrap.className = 'field';
   wrap.innerHTML = `<label>${escapeHtml(field.label)}</label>`;
-  const input = document.createElement('input'); input.type = 'text';
-  input.value = value ?? ''; input.placeholder = 'image/video URL';
-  input.addEventListener('input', () => { onChange(input.value); markDirty(); });
-  wrap.appendChild(input);
+  const preview = document.createElement(field.type === 'video' ? 'video' : 'img');
+  preview.className = 'thumb'; if (field.type === 'video') preview.controls = true;
+  if (value) preview.src = value;
+  const url = document.createElement('input'); url.type = 'text'; url.value = value ?? '';
+  url.placeholder = 'paste a URL or upload →';
+  url.addEventListener('input', () => { onChange(url.value); preview.src = url.value; markDirty(); });
+  const file = document.createElement('input'); file.type = 'file';
+  file.accept = field.type === 'video' ? 'video/*' : 'image/*';
+  const status = document.createElement('span'); status.className = 'muted';
+  file.addEventListener('change', async () => {
+    if (!file.files[0]) return;
+    status.textContent = 'Uploading…';
+    try {
+      const publicUrl = await uploadFile(file.files[0], CURRENT);
+      url.value = publicUrl; preview.src = publicUrl; onChange(publicUrl); markDirty();
+      status.textContent = 'Uploaded ✓';
+    } catch (e) { status.textContent = 'Upload failed: ' + e.message; }
+  });
+  wrap.append(preview, url, file, status);
   return wrap;
 }
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Adam Progress — Admin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/admin.css"/>
+</head>
+<body class="admin">
+  <section id="loginView" class="login-wrap">
+    <div class="login-card">
+      <h1 class="login-title">ADAM PROGRESS <span>ADMIN</span></h1>
+      <div id="step-email">
+        <label>Email</label>
+        <input id="email" type="email" autocomplete="email" placeholder="you@gmail.com"/>
+        <button id="sendCode" class="btn">Send me a code</button>
+      </div>
+      <div id="step-code" hidden>
+        <label>6-digit code (from your email)</label>
+        <input id="code" inputmode="numeric" placeholder="123456"/>
+        <button id="verifyCode" class="btn">Verify & log in</button>
+        <p class="muted">You can also click the login link in the same email.</p>
+      </div>
+      <p id="loginStatus" class="status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="dashView" hidden><!-- built in Task 7 --></section>
+
+  <script type="module" src="assets/admin.js"></script>
+</body></html>

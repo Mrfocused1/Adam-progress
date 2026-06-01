@@ -10,7 +10,7 @@ const setStatus = (el, msg, kind) => { el.textContent = msg; el.className = 'sta
 async function sendCode() {
   const email = $('email').value.trim().toLowerCase();
   if (!ALLOWED.includes(email)) { setStatus($('loginStatus'), 'That email is not authorized.', 'error'); return; }
-  const { error } = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: true } });
+  const { error } = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: true, emailRedirectTo: window.location.origin + '/admin' } });
   if (error) { setStatus($('loginStatus'), error.message, 'error'); return; }
   $('step-email').hidden = true; $('step-code').hidden = false;
   setStatus($('loginStatus'), 'Code sent. Check your email.', 'success');

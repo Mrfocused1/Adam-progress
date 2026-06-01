@@ -1,6 +1,6 @@
 // Pure HTML-string renderers. No DOM, no network.
 // Each reproduces the exact card markup from index.html so site CSS / app.js keep working.
-import { escapeHtml as e } from './apply.js';
+import { escapeHtml as e, formatInline } from './apply.js';
 
 export function renderStat(s) {
   return `<div class="stat-card reveal">
@@ -109,7 +109,7 @@ export function renderTestimonial(t) {
           </div>
           <svg viewBox="0 0 24 24" class="ml-auto w-4 h-4 text-text2"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.4.3 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.4.2-1 .3-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 1-1.5s.9-.8 1.5-1c.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4z" fill="currentColor"/></svg>
         </div>
-        <p class="testi-body">${t.quoteHtml ?? ''}</p>
+        <p class="testi-body">${formatInline(t.quote)}</p>
         <p class="testi-source">${e(t.source)}</p>
       </a>`;
 }

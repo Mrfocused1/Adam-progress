@@ -15,3 +15,20 @@ export function escapeHtml(s) {
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
+
+// Plain-text → safe HTML for owner-edited fields.
+// Convention: *word* = red emphasis, a line break = <br>. Everything is escaped,
+// so typing plain text "just works" and there's no HTML to read or break.
+function emphasize(escaped) {
+  return escaped.replace(/\*([^*\n]+)\*/g, '<span class="text-redHot">$1</span>');
+}
+export function formatInline(s) {
+  return emphasize(escapeHtml(s)).replace(/\n/g, '<br>');
+}
+export function formatBlocks(s) {
+  const text = String(s ?? '').replace(/\r\n/g, '\n').trim();
+  if (!text) return '';
+  return text.split(/\n{2,}/)
+    .map(block => `<p>${emphasize(escapeHtml(block)).replace(/\n/g, '<br>')}</p>`)
+    .join('');
+}

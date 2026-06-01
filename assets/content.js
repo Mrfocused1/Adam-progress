@@ -1,5 +1,5 @@
 import { supabase, CONTENT_ROW_ID } from './lib/supabase.js';
-import { getByPath } from './lib/apply.js';
+import { getByPath, formatInline, formatBlocks } from './lib/apply.js';
 import * as R from './lib/render.js';
 
 window.__apContentBootstrap = true;
@@ -20,9 +20,12 @@ function applyScalars(data) {
     if (val == null) return;
     if (el.hasAttribute('data-edit-mailto')) { el.textContent = val; el.setAttribute('href', `mailto:${val}`); return; }
     const attr = el.getAttribute('data-edit-attr');
+    const rich = el.getAttribute('data-edit-rich');   // 'inline' | 'blocks' — plain text w/ *emphasis*
     // For attribute writes (src/href/data-video-id), an empty value would blank
     // out the element — keep the hardcoded fallback instead.
     if (attr) { if (val !== '') el.setAttribute(attr, val); }
+    else if (rich === 'blocks') el.innerHTML = formatBlocks(val);
+    else if (rich === 'inline') el.innerHTML = formatInline(val);
     else if (el.hasAttribute('data-edit-html')) el.innerHTML = val;
     else el.textContent = val;
   });

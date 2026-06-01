@@ -316,6 +316,12 @@ input:focus {
 
 .field { margin-bottom: 1.05rem; }
 .field label { margin-bottom: 0.4rem; }
+.field-hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-style: italic;
+}
 .field input,
 .field textarea,
 .field select {

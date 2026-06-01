@@ -101,6 +101,7 @@ function fieldInput(value, field, onChange) {
   input.value = value ?? '';
   input.addEventListener('input', () => { onChange(field.type === 'number' ? Number(input.value) : input.value); markDirty(); });
   wrap.appendChild(input);
+  if (field.hint) { const h = document.createElement('p'); h.className = 'field-hint'; h.textContent = field.hint; wrap.appendChild(h); }
   return wrap;
 }
 

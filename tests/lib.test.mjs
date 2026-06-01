@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { CONTENT_SCHEMA, DEFAULT_CONTENT } from '../assets/lib/schema.js';
-import { getByPath, setByPath, escapeHtml } from '../assets/lib/apply.js';
+import { getByPath, setByPath, escapeHtml, formatInline, formatBlocks } from '../assets/lib/apply.js';
 import { renderFeedCard, renderPillar, renderStat, renderFullFight, renderTestimonial } from '../assets/lib/render.js';
 
 test('every schema section has a matching key in DEFAULT_CONTENT', () => {
@@ -36,6 +36,22 @@ test('escapeHtml neutralizes angle brackets and quotes', () => {
   assert.equal(escapeHtml('<b>"&'), '&lt;b&gt;&quot;&amp;');
 });
 
+test('formatInline: *stars* -> red span, newline -> <br>, html escaped', () => {
+  assert.equal(formatInline('a *b* c\nd <e>'), 'a <span class="text-redHot">b</span> c<br>d &lt;e&gt;');
+});
+
+test('formatBlocks: blank lines -> <p>, single newline -> <br>', () => {
+  assert.equal(formatBlocks('one\ntwo\n\nthree'), '<p>one<br>two</p><p>three</p>');
+  assert.equal(formatBlocks(''), '');
+});
+
+test('schema/seed no longer use raw HTML keys', () => {
+  assert.ok('headline' in DEFAULT_CONTENT.about && !('headlineHtml' in DEFAULT_CONTENT.about));
+  assert.ok('body' in DEFAULT_CONTENT.about && !('bodyHtml' in DEFAULT_CONTENT.about));
+  assert.ok(DEFAULT_CONTENT.testimonials.every(t => 'quote' in t && !('quoteHtml' in t)));
+  assert.ok(!DEFAULT_CONTENT.about.headline.includes('<'));
+});
+
 test('renderFeedCard outputs an article with shortcode + escaped caption', () => {
   const html = renderFeedCard({ sc: 'ABC', cat: 'fight', thumb: 't.jpg', metric: '▶ 1M', caption: 'a <x>', href: 'https://i/p/ABC/' });
   assert.match(html, /data-sc="ABC"/);
@@ -64,8 +80,8 @@ test('renderFullFight branches on kind and maps/falls back badge class', () => {
   assert.match(unknown, /badge badge-event/);          // unknown class falls back to badge-event
 });
 
-test('renderTestimonial inserts quoteHtml raw but escapes other fields', () => {
-  const html = renderTestimonial({ href: 'https://x/', avatar: 'a.jpg', name: 'Jon <J>', role: 'UFC', quoteHtml: 'great <span class="text-redHot">star</span>', source: 'IG' });
-  assert.match(html, /great <span class="text-redHot">star<\/span>/); // raw passthrough
-  assert.match(html, /Jon &lt;J&gt;/);                                // name escaped
+test('renderTestimonial formats *stars* as red and escapes the quote + other fields', () => {
+  const html = renderTestimonial({ href: 'https://x/', avatar: 'a.jpg', name: 'Jon <J>', role: 'UFC', quote: 'great *star* <x>', source: 'IG' });
+  assert.match(html, /great <span class="text-redHot">star<\/span> &lt;x&gt;/); // *stars* -> red, rest escaped
+  assert.match(html, /Jon &lt;J&gt;/);                                          // name escaped
 });

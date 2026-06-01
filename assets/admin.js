@@ -149,10 +149,12 @@ function mediaField(value, field, onChange) {
   wrap.innerHTML = `<label>${escapeHtml(field.label)}</label>`;
   const preview = document.createElement(field.type === 'video' ? 'video' : 'img');
   preview.className = 'thumb'; if (field.type === 'video') preview.controls = true;
-  if (value) preview.src = value;
+  // Only show the preview when there's a source, so empty fields don't render a broken-image icon.
+  const setPreview = (src) => { if (src) { preview.src = src; preview.hidden = false; } else { preview.removeAttribute('src'); preview.hidden = true; } };
+  setPreview(value);
   const url = document.createElement('input'); url.type = 'text'; url.value = value ?? '';
   url.placeholder = 'paste a URL or upload →';
-  url.addEventListener('input', () => { onChange(url.value); preview.src = url.value; markDirty(); });
+  url.addEventListener('input', () => { onChange(url.value); setPreview(url.value); markDirty(); });
   const file = document.createElement('input'); file.type = 'file';
   file.accept = field.type === 'video' ? 'video/*' : 'image/*';
   const status = document.createElement('span'); status.className = 'muted';
@@ -161,7 +163,7 @@ function mediaField(value, field, onChange) {
     status.textContent = 'Uploading…';
     try {
       const publicUrl = await uploadFile(file.files[0], CURRENT);
-      url.value = publicUrl; preview.src = publicUrl; onChange(publicUrl); markDirty();
+      url.value = publicUrl; setPreview(publicUrl); onChange(publicUrl); markDirty();
       status.textContent = 'Uploaded ✓';
     } catch (e) { status.textContent = 'Upload failed: ' + e.message; }
   });

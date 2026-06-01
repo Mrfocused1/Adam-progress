@@ -1,5 +1,9 @@
 /* ADAM PROGRESS — site interactions */
 
+function initSite() {
+  if (window.__apInited) return;
+  window.__apInited = true;
+
 /* ============================================================
    Mobile hamburger menu
    ============================================================ */
@@ -320,3 +324,8 @@ document.querySelectorAll('.js-yt-player').forEach(player => {
     }, 250);
   });
 });
+
+}
+window.initSite = initSite;
+// Fallback: if the content bootstrap isn't present, initialize directly.
+if (!window.__apContentBootstrap) initSite();

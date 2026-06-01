@@ -155,6 +155,8 @@ async function save() {
   if (error) { setStatus($('dashStatus'), 'Save failed: ' + error.message, 'error'); return; }
   DIRTY = false; $('saveState').hidden = true;
   setStatus($('dashStatus'), 'Saved ✓ — live now.', 'success');
+  clearTimeout(save._t);
+  save._t = setTimeout(() => { if ($('dashStatus').textContent.startsWith('Saved')) setStatus($('dashStatus'), '', ''); }, 3500);
 }
 
 async function uploadFile(file, section) {

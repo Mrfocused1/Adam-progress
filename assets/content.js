@@ -23,7 +23,7 @@ function applyScalars(data) {
     const rich = el.getAttribute('data-edit-rich');   // 'inline' | 'blocks' — plain text w/ *emphasis*
     // For attribute writes (src/href/data-video-id), an empty value would blank
     // out the element — keep the hardcoded fallback instead.
-    if (attr) { if (val !== '') el.setAttribute(attr, val); }
+    if (attr) { const v = String(val).trim(); if (v !== '') el.setAttribute(attr, v); }
     else if (rich === 'blocks') el.innerHTML = formatBlocks(val);
     else if (rich === 'inline') el.innerHTML = formatInline(val);
     else if (el.hasAttribute('data-edit-html')) el.innerHTML = val;

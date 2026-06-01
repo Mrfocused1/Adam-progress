@@ -1,5 +1,9 @@
 /* ADAM PROGRESS — site interactions */
 
+function initSite() {
+  if (window.__apInited) return;
+  window.__apInited = true;
+
 /* ============================================================
    Mobile hamburger menu
    ============================================================ */
@@ -215,7 +219,9 @@ if (cf) {
       '— Sent via adamprogress.com contact form',
     ].filter(Boolean).join('\n');
 
-    const mailto = `mailto:adamprogressmma@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // Use the (possibly admin-edited) bookings email shown on the page, falling back to the default.
+    const to = document.querySelector('[data-edit="contact.email"]')?.textContent?.trim() || 'adamprogressmma@gmail.com';
+    const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     status.textContent = 'Opening your email client…';
     status.className   = 'form-status is-success';
@@ -320,3 +326,8 @@ document.querySelectorAll('.js-yt-player').forEach(player => {
     }, 250);
   });
 });
+
+}
+window.initSite = initSite;
+// Fallback: if the content bootstrap isn't present, initialize directly.
+if (!window.__apContentBootstrap) initSite();

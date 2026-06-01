@@ -20,10 +20,22 @@ function applyScalars(data) {
     if (val == null) return;
     if (el.hasAttribute('data-edit-mailto')) { el.textContent = val; el.setAttribute('href', `mailto:${val}`); return; }
     const attr = el.getAttribute('data-edit-attr');
-    if (attr) el.setAttribute(attr, val);
+    // For attribute writes (src/href/data-video-id), an empty value would blank
+    // out the element — keep the hardcoded fallback instead.
+    if (attr) { if (val !== '') el.setAttribute(attr, val); }
     else if (el.hasAttribute('data-edit-html')) el.innerHTML = val;
     else el.textContent = val;
   });
+}
+
+// Social links appear in several places (header, mobile nav, footer). Point every
+// anchor tagged data-social="<platform>" at the matching URL from the socials list.
+function applySocials(data) {
+  if (!Array.isArray(data.socials)) return;
+  for (const { platform, url } of data.socials) {
+    if (!platform || !url) continue;
+    document.querySelectorAll(`[data-social="${platform}"]`).forEach(a => a.setAttribute('href', url));
+  }
 }
 
 function applyLists(data) {
@@ -43,7 +55,7 @@ async function boot() {
     const { data, error } = await supabase
       .from('site_content').select('data').eq('id', CONTENT_ROW_ID).single();
     if (error) throw error;
-    if (data && data.data) { applyScalars(data.data); applyLists(data.data); }
+    if (data && data.data) { applyScalars(data.data); applyLists(data.data); applySocials(data.data); }
   } catch (err) {
     console.warn('[content] using static fallback:', err?.message || err);
   } finally {

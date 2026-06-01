@@ -42,11 +42,21 @@ async function showDashboard() {
   await initDashboard(session);
 }
 
-async function logout() { await supabase.auth.signOut(); location.reload(); }
+async function logout() {
+  await supabase.auth.signOut();
+  sessionStorage.setItem('ap_signedout', '1');  // survives the reload to show a confirmation
+  location.reload();
+}
 
 $('sendCode')?.addEventListener('click', sendCode);
 $('verifyCode')?.addEventListener('click', verifyCode);
 $('haveCode')?.addEventListener('click', showCodeStep);
+
+// Show a confirmation after a logout reload.
+if (sessionStorage.getItem('ap_signedout')) {
+  sessionStorage.removeItem('ap_signedout');
+  setStatus($('loginStatus'), 'Signed out. Enter your email to get a new code.', 'success');
+}
 
 // Auto-resume an existing session (and handle magic-link return).
 supabase.auth.getSession().then(({ data }) => { if (data.session) showDashboard(); });

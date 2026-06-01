@@ -121,17 +121,21 @@ label {
 }
 
 input {
+  display: block;
   width: 100%;
   background: rgba(0, 0, 0, 0.35);
   border: 1px solid var(--border);
   border-radius: 9px;
-  padding: 0.75rem 0.9rem;
+  padding: 0.85rem 0.95rem;
   color: var(--text);
-  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  height: auto;
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
-input::placeholder { color: #5a5a5a; }
+input::placeholder { color: #6a6a6a; }
 input:focus {
   border-color: var(--red);
   box-shadow: 0 0 0 3px rgba(217, 4, 41, 0.18);
@@ -291,13 +295,16 @@ input:focus {
 .field input,
 .field textarea,
 .field select {
+  display: block;
   width: 100%;
   background: rgba(0, 0, 0, 0.35);
   border: 1px solid var(--border);
   border-radius: 9px;
   padding: 0.7rem 0.85rem;
   color: var(--text);
-  font-size: 0.92rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  height: auto;
   font-family: 'Inter', sans-serif;
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;

@@ -23,7 +23,22 @@
     </div>
   </section>
 
-  <section id="dashView" hidden><!-- built in Task 7 --></section>
+  <section id="dashView" hidden>
+    <header class="dash-bar">
+      <span class="dash-title">ADAM PROGRESS ADMIN</span>
+      <span id="saveState" class="unsaved" hidden>● Unsaved changes</span>
+      <div class="dash-actions">
+        <a href="index.html" target="_blank" class="btn ghost">View live site</a>
+        <button id="saveBtn" class="btn">Save changes</button>
+        <button id="logoutBtn" class="btn ghost">Log out</button>
+      </div>
+    </header>
+    <div class="dash-body">
+      <nav id="sectionNav" class="section-nav"></nav>
+      <main id="panel" class="panel"></main>
+    </div>
+    <p id="dashStatus" class="status" role="status" aria-live="polite"></p>
+  </section>
 
   <script type="module" src="assets/admin.js"></script>
 </body></html>

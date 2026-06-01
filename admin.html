@@ -1,22 +1,35 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Adam Progress — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="assets/admin.css"/>
 </head>
 <body class="admin">
+
+  <!-- cinematic background -->
+  <div class="admin-bg" aria-hidden="true"></div>
+  <div class="admin-grain" aria-hidden="true"></div>
+
   <section id="loginView" class="login-wrap">
     <div class="login-card">
-      <h1 class="login-title">ADAM PROGRESS <span>ADMIN</span></h1>
+      <div class="brand">
+        <span class="brand-adam">ADAM</span><span class="brand-prog">Progress</span>
+        <span class="brand-tag">ADMIN</span>
+      </div>
+      <p class="brand-sub">Content control panel</p>
+
       <div id="step-email">
         <label>Email</label>
         <input id="email" type="email" autocomplete="email" placeholder="you@gmail.com"/>
-        <button id="sendCode" class="btn">Send me a code</button>
+        <button id="sendCode" class="btn"><span class="dot"></span>Send me a code</button>
       </div>
       <div id="step-code" hidden>
         <label>6-digit code (from your email)</label>
         <input id="code" inputmode="numeric" placeholder="123456"/>
-        <button id="verifyCode" class="btn">Verify & log in</button>
+        <button id="verifyCode" class="btn"><span class="dot"></span>Verify &amp; log in</button>
         <p class="muted">You can also click the login link in the same email.</p>
       </div>
       <p id="loginStatus" class="status" role="status" aria-live="polite"></p>
@@ -25,11 +38,11 @@
 
   <section id="dashView" hidden>
     <header class="dash-bar">
-      <span class="dash-title">ADAM PROGRESS ADMIN</span>
+      <span class="dash-title"><span class="dash-adam">ADAM</span><span class="dash-prog">Progress</span><span class="dash-tag">ADMIN</span></span>
       <span id="saveState" class="unsaved" hidden>● Unsaved changes</span>
       <div class="dash-actions">
-        <a href="index.html" target="_blank" class="btn ghost">View live site</a>
-        <button id="saveBtn" class="btn">Save changes</button>
+        <a href="index.html" target="_blank" class="btn ghost">View live site ↗</a>
+        <button id="saveBtn" class="btn"><span class="dot"></span>Save changes</button>
         <button id="logoutBtn" class="btn ghost">Log out</button>
       </div>
     </header>

@@ -194,6 +194,21 @@ input:focus {
   color: var(--muted);
 }
 
+.linkbtn {
+  display: block;
+  width: 100%;
+  margin-top: 0.9rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.linkbtn:hover { color: var(--text); }
+
 /* ---------- Dashboard ---------- */
 .dash-bar {
   display: flex;

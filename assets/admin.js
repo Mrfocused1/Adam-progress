@@ -19,9 +19,19 @@ async function sendCode() {
 async function verifyCode() {
   const email = $('email').value.trim().toLowerCase();
   const token = $('code').value.trim();
-  const { error } = await supabase.auth.verifyOtp({ email, token, type: 'email' });
+  if (!email) { setStatus($('loginStatus'), 'Enter your email first.', 'error'); return; }
+  // Accept both email-OTP and magic-link codes.
+  let { error } = await supabase.auth.verifyOtp({ email, token, type: 'email' });
+  if (error) ({ error } = await supabase.auth.verifyOtp({ email, token, type: 'magiclink' }));
   if (error) { setStatus($('loginStatus'), error.message, 'error'); return; }
   await showDashboard();
+}
+
+function showCodeStep() {
+  $('step-email').hidden = true;
+  $('step-code').hidden = false;
+  setStatus($('loginStatus'), '', '');
+  $('code').focus();
 }
 
 async function showDashboard() {
@@ -36,6 +46,7 @@ async function logout() { await supabase.auth.signOut(); location.reload(); }
 
 $('sendCode')?.addEventListener('click', sendCode);
 $('verifyCode')?.addEventListener('click', verifyCode);
+$('haveCode')?.addEventListener('click', showCodeStep);
 
 // Auto-resume an existing session (and handle magic-link return).
 supabase.auth.getSession().then(({ data }) => { if (data.session) showDashboard(); });

@@ -28,11 +28,14 @@
         <input id="password" type="password" autocomplete="current-password" placeholder="••••••••"/>
         <button id="loginBtn" class="btn"><span class="dot"></span><span class="txt">Log in</span></button>
         <button type="button" id="forgotBtn" class="linkbtn">Forgot password?</button>
-        <p class="login-note">
-          “Forgot password?” emails you a reset link. Reset emails are limited to a few per hour —
-          if one doesn’t arrive, wait a few minutes and try again (check spam too).
-          Once you’re logged in, you can change your password anytime via <b>Change password</b> — no email needed.
-        </p>
+        <details class="login-help">
+          <summary>Trouble logging in?</summary>
+          <p>
+            “Forgot password?” emails you a reset link. Reset emails are limited to a few per hour —
+            if one doesn’t arrive, wait a few minutes and try again (check spam too).
+            Once you’re logged in, you can change your password anytime via <b>Change password</b> — no email needed.
+          </p>
+        </details>
       </div>
       <div id="step-reset" hidden>
         <label>New password</label>

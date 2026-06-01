@@ -215,15 +215,32 @@ input:focus {
 }
 .linkbtn:hover { color: var(--text); }
 
-.login-note {
-  margin: 1.1rem 0 0;
+.login-help {
+  margin-top: 1rem;
   padding-top: 0.9rem;
   border-top: 1px solid var(--border);
+}
+.login-help summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.78rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  user-select: none;
+}
+.login-help summary::-webkit-details-marker { display: none; }
+.login-help summary::before { content: "›"; transition: transform 0.15s ease; display: inline-block; font-size: 1rem; }
+.login-help[open] summary::before { transform: rotate(90deg); }
+.login-help summary:hover { color: var(--text); }
+.login-help p {
+  margin: 0.7rem 0 0;
   font-size: 0.72rem;
   line-height: 1.5;
   color: var(--muted);
 }
-.login-note b { color: var(--text); font-weight: 600; }
+.login-help b { color: var(--text); font-weight: 600; }
 
 /* ---------- Dashboard ---------- */
 .dash-bar {

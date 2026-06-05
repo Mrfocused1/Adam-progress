@@ -81,7 +81,7 @@
 .mp-info-l { color:var(--mp-textSec); letter-spacing:.1em; font-size:14px; }
 
 /* overview */
-.mp-overview { padding:40px 60px; border-top:1px solid var(--mp-border); }
+.mp-overview { padding:34px 60px; border-top:1px solid var(--mp-border); }
 .mp-overview .mp-sec { font-size:40px; color:var(--mp-red); }
 .mp-ov-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:40px; margin-top:24px; }
 .mp-bignum { font-family:'Anton',sans-serif; font-size:84px; line-height:1; color:var(--mp-red); }
@@ -93,7 +93,7 @@
 .mp-delta { margin-left:10px; font-weight:700; }
 
 /* panels */
-.mp-panels { display:grid; gap:40px; padding:0 60px 40px; }
+.mp-panels { display:grid; gap:40px; padding:0 60px 32px; }
 .mp-panels-3 { grid-template-columns:repeat(3,1fr); }
 .mp-panel { background:var(--mp-panel); border:1px solid var(--mp-border); padding:32px; }
 .mp-line { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--mp-border); font-size:19px; color:var(--mp-white); }
@@ -101,13 +101,13 @@
 .mp-line-v { color:var(--mp-textSec); }
 
 /* about */
-.mp-about { display:grid; grid-template-columns:1fr 1fr 1.2fr; gap:32px; align-items:center; padding:40px 60px; border-top:1px solid var(--mp-border); }
+.mp-about { display:grid; grid-template-columns:1fr 1fr 1.2fr; gap:32px; align-items:center; padding:30px 60px; border-top:1px solid var(--mp-border); }
 .mp-slab-1 { font-family:'Bebas Neue',sans-serif; font-size:72px; line-height:.9; color:var(--mp-white); }
 .mp-slab-2 { font-family:'Permanent Marker',cursive; font-size:54px; line-height:.95; color:var(--mp-red); margin-top:10px; }
 .mp-about-photo { height:340px; background-size:cover; background-position:center; border:1px solid var(--mp-border); }
 
 /* footer */
-.mp-footer { margin-top:auto; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; padding:32px 60px; border-top:1px solid var(--mp-border); background:var(--mp-bg2); }
+.mp-footer { margin-top:auto; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; padding:26px 60px; border-top:1px solid var(--mp-border); background:var(--mp-bg2); }
 .mp-foot-col { display:flex; align-items:center; gap:16px; }
 .mp-foot-txt { display:flex; flex-direction:column; gap:6px; }
 .mp-foot-ico { width:38px; height:38px; flex:none; fill:none; stroke:var(--mp-red); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }

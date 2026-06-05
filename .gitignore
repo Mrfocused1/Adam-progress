@@ -15,3 +15,4 @@ assets/instagram/posts_data.json
 # Git worktrees (local isolation, not part of the site)
 .worktrees/
 tmp/
+.vercel

@@ -160,6 +160,11 @@ function listFields(group, base, n, cells) {
 const txt = (s) => escapeHtml(s ?? '');
 const nl = (s) => formatInline(s);  // *stars*→red, \n→<br>
 
+// Strip characters that could break out of a CSS url("…") string (defense in
+// depth — applied to the value before it's assigned via the DOM style property,
+// never interpolated into markup).
+const cssUrl = (s) => String(s ?? '').replace(/["'()\\\n\r]/g, '');
+
 function rows(arr, render) { return (arr || []).map(render).join(''); }
 
 export function render(content) {
@@ -170,7 +175,7 @@ export function render(content) {
 
   root.innerHTML = `
     <div class="mp-hero">
-      <div class="mp-hero-photo" style="background-image:url('${txt(c.heroImage)}')"></div>
+      <div class="mp-hero-photo"></div>
       <div class="mp-hero-copy">
         <div class="mp-handle">${txt(c.socialHandle)}</div>
         <div class="mp-name-big">${txt(c.nameBig)}</div>
@@ -252,7 +257,7 @@ export function render(content) {
         <div class="mp-slab-1">${nl(c.builtTitle1)}</div>
         <div class="mp-slab-2">${nl(c.builtTitle2)}</div>
       </div>
-      <div class="mp-about-photo" style="background-image:url('${txt(c.aboutImage)}')"></div>
+      <div class="mp-about-photo"></div>
       <div class="mp-about-copy">
         <h3 class="mp-sec sm mp-red">${txt(c.aboutTitle)}</h3>
         <p class="mp-intro">${nl(c.aboutBody)}</p>
@@ -266,6 +271,14 @@ export function render(content) {
       <div class="mp-foot-col"><span class="mp-foot-tag">${txt(c.footerTagline)}</span></div>
     </div>
   `;
+
+  // Background photos set via the DOM style property (not markup) with a
+  // sanitized URL — avoids CSS url() injection from the editable image fields.
+  const heroPhoto = root.querySelector('.mp-hero-photo');
+  if (heroPhoto && c.heroImage) heroPhoto.style.backgroundImage = `url("${cssUrl(c.heroImage)}")`;
+  const aboutPhoto = root.querySelector('.mp-about-photo');
+  if (aboutPhoto && c.aboutImage) aboutPhoto.style.backgroundImage = `url("${cssUrl(c.aboutImage)}")`;
+
   return root;
 }
 

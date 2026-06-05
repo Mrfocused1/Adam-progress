@@ -14,6 +14,27 @@
 .mp-toolbar .btn { width:auto; padding:0.55rem 0.95rem; font-size:0.95rem; }
 .mp-select { background:#101010; color:#f4f4f4; border:1px solid #232323; padding:8px 12px; font:inherit; max-width:100%; }
 .mp-dirty { color:#E11B1B; font-size:13px; }
+
+/* Toast notification (Save / Download / errors) */
+.mp-toast { position:fixed; right:26px; bottom:26px; z-index:1200; display:flex; align-items:center; gap:12px;
+  background:#0B0B0D; border:1px solid #232323; border-left:3px solid #777; padding:14px 20px 14px 16px;
+  font-family:'Montserrat',sans-serif; font-size:14px; font-weight:600; letter-spacing:.01em; color:#F4F4F4;
+  border-radius:4px; box-shadow:0 16px 44px -12px rgba(0,0,0,.75); min-width:210px; max-width:380px;
+  transform:translateY(14px); opacity:0; transition:opacity .22s ease, transform .22s ease; }
+.mp-toast.show { transform:translateY(0); opacity:1; }
+.mp-toast[hidden] { display:none; }
+.mp-toast-ico { width:24px; height:24px; flex:none; }
+.mp-toast-ico svg { width:24px; height:24px; display:block; }
+.mp-toast-msg { line-height:1.35; }
+.mp-toast.is-success { border-left-color:#34d399; }
+.mp-toast.is-success .mp-toast-ico { color:#34d399; }
+.mp-toast.is-error { border-left-color:#E11B1B; }
+.mp-toast.is-error .mp-toast-ico { color:#E11B1B; }
+.mp-toast.is-progress { border-left-color:#D11414; }
+.mp-toast.is-progress .mp-toast-ico { color:#D11414; }
+.mp-toast-spin { transform-origin:center; animation:mp-spin .8s linear infinite; }
+@keyframes mp-spin { to { transform:rotate(360deg); } }
+@media (max-width:900px) { .mp-toast { right:14px; left:14px; bottom:14px; max-width:none; } }
 .mp-split { display:grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap:24px; align-items:start; }
 .mp-form { max-height:calc(100vh - 220px); overflow:auto; padding-right:8px; }
 

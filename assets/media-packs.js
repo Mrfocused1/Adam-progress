@@ -23,7 +23,7 @@ export function mountMediaPacks(hostEl, { onDirty } = {}) {
       <button id="mpPdf" class="btn ghost">Download PDF</button>
       <button id="mpPng" class="btn ghost">Download PNG</button>
     </div>
-    <p id="mpStatus" class="status" role="status" aria-live="polite"></p>
+    <div id="mpStatus" class="mp-toast" role="status" aria-live="polite" hidden></div>
     <div class="mp-split">
       <div id="mpForm" class="mp-form"></div>
       <div class="mp-preview-wrap"><div id="mpPreview" class="mp-preview"></div></div>
@@ -230,8 +230,22 @@ async function download(kind) {
   } finally { document.body.removeChild(stage); }
 }
 
+const TOAST_ICON = {
+  success: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg>',
+  error: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>',
+  progress: '<svg class="mp-toast-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9" opacity=".95"/><path d="M21 12a9 9 0 0 0-9-9" opacity=".25"/></svg>',
+};
+let toastTimer;
 function setStatus(msg, kind) {
-  const s = $('#mpStatus'); s.textContent = msg; s.className = 'status' + (kind ? ' is-' + kind : '');
+  const s = $('#mpStatus');
+  clearTimeout(toastTimer);
+  if (!msg) { s.hidden = true; s.className = 'mp-toast'; s.innerHTML = ''; return; }
+  const k = kind === 'success' ? 'success' : kind === 'error' ? 'error' : 'progress';
+  const text = msg.replace(/[✓✕✔]/g, '').trim();
+  s.hidden = false;
+  s.className = 'mp-toast is-' + k + ' show';
+  s.innerHTML = `<span class="mp-toast-ico">${TOAST_ICON[k]}</span><span class="mp-toast-msg">${escapeHtml(text)}</span>`;
+  if (k === 'success') toastTimer = setTimeout(() => setStatus(''), 2800);  // auto-dismiss
 }
 
 export function isMediaPacksDirty() { return dirty; }

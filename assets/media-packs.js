@@ -162,17 +162,22 @@ function renderPreview() {
 }
 
 // Fit the full-size poster into the preview column. Called on render and on
-// window resize so the preview stays responsive without rebuilding the node.
+// window resize so the preview stays responsive. Scales to fit BOTH the column
+// width and the available viewport height, so the whole poster is visible
+// on screen instead of running off the bottom.
 function scalePreview() {
   const pv = $('#mpPreview');
   if (!pv || !pv.firstChild) return;
-  const h = pv.firstChild.offsetHeight;        // actual rendered height
-  const colW = Math.max(0, pv.parentElement.clientWidth - 24);
-  const scale = Math.min(1, colW / current.size.w);
+  const w = current.size.w, h = pv.firstChild.offsetHeight;
+  const wrap = pv.parentElement;
+  const colW = Math.max(0, wrap.clientWidth - 24);
+  const availH = Math.max(240, window.innerHeight - wrap.getBoundingClientRect().top - 40);
+  const scale = Math.min(1, colW / w, availH / h);
   pv.style.transform = `scale(${scale})`;
-  pv.style.width = current.size.w + 'px';
+  pv.style.width = w + 'px';
   pv.style.height = h + 'px';
-  pv.parentElement.style.height = (h * scale + 24) + 'px';
+  pv.style.marginLeft = Math.max(0, (wrap.clientWidth - w * scale) / 2) + 'px';  // center horizontally
+  wrap.style.height = (h * scale + 24) + 'px';
 }
 
 // Mobile: open the poster full-screen, fit to viewport width, scrollable —

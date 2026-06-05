@@ -1,3 +1,12 @@
+/* ===== Self-hosted poster fonts =====
+   Same-origin @font-face so html-to-image can embed them into the PDF/PNG export.
+   (Google Fonts' cross-origin stylesheet is unreadable to the exporter, which is
+   why downloads previously fell back to a generic font.) */
+@font-face { font-family:'Bebas Neue'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/bebasneue-latin.woff2') format('woff2'); }
+@font-face { font-family:'Anton'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/anton-latin.woff2') format('woff2'); }
+@font-face { font-family:'Montserrat'; font-style:normal; font-weight:100 900; font-display:swap; src:url('fonts/montserrat-latin.woff2') format('woff2'); }
+@font-face { font-family:'Permanent Marker'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/permanentmarker-latin.woff2') format('woff2'); }
+
 /* ===== Editor chrome ===== */
 .mp-toolbar { display:flex; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px; }
 .mp-toolbar .mp-spacer { flex:1; }

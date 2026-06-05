@@ -2,6 +2,7 @@ import { supabase } from './lib/supabase.js';
 import { CONTENT_SCHEMA, DEFAULT_CONTENT } from './lib/schema.js';
 import { CONTENT_ROW_ID } from './lib/supabase.js';
 import { escapeHtml } from './lib/apply.js';
+import { mountMediaPacks, isMediaPacksDirty } from './media-packs.js';
 
 const ALLOWED = ['tibaba.prg@gmail.com', 'paulshonowo2@gmail.com'];
 const $ = (id) => document.getElementById(id);
@@ -113,6 +114,24 @@ async function initDashboard() {
   // Backfill any missing keys from defaults so new schema sections always render.
   for (const k of Object.keys(DEFAULT_CONTENT)) if (!(k in DOC)) DOC[k] = structuredClone(DEFAULT_CONTENT[k]);
   buildNav(); renderPanel(CURRENT);
+  let packsMounted = false;
+  const contentEls = [$('sectionNav'), $('panel')];
+  const showMode = (mode) => {
+    const packs = mode === 'packs';
+    $('packsView').hidden = !packs;
+    contentEls.forEach(e => { e.hidden = packs; });
+    $('modeContent').classList.toggle('is-active', !packs);
+    $('modePacks').classList.toggle('is-active', packs);
+    $('modeContent').setAttribute('aria-pressed', String(!packs));
+    $('modePacks').setAttribute('aria-pressed', String(packs));
+    // The packs editor tracks its own dirty state (#mpDirty) and saves via its own
+    // save(); it must NOT light up the content view's "Unsaved changes" badge or the
+    // global DIRTY flag (which gates the content Save). The beforeunload guard covers
+    // pack edits independently via isMediaPacksDirty().
+    if (packs && !packsMounted) { mountMediaPacks($('packsView')); packsMounted = true; }
+  };
+  $('modeContent').addEventListener('click', () => showMode('content'));
+  $('modePacks').addEventListener('click', () => showMode('packs'));
   $('saveBtn').addEventListener('click', save);
   $('logoutBtn').addEventListener('click', window.__adminLogout);
 }
@@ -230,4 +249,4 @@ function mediaField(value, field, onChange) {
   return wrap;
 }
 
-window.addEventListener('beforeunload', (e) => { if (DIRTY) { e.preventDefault(); e.returnValue = ''; } });
+window.addEventListener('beforeunload', (e) => { if (DIRTY || isMediaPacksDirty()) { e.preventDefault(); e.returnValue = ''; } });

@@ -1,0 +1,116 @@
+/* ===== Editor chrome ===== */
+.mp-toolbar { display:flex; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px; }
+.mp-toolbar .mp-spacer { flex:1; }
+/* .btn defaults to width:100% (admin.css) — keep toolbar buttons compact in a row. */
+.mp-toolbar .btn { width:auto; padding:0.55rem 0.95rem; font-size:0.95rem; }
+.mp-select { background:#101010; color:#f4f4f4; border:1px solid #232323; padding:8px 12px; font:inherit; max-width:100%; }
+.mp-dirty { color:#E11B1B; font-size:13px; }
+.mp-split { display:grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap:24px; align-items:start; }
+.mp-form { max-height:calc(100vh - 220px); overflow:auto; padding-right:8px; }
+
+/* The "View preview" button is mobile-only (desktop has the live inline pane). */
+.mp-preview-btn { display:none; }
+
+/* Stack on narrower screens; on mobile, swap the cramped inline preview for a
+   full-screen "View preview" modal so the poster shows properly and fully. */
+@media (max-width: 900px) {
+  .mp-split { grid-template-columns: 1fr; }
+  .mp-form { max-height:none; padding-right:0; }
+  .mp-preview-wrap { display:none; }
+  .mp-preview-btn { display:inline-flex; }
+}
+
+/* Full-screen preview modal */
+.mp-modal { position:fixed; inset:0; z-index:1000; background:#050505; display:flex; flex-direction:column; }
+.mp-modal[hidden] { display:none; }
+.mp-modal-bar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 16px; border-bottom:1px solid #232323; }
+.mp-modal-title { font-family:'Bebas Neue',sans-serif; letter-spacing:.08em; color:#F4F4F4; font-size:1.2rem; }
+.mp-modal-bar .btn { width:auto; padding:0.5rem 0.9rem; font-size:0.95rem; }
+.mp-modal-scroll { flex:1; overflow-x:hidden; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:12px; }
+.mp-modal-wrap { overflow:hidden; margin:0 auto; }
+.mp-modal-stage { transform-origin: top left; }
+.mp-group { border:1px solid #232323; margin-bottom:10px; padding:8px 12px; background:#0B0B0D; }
+.mp-group > summary { cursor:pointer; font-weight:600; letter-spacing:.05em; text-transform:uppercase; font-size:13px; color:#A8A8A8; }
+.mp-field { margin:10px 0; }
+.mp-field > label { display:block; font-size:12px; color:#A8A8A8; margin-bottom:4px; }
+.mp-field input[type=text], .mp-field textarea { width:100%; background:#101010; color:#f4f4f4; border:1px solid #232323; padding:8px; font:inherit; }
+.mp-colorrow { display:flex; gap:8px; }
+.mp-colorrow input[type=color] { width:44px; height:36px; background:none; border:1px solid #232323; padding:0; }
+.mp-colorrow input[type=text] { flex:1; background:#101010; color:#f4f4f4; border:1px solid #232323; padding:8px; }
+.mp-imagectl { display:flex; flex-direction:column; gap:6px; }
+.mp-thumb { max-width:120px; max-height:120px; border:1px solid #232323; object-fit:cover; }
+.mp-hint { font-size:11px; color:#777; margin:4px 0 0; }
+.mp-preview-wrap { overflow:hidden; border:1px solid #232323; background:#000; }
+.mp-preview { transform-origin: top left; }
+
+/* ===== Template 1: combat-analytics poster ===== */
+.mp-poster {
+  --mp-bg:#050505; --mp-bg2:#0B0B0D; --mp-panel:#101010;
+  --mp-red:#D11414; --mp-redAccent:#E11B1B; --mp-white:#F4F4F4;
+  --mp-textSec:#A8A8A8; --mp-textMuted:#777777; --mp-border:#232323;
+  box-sizing:border-box; background:var(--mp-bg); color:var(--mp-white);
+  font-family:'Montserrat',sans-serif; line-height:1.2; overflow:hidden; position:relative;
+  display:flex; flex-direction:column;
+}
+.mp-poster * { box-sizing:border-box; }
+.mp-poster .mp-red { color:var(--mp-red); }
+/* *stars* emphasis: formatInline() emits <span class="text-redHot"> (a Tailwind
+   utility on the public site, absent in the admin bundle) — make it red here so
+   the *word* hint works in the preview and the rasterized PDF/PNG. */
+.mp-poster .text-redHot { color:var(--mp-red); }
+.mp-sec { font-family:'Bebas Neue',sans-serif; letter-spacing:.04em; color:var(--mp-white); margin:0; }
+.mp-sec.sm { font-size:34px; }
+.mp-sec-sub { color:var(--mp-textMuted); font-size:22px; }
+.mp-lbl { font-family:'Montserrat',sans-serif; font-weight:600; letter-spacing:.12em; font-size:16px; color:var(--mp-white); text-transform:uppercase; }
+.mp-muted { color:var(--mp-textMuted); font-size:18px; }
+
+/* hero */
+.mp-hero { position:relative; min-height:840px; padding:60px; }
+.mp-hero-photo { position:absolute; inset:0 0 0 45%; background-size:cover; background-position:center top;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 25%); mask-image:linear-gradient(90deg,transparent,#000 25%); }
+.mp-hero-copy { position:relative; max-width:60%; }
+.mp-handle { letter-spacing:.1em; color:var(--mp-white); font-weight:600; margin-bottom:24px; }
+.mp-name-big { font-family:'Bebas Neue',sans-serif; font-size:170px; line-height:.82; letter-spacing:.02em; color:var(--mp-white); }
+.mp-name-script { font-family:'Permanent Marker',cursive; font-size:96px; line-height:.9; color:var(--mp-red); margin-top:-6px; }
+.mp-eyebrow { font-family:'Bebas Neue',sans-serif; letter-spacing:.18em; font-size:30px; margin-top:18px; }
+.mp-intro { color:var(--mp-textSec); font-size:21px; line-height:1.5; margin:18px 0 0; }
+.mp-tagline { color:var(--mp-red); font-weight:600; font-size:21px; margin:6px 0 0; }
+.mp-infobar { position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:48px; border-top:1px solid var(--mp-border); padding-top:24px; }
+.mp-infoitem { display:flex; flex-direction:column; gap:4px; border-left:1px solid var(--mp-border); padding-left:18px; }
+.mp-info-v { font-family:'Bebas Neue',sans-serif; font-size:34px; }
+.mp-info-l { color:var(--mp-textSec); letter-spacing:.1em; font-size:14px; }
+
+/* overview */
+.mp-overview { padding:34px 60px; border-top:1px solid var(--mp-border); }
+.mp-overview .mp-sec { font-size:40px; color:var(--mp-red); }
+.mp-ov-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:40px; margin-top:24px; }
+.mp-bignum { font-family:'Anton',sans-serif; font-size:84px; line-height:1; color:var(--mp-red); }
+.mp-num-md { font-family:'Anton',sans-serif; font-size:60px; color:var(--mp-white); }
+.mp-num-sm { font-family:'Bebas Neue',sans-serif; font-size:40px; display:block; }
+.mp-grow { color:var(--mp-red); font-weight:700; font-size:26px; margin-top:8px; }
+.mp-ov-mini > div { margin-bottom:14px; }
+.mp-pair { margin-top:10px; }
+.mp-delta { margin-left:10px; font-weight:700; }
+
+/* panels */
+.mp-panels { display:grid; gap:40px; padding:0 60px 32px; }
+.mp-panels-3 { grid-template-columns:repeat(3,1fr); }
+.mp-panel { background:var(--mp-panel); border:1px solid var(--mp-border); padding:32px; }
+.mp-line { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--mp-border); font-size:19px; color:var(--mp-white); }
+.mp-line:last-child { border-bottom:none; }
+.mp-line-v { color:var(--mp-textSec); }
+
+/* about */
+.mp-about { display:grid; grid-template-columns:1fr 1fr 1.2fr; gap:32px; align-items:center; padding:30px 60px; border-top:1px solid var(--mp-border); }
+.mp-slab-1 { font-family:'Bebas Neue',sans-serif; font-size:72px; line-height:.9; color:var(--mp-white); }
+.mp-slab-2 { font-family:'Permanent Marker',cursive; font-size:54px; line-height:.95; color:var(--mp-red); margin-top:10px; }
+.mp-about-photo { height:340px; background-size:cover; background-position:center; border:1px solid var(--mp-border); }
+
+/* footer */
+.mp-footer { margin-top:auto; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; padding:26px 60px; border-top:1px solid var(--mp-border); background:var(--mp-bg2); }
+.mp-foot-col { display:flex; align-items:center; gap:16px; }
+.mp-foot-txt { display:flex; flex-direction:column; gap:6px; }
+.mp-foot-ico { width:38px; height:38px; flex:none; fill:none; stroke:var(--mp-red); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.mp-foot-cta { flex-direction:column; align-items:flex-end; justify-content:center; gap:10px; }
+.mp-foot-rule { width:160px; height:3px; background:var(--mp-red); }
+.mp-foot-tag { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:.06em; }

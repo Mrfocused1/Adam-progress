@@ -3,7 +3,8 @@
 <title>Adam Progress — Admin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/media-packs.css"/>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"/>
 <link rel="stylesheet" href="assets/admin.css"/>
 </head>
@@ -57,10 +58,15 @@
         <button id="logoutBtn" class="btn ghost">Log out</button>
       </div>
     </header>
+    <div class="dash-modebar">
+      <button id="modeContent" class="mode-tab is-active" aria-pressed="true">Website content</button>
+      <button id="modePacks" class="mode-tab" aria-pressed="false">Media packs</button>
+    </div>
     <div class="dash-body">
       <nav id="sectionNav" class="section-nav"></nav>
       <main id="panel" class="panel"></main>
     </div>
+    <section id="packsView" class="packs-view" hidden></section>
     <p id="dashStatus" class="status" role="status" aria-live="polite"></p>
 
     <div id="pwModal" class="modal" hidden>

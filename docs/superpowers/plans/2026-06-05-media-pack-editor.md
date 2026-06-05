@@ -12,7 +12,7 @@
 
 **Decisions carried from brainstorming:** PDF + PNG both offered (PNG is a near-free bonus on the same snapshot). Brush font = Permanent Marker unless a font file is dropped in.
 
-**How to run tests:** `cd "~/Desktop/adam progress" && node --test tests/`
+**How to run tests:** `node --test tests/*.test.mjs` (run from the worktree root; on Node 22 the trailing-slash dir form `node --test tests/` fails — always use the `*.test.mjs` glob).
 
 **How to view locally:** `python3 -m http.server 8765` from the repo root, then open `http://localhost:8765/admin.html`.
 
@@ -972,7 +972,7 @@ Click **Download PDF**. Expected: a single-page **portrait** PDF (`adam-progress
 
 - [ ] **Step 6: Run the full test suite**
 
-Run: `node --test tests/`
+Run: `node --test tests/*.test.mjs`
 Expected: all tests pass (existing `lib.test.mjs` + new `packs.test.mjs`).
 
 - [ ] **Step 7: Commit**

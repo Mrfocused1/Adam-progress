@@ -92,7 +92,7 @@ function buildForm() {
   }
   const form = $('#mpForm'); form.innerHTML = '';
   for (const g of groups) {
-    const sec = document.createElement('details'); sec.className = 'mp-group'; sec.open = true;
+    const sec = document.createElement('details'); sec.className = 'mp-group'; sec.open = false;
     sec.appendChild(Object.assign(document.createElement('summary'), { textContent: g }));
     for (const f of seen.get(g)) sec.appendChild(fieldRow(f));
     form.appendChild(sec);

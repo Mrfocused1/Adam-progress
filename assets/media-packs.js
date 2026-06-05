@@ -5,6 +5,7 @@ import { getByPath, setByPath, escapeHtml } from './lib/apply.js';
 import { exportPdf, exportPng } from './lib/pdf.js';
 
 let host, current, content, dirty = false, markGlobalDirty = () => {};
+let selectSeq = 0;  // guards against out-of-order async template loads
 
 const $ = (sel, r = host) => r.querySelector(sel);
 
@@ -36,8 +37,10 @@ export function mountMediaPacks(hostEl, { onDirty } = {}) {
 
 async function selectTemplate(key) {
   current = byKey(key);
+  const seq = ++selectSeq;
   setStatus('Loading…');
   const { data, error } = await supabase.from('media_packs').select('data').eq('template_key', key).maybeSingle();
+  if (seq !== selectSeq) return;  // a newer selection started while this load was in flight — discard
   if (error) {
     setStatus('Could not load saved data (' + error.message + '). Showing defaults — saving now may overwrite remembered numbers.', 'error');
     content = structuredClone(current.defaults);

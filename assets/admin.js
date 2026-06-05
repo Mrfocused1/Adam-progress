@@ -122,7 +122,13 @@ async function initDashboard() {
     contentEls.forEach(e => { e.hidden = packs; });
     $('modeContent').classList.toggle('is-active', !packs);
     $('modePacks').classList.toggle('is-active', packs);
-    if (packs && !packsMounted) { mountMediaPacks($('packsView'), { onDirty: markDirty }); packsMounted = true; }
+    $('modeContent').setAttribute('aria-pressed', String(!packs));
+    $('modePacks').setAttribute('aria-pressed', String(packs));
+    // The packs editor tracks its own dirty state (#mpDirty) and saves via its own
+    // save(); it must NOT light up the content view's "Unsaved changes" badge or the
+    // global DIRTY flag (which gates the content Save). The beforeunload guard covers
+    // pack edits independently via isMediaPacksDirty().
+    if (packs && !packsMounted) { mountMediaPacks($('packsView')); packsMounted = true; }
   };
   $('modeContent').addEventListener('click', () => showMode('content'));
   $('modePacks').addEventListener('click', () => showMode('packs'));

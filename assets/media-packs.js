@@ -32,6 +32,10 @@ export function mountMediaPacks(hostEl, { onDirty } = {}) {
   $('#mpSave').addEventListener('click', save);
   $('#mpPdf').addEventListener('click', () => download('pdf'));
   $('#mpPng').addEventListener('click', () => download('png'));
+  if (!mountMediaPacks._resizeBound) {
+    window.addEventListener('resize', () => scalePreview());
+    mountMediaPacks._resizeBound = true;  // bind once even if remounted
+  }
   selectTemplate(current.key);
 }
 
@@ -144,7 +148,15 @@ function renderPreview() {
   node.style.width = current.size.w + 'px';
   node.style.height = current.size.h + 'px';
   pv.appendChild(node);
-  const colW = pv.parentElement.clientWidth - 24;
+  scalePreview();
+}
+
+// Fit the full-size poster into the preview column. Called on render and on
+// window resize so the preview stays responsive without rebuilding the node.
+function scalePreview() {
+  const pv = $('#mpPreview');
+  if (!pv || !pv.firstChild) return;
+  const colW = Math.max(0, pv.parentElement.clientWidth - 24);
   const scale = Math.min(1, colW / current.size.w);
   pv.style.transform = `scale(${scale})`;
   pv.style.width = current.size.w + 'px';

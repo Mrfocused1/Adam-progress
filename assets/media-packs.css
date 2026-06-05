@@ -1,10 +1,18 @@
 /* ===== Editor chrome ===== */
-.mp-toolbar { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.mp-toolbar { display:flex; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px; }
 .mp-toolbar .mp-spacer { flex:1; }
-.mp-select { background:#101010; color:#f4f4f4; border:1px solid #232323; padding:8px 12px; font:inherit; }
+/* .btn defaults to width:100% (admin.css) — keep toolbar buttons compact in a row. */
+.mp-toolbar .btn { width:auto; padding:0.55rem 0.95rem; font-size:0.95rem; }
+.mp-select { background:#101010; color:#f4f4f4; border:1px solid #232323; padding:8px 12px; font:inherit; max-width:100%; }
 .mp-dirty { color:#E11B1B; font-size:13px; }
-.mp-split { display:grid; grid-template-columns: 420px 1fr; gap:24px; align-items:start; }
+.mp-split { display:grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap:24px; align-items:start; }
 .mp-form { max-height:calc(100vh - 220px); overflow:auto; padding-right:8px; }
+
+/* Stack the form above the preview on narrower screens. */
+@media (max-width: 900px) {
+  .mp-split { grid-template-columns: 1fr; }
+  .mp-form { max-height:none; padding-right:0; }
+}
 .mp-group { border:1px solid #232323; margin-bottom:10px; padding:8px 12px; background:#0B0B0D; }
 .mp-group > summary { cursor:pointer; font-weight:600; letter-spacing:.05em; text-transform:uppercase; font-size:13px; color:#A8A8A8; }
 .mp-field { margin:10px 0; }

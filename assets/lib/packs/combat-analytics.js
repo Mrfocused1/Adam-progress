@@ -266,9 +266,15 @@ export function render(content) {
     </div>
 
     <div class="mp-footer">
-      <div class="mp-foot-col"><span class="mp-lbl">${txt(c.footerLocation1)}</span><span class="mp-muted">${txt(c.footerLocation2)}</span></div>
-      <div class="mp-foot-col"><span class="mp-lbl">${txt(c.footerEmailLabel)}</span><span class="mp-muted">${txt(c.footerEmail)}</span></div>
-      <div class="mp-foot-col"><span class="mp-foot-tag">${txt(c.footerTagline)}</span></div>
+      <div class="mp-foot-col">
+        <svg class="mp-foot-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg>
+        <div class="mp-foot-txt"><span class="mp-lbl">${txt(c.footerLocation1)}</span><span class="mp-muted">${txt(c.footerLocation2)}</span></div>
+      </div>
+      <div class="mp-foot-col">
+        <svg class="mp-foot-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 6l9 7 9-7"/></svg>
+        <div class="mp-foot-txt"><span class="mp-lbl">${txt(c.footerEmailLabel)}</span><span class="mp-muted">${txt(c.footerEmail)}</span></div>
+      </div>
+      <div class="mp-foot-col mp-foot-cta"><span class="mp-foot-tag">${txt(c.footerTagline)}</span><span class="mp-foot-rule"></span></div>
     </div>
   `;
 

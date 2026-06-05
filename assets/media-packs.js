@@ -156,8 +156,7 @@ function renderPreview() {
   const pv = $('#mpPreview');
   pv.innerHTML = '';
   const node = current.render(content);
-  node.style.width = current.size.w + 'px';
-  node.style.height = current.size.h + 'px';
+  node.style.width = current.size.w + 'px';   // height is content-driven (no gap to the footer)
   pv.appendChild(node);
   scalePreview();
 }
@@ -167,12 +166,13 @@ function renderPreview() {
 function scalePreview() {
   const pv = $('#mpPreview');
   if (!pv || !pv.firstChild) return;
+  const h = pv.firstChild.offsetHeight;        // actual rendered height
   const colW = Math.max(0, pv.parentElement.clientWidth - 24);
   const scale = Math.min(1, colW / current.size.w);
   pv.style.transform = `scale(${scale})`;
   pv.style.width = current.size.w + 'px';
-  pv.style.height = current.size.h + 'px';
-  pv.parentElement.style.height = (current.size.h * scale + 24) + 'px';
+  pv.style.height = h + 'px';
+  pv.parentElement.style.height = (h * scale + 24) + 'px';
 }
 
 // Mobile: open the poster full-screen, fit to viewport width, scrollable —
@@ -182,17 +182,17 @@ function openPreview() {
   stage.innerHTML = '';
   const node = current.render(content);
   node.style.width = current.size.w + 'px';
-  node.style.height = current.size.h + 'px';
   stage.appendChild(node);
   modal.hidden = false;
   document.body.style.overflow = 'hidden';  // lock background scroll
   // fit-to-width; the wrap takes the scaled box size so there's no stray scroll.
+  const h = node.offsetHeight;
   const scale = Math.min(1, (modal.clientWidth - 24) / current.size.w);
   stage.style.transform = `scale(${scale})`;
   stage.style.width = current.size.w + 'px';
-  stage.style.height = current.size.h + 'px';
+  stage.style.height = h + 'px';
   wrap.style.width = (current.size.w * scale) + 'px';
-  wrap.style.height = (current.size.h * scale) + 'px';
+  wrap.style.height = (h * scale) + 'px';
 }
 
 function closePreview() {
@@ -219,10 +219,9 @@ async function download(kind) {
   stage.style.cssText = 'position:fixed;left:-99999px;top:0;';
   const node = current.render(content);
   node.style.width = current.size.w + 'px';
-  node.style.height = current.size.h + 'px';
   stage.appendChild(node); document.body.appendChild(stage);
   try {
-    const opts = { w: current.size.w, h: current.size.h, scale: 2, filename: `adam-progress-${current.key}.${kind}` };
+    const opts = { w: current.size.w, h: node.offsetHeight, scale: 2, filename: `adam-progress-${current.key}.${kind}` };
     if (kind === 'pdf') await exportPdf(node, opts); else await exportPng(node, opts);
     setStatus('Downloaded ✓', 'success');
   } catch (e) {

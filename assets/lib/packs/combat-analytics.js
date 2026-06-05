@@ -167,6 +167,33 @@ const cssUrl = (s) => String(s ?? '').replace(/["'()\\\n\r]/g, '');
 
 function rows(arr, render) { return (arr || []).map(render).join(''); }
 
+// Inline outline/glyph icons (kept in the template so the export embeds them).
+const SVG = (cls, inner) => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${inner}</svg>`;
+const SOC = {
+  ig: SVG('mp-soc', '<rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.5" fill="currentColor"/>'),
+  tiktok: SVG('mp-soc', '<path fill="currentColor" d="M16 3c.3 2.3 1.9 4 4.2 4.2v3c-1.6 0-3.1-.5-4.2-1.3v6.1a6 6 0 1 1-6-6c.34 0 .67.03 1 .09v3.1A2.9 2.9 0 1 0 13 14.8V3h3z"/>'),
+  yt: SVG('mp-soc', '<rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.5 8.6l5.2 3.4-5.2 3.4z" fill="currentColor"/>'),
+  x: SVG('mp-soc', '<path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>'),
+};
+const GLYPH = {
+  globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/>',
+  pin: '<path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>',
+  reel: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 8.5h18M8 3l2.5 5M13 3l2.5 5"/><path d="M10.5 11l4.5 2.7-4.5 2.7z" fill="currentColor" stroke="none"/>',
+  stories: '<circle cx="12" cy="12" r="9" stroke-dasharray="2.8 2.8"/>',
+  posts: '<rect x="3" y="3" width="7.5" height="7.5" rx="1"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1"/>',
+  live: '<circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/><path d="M7.8 7.8a6 6 0 0 0 0 8.4M16.2 7.8a6 6 0 0 1 0 8.4M5 5a9 9 0 0 0 0 14M19 5a9 9 0 0 1 0 14"/>',
+  heart: '<path d="M12 20.7C5.5 15.9 3.5 12.2 3.5 8.9A4.4 4.4 0 0 1 12 6.3a4.4 4.4 0 0 1 8.5 2.6c0 3.3-2 7-8.5 11.8z"/>',
+  comment: '<path d="M21 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-5.2A8 8 0 1 1 21 11.5z"/>',
+  bookmark: '<path d="M6.5 3h11v18l-5.5-3.8L6.5 21z"/>',
+  plane: '<path d="M21.5 2.5L10.5 13.5M21.5 2.5l-7 19-3.9-8.1-8.1-3.9z"/>',
+  repost: '<path d="M17 2.5l4 4-4 4M21 6.5H8a4 4 0 0 0-4 4v1.5M7 21.5l-4-4 4-4M3 17.5h13a4 4 0 0 0 4-4V12"/>',
+};
+const infoIcon = [null, GLYPH.globe, null, GLYPH.pin];          // globe on item 2, pin on item 4
+const ctIcons  = [GLYPH.reel, GLYPH.stories, GLYPH.posts, GLYPH.live];
+const itIcons  = [GLYPH.heart, GLYPH.comment, GLYPH.bookmark, GLYPH.plane, GLYPH.repost];
+const rowIco  = (inner, red) => inner ? `<svg class="mp-row-ico${red ? ' r' : ''}" viewBox="0 0 24 24" aria-hidden="true">${inner}</svg>` : '';
+const infoIco = (inner) => inner ? `<svg class="mp-info-ico" viewBox="0 0 24 24" aria-hidden="true">${inner}</svg>` : '';
+
 export function render(content) {
   const c = content;
   const root = el('div', 'mp-poster');
@@ -177,7 +204,7 @@ export function render(content) {
     <div class="mp-hero">
       <div class="mp-hero-photo"></div>
       <div class="mp-hero-copy">
-        <div class="mp-handle">${txt(c.socialHandle)}</div>
+        <div class="mp-social">${SOC.ig}${SOC.tiktok}${SOC.yt}${SOC.x}<span class="mp-handle">${txt(c.socialHandle)}</span></div>
         <div class="mp-name-big">${txt(c.nameBig)}</div>
         <div class="mp-name-script">${txt(c.nameScript)}</div>
         <div class="mp-eyebrow">${txt(c.eyebrow)}</div>
@@ -185,7 +212,7 @@ export function render(content) {
         <p class="mp-tagline">${txt(c.tagline)}</p>
       </div>
       <div class="mp-infobar">
-        ${rows(c.infoBar, (i) => `<div class="mp-infoitem"><span class="mp-info-v">${txt(i.value)}</span><span class="mp-info-l">${txt(i.label)}</span></div>`)}
+        ${rows(c.infoBar, (i, idx) => `<div class="mp-infoitem">${infoIco(infoIcon[idx])}<div class="mp-info-txt"><span class="mp-info-v">${txt(i.value)}</span><span class="mp-info-l">${txt(i.label)}</span></div></div>`)}
       </div>
     </div>
 
@@ -222,15 +249,15 @@ export function render(content) {
     <div class="mp-panels mp-panels-3">
       <div class="mp-panel">
         <h3 class="mp-sec sm">BY CONTENT TYPE <span class="mp-red">(VIEWS)</span></h3>
-        ${rows(c.viewsByType, (r) => `<div class="mp-line"><span>${txt(r.label)}</span><span class="mp-line-v">${txt(r.pct)}</span></div>`)}
+        ${rows(c.viewsByType, (r, idx) => `<div class="mp-line"><span class="mp-line-l">${rowIco(ctIcons[idx])}${txt(r.label)}</span><span class="mp-line-v">${txt(r.pct)}</span></div>`)}
       </div>
       <div class="mp-panel">
         <h3 class="mp-sec sm">BY CONTENT TYPE <span class="mp-red">(INTERACTIONS)</span></h3>
-        ${rows(c.interByType, (r) => `<div class="mp-line"><span>${txt(r.label)}</span><span class="mp-line-v">${txt(r.pct)}</span></div>`)}
+        ${rows(c.interByType, (r, idx) => `<div class="mp-line"><span class="mp-line-l">${rowIco(ctIcons[idx])}${txt(r.label)}</span><span class="mp-line-v">${txt(r.pct)}</span></div>`)}
       </div>
       <div class="mp-panel">
         <h3 class="mp-sec sm">TOP INTERACTIONS <span class="mp-red">(ALL CONTENT)</span></h3>
-        ${rows(c.topInteractions, (r) => `<div class="mp-line"><span>${txt(r.label)}</span><span class="mp-line-v">${txt(r.value)}</span></div>`)}
+        ${rows(c.topInteractions, (r, idx) => `<div class="mp-line"><span class="mp-line-l">${rowIco(itIcons[idx], true)}${txt(r.label)}</span><span class="mp-line-v">${txt(r.value)}</span></div>`)}
       </div>
     </div>
 
@@ -244,7 +271,7 @@ export function render(content) {
         ${rows(c.topAges, (r) => `<div class="mp-line"><span>${txt(r.label)}</span><span class="mp-line-v">${txt(r.pct)}</span></div>`)}
       </div>
       <div class="mp-panel">
-        <h3 class="mp-sec sm mp-red">GROWTH OVER TIME</h3>
+        <h3 class="mp-sec sm mp-red">GROWTH OVER TIME <span class="mp-sec-sub">(FOLLOWERS)</span></h3>
         <div class="mp-lbl">HIGHEST SPIKE</div>
         <div class="mp-num-md">${txt(c.growthSpike)}</div>
         <div class="mp-lbl mp-red">PERIOD</div>

@@ -213,7 +213,7 @@
 
 /* mid2: outlets + numbers */
 .t2-mid2 { display:grid; grid-template-columns:1.25fr 1fr; gap:32px; padding:0 var(--pad) 32px; align-items:start; }
-.t2-outlet { display:grid; grid-template-columns:150px 1fr 200px; gap:22px; align-items:center; padding:18px 0; border-bottom:1px solid var(--mp-border); }
+.t2-outlet { display:grid; grid-template-columns:150px 1fr; gap:24px; align-items:center; padding:18px 0; border-bottom:1px solid var(--mp-border); }
 .t2-outlet:last-child { border-bottom:none; }
 .t2-outlet-logo { font-family:'Anton',sans-serif; font-size:26px; line-height:.9; color:var(--mp-white); }
 .t2-outlet-name { display:flex; align-items:center; gap:8px; font-weight:700; font-size:21px; }

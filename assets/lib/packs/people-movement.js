@@ -45,10 +45,10 @@ export const defaults = {
   // outlets
   outletsTitle: 'OUTLETS THAT HAVE MENTIONED ADAM',
   outlets: [
-    { logo: 'DIRTY\nBOXING', name: 'Dirty Boxing Championship', verified: true,  desc: 'Official promotion that has featured Adam in major fights and announcements.', thumb: 'assets/t2-outlet1.jpg' },
-    { logo: 'FIGHT\nZUMI',   name: 'Fightzumi',                  verified: true,  desc: 'Featured Adam as "The 6ft8 Phenom" and ranked him among top prospects.',      thumb: 'assets/t2-outlet2.jpg' },
-    { logo: 'MMA\nADDICTION',name: 'MMA Addiction Only',         verified: false, desc: "Reposted and highlighted Adam's performances to their audience.",            thumb: 'assets/t2-outlet3.jpg' },
-    { logo: 'TAPOLOGY',      name: 'Tapology',                   verified: true,  desc: 'Official fighter profile and record tracking on Tapology.',                  thumb: 'assets/t2-outlet4.jpg' },
+    { logo: 'DIRTY\nBOXING', name: 'Dirty Boxing Championship', verified: true,  desc: 'Official promotion that has featured Adam in major fights and announcements.' },
+    { logo: 'FIGHT\nZUMI',   name: 'Fightzumi',                  verified: true,  desc: 'Featured Adam as "The 6ft8 Phenom" and ranked him among top prospects.' },
+    { logo: 'MMA\nADDICTION',name: 'MMA Addiction Only',         verified: false, desc: "Reposted and highlighted Adam's performances to their audience." },
+    { logo: 'TAPOLOGY',      name: 'Tapology',                   verified: true,  desc: 'Official fighter profile and record tracking on Tapology.' },
   ],
   // by the numbers
   numTitle: 'BY THE NUMBERS',
@@ -126,7 +126,7 @@ export const fields = [
   { group: 'Quote', key: 'quoteSub', label: 'Sub-note', type: 'text' },
 
   { group: 'Outlets', key: 'outletsTitle', label: 'Title', type: 'text' },
-  ...listFields('Outlets', 'outlets', 4, [['logo', 'Logo text', 'textarea'], ['name', 'Name'], ['desc', 'Description', 'textarea'], ['thumb', 'Thumbnail', 'image']]),
+  ...listFields('Outlets', 'outlets', 4, [['logo', 'Logo text', 'textarea'], ['name', 'Name'], ['desc', 'Description', 'textarea']]),
 
   { group: 'By the numbers', key: 'numTitle', label: 'Title', type: 'text' },
   { group: 'By the numbers', key: 'numSub', label: 'Subtitle (red)', type: 'text' },
@@ -235,7 +235,6 @@ export function render(content) {
             <div class="t2-outlet-name">${txt(o.name)}${o.verified ? VERIFIED : ''}</div>
             <div class="t2-outlet-desc">${txt(o.desc)}</div>
           </div>
-          <div class="t2-outlet-thumb" data-img="${txt(o.thumb)}"></div>
         </div>`)}
       </div>
       <div class="t2-panel t2-num">

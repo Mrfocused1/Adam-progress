@@ -44,3 +44,16 @@ test('every field has a group and a known type', () => {
     assert.ok(types.has(f.type), `field "${f.key}" bad type "${f.type}"`);
   }
 });
+
+import people from '../assets/lib/packs/people-movement.js';
+
+test('people-movement template is registered with valid fields/defaults', () => {
+  assert.ok(TEMPLATES.some(t => t.key === 'people-movement'));
+  assert.equal(people.size.w, 1696);
+  const types = new Set(['text', 'textarea', 'number', 'image', 'color']);
+  for (const f of people.fields) {
+    assert.notEqual(getByPath(people.defaults, f.key), undefined, `default missing for "${f.key}"`);
+    assert.ok(types.has(f.type), `field "${f.key}" bad type "${f.type}"`);
+    assert.ok(f.group, `field "${f.key}" needs a group`);
+  }
+});

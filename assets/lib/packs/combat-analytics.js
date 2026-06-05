@@ -21,7 +21,7 @@ export const defaults = {
   eyebrow: 'FIGHTER. CREATOR. FUTURE CHAMPION.',
   intro: "6'8\" combat sports athlete and content creator from Germany, building a legacy in and outside the ring.",
   tagline: "The future is not promised. It's earned.",
-  heroImage: 'assets/portrait-punch.png',
+  heroImage: 'assets/mediapack-hero.jpg',
   infoBar: [
     { value: '6’8"', label: 'HEIGHT' },
     { value: 'ROAD TO', label: 'WORLD CHAMPION' },
@@ -68,7 +68,7 @@ export const defaults = {
   growthPeriod: 'FEB 11 – MAY 11',
   builtTitle1: 'BUILT\nDIFFERENT.',
   builtTitle2: 'MADE TO\nDOMINATE.',
-  aboutImage: 'assets/portrait-cutout.png',
+  aboutImage: 'assets/mediapack-about.jpg',
   aboutTitle: 'ABOUT ADAM PROGRESS',
   aboutBody: "A 6'8\" fighter and digital force with millions of views across platforms. Known for his striking, presence, and unmatched work ethic. This is only the beginning.",
   aboutTag: 'FIGHTER. CREATOR. FUTURE CHAMPION.',

@@ -520,3 +520,8 @@ input:focus {
   margin-top: 0.4rem;
 }
 .modal-actions .btn { width: auto; flex: 1; }
+
+.dash-modebar { display:flex; gap:8px; padding:0 0 16px; }
+.mode-tab { background:#0B0B0D; color:#A8A8A8; border:1px solid #232323; padding:8px 16px; cursor:pointer; font:inherit; letter-spacing:.04em; }
+.mode-tab.is-active { color:#F4F4F4; border-color:#D11414; }
+.packs-view { padding-top:8px; }

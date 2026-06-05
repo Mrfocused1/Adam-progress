@@ -2,6 +2,7 @@ import { supabase } from './lib/supabase.js';
 import { CONTENT_SCHEMA, DEFAULT_CONTENT } from './lib/schema.js';
 import { CONTENT_ROW_ID } from './lib/supabase.js';
 import { escapeHtml } from './lib/apply.js';
+import { mountMediaPacks, isMediaPacksDirty } from './media-packs.js';
 
 const ALLOWED = ['tibaba.prg@gmail.com', 'paulshonowo2@gmail.com'];
 const $ = (id) => document.getElementById(id);
@@ -113,6 +114,18 @@ async function initDashboard() {
   // Backfill any missing keys from defaults so new schema sections always render.
   for (const k of Object.keys(DEFAULT_CONTENT)) if (!(k in DOC)) DOC[k] = structuredClone(DEFAULT_CONTENT[k]);
   buildNav(); renderPanel(CURRENT);
+  let packsMounted = false;
+  const contentEls = [$('sectionNav'), $('panel')];
+  const showMode = (mode) => {
+    const packs = mode === 'packs';
+    $('packsView').hidden = !packs;
+    contentEls.forEach(e => { e.hidden = packs; });
+    $('modeContent').classList.toggle('is-active', !packs);
+    $('modePacks').classList.toggle('is-active', packs);
+    if (packs && !packsMounted) { mountMediaPacks($('packsView'), { onDirty: markDirty }); packsMounted = true; }
+  };
+  $('modeContent').addEventListener('click', () => showMode('content'));
+  $('modePacks').addEventListener('click', () => showMode('packs'));
   $('saveBtn').addEventListener('click', save);
   $('logoutBtn').addEventListener('click', window.__adminLogout);
 }
@@ -230,4 +243,4 @@ function mediaField(value, field, onChange) {
   return wrap;
 }
 
-window.addEventListener('beforeunload', (e) => { if (DIRTY) { e.preventDefault(); e.returnValue = ''; } });
+window.addEventListener('beforeunload', (e) => { if (DIRTY || isMediaPacksDirty()) { e.preventDefault(); e.returnValue = ''; } });

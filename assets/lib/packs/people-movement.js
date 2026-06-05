@@ -27,7 +27,7 @@ export const defaults = {
   // video highlight
   videoKicker: 'VIDEO HIGHLIGHT',
   videoTitle: 'JON JONES ON\nADAM PROGRESS',
-  videoImage: 'assets/t2-igcard.jpg',
+  videoImage: 'assets/t2-jonjones.jpg',
   // audience breakdown
   audienceTitle: 'WHO FOLLOWS ADAM',
   audienceSub: '(AUDIENCE BREAKDOWN)',

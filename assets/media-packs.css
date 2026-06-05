@@ -49,7 +49,7 @@
   --mp-red:#D11414; --mp-redAccent:#E11B1B; --mp-white:#F4F4F4;
   --mp-textSec:#A8A8A8; --mp-textMuted:#777777; --mp-border:#232323;
   box-sizing:border-box; background:var(--mp-bg); color:var(--mp-white);
-  font-family:'Montserrat',sans-serif; overflow:hidden; position:relative;
+  font-family:'Montserrat',sans-serif; line-height:1.2; overflow:hidden; position:relative;
   display:flex; flex-direction:column;
 }
 .mp-poster * { box-sizing:border-box; }

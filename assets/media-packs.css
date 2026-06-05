@@ -30,6 +30,10 @@
 }
 .mp-poster * { box-sizing:border-box; }
 .mp-poster .mp-red { color:var(--mp-red); }
+/* *stars* emphasis: formatInline() emits <span class="text-redHot"> (a Tailwind
+   utility on the public site, absent in the admin bundle) — make it red here so
+   the *word* hint works in the preview and the rasterized PDF/PNG. */
+.mp-poster .text-redHot { color:var(--mp-red); }
 .mp-sec { font-family:'Bebas Neue',sans-serif; letter-spacing:.04em; color:var(--mp-white); margin:0; }
 .mp-sec.sm { font-size:34px; }
 .mp-sec-sub { color:var(--mp-textMuted); font-size:22px; }

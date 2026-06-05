@@ -118,10 +118,6 @@
 .mp-panels { display:grid; gap:32px; padding:0 60px 28px; }
 .mp-panels-3 { grid-template-columns:repeat(3,1fr); }
 .mp-panel { background:var(--mp-panel); border:1px solid var(--mp-border); padding:26px 28px; }
-/* faint dotted world map behind Top Countries (cropped from the reference) */
-.mp-map { position:relative; overflow:hidden; }
-.mp-map::before { content:''; position:absolute; inset:0; background:url('mediapack-worldmap.png') center/cover no-repeat; opacity:.28; pointer-events:none; }
-.mp-map > * { position:relative; z-index:1; }
 .mp-line { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--mp-border); font-size:19px; color:var(--mp-white); }
 .mp-line:last-child { border-bottom:none; }
 .mp-line-l { display:flex; align-items:center; gap:12px; }

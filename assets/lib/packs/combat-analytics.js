@@ -263,7 +263,7 @@ export function render(content) {
     </div>
 
     <div class="mp-panels mp-panels-3">
-      <div class="mp-panel mp-map">
+      <div class="mp-panel">
         <h3 class="mp-sec sm mp-red">TOP COUNTRIES</h3>
         ${rows(c.topCountries, (r) => `<div class="mp-line"><span>${txt(r.label)}</span><span class="mp-line-v">${txt(r.pct)}</span></div>`)}
       </div>

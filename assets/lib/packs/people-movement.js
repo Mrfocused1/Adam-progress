@@ -65,11 +65,11 @@ export const defaults = {
   reelsTitle: 'TOP 5 REELS OF ALL TIME',
   reelsSub: '(BY VIEWS)',
   reels: [
-    { thumb: 'assets/t2-reel1.jpg', title: 'DBX MIDDLEWEIGHTS MAKING STATEMENT', date: 'Apr 10, 2025' },
-    { thumb: 'assets/t2-reel2.jpg', title: 'THE JOURNEY NEVER STOPS',            date: 'Apr 9, 2025' },
-    { thumb: 'assets/t2-reel3.jpg', title: 'FACE OFF BUILT DIFFERENT',           date: 'Apr 9, 2025' },
-    { thumb: 'assets/t2-reel4.jpg', title: 'CALM. FOCUSED. DANGEROUS.',          date: 'Apr 9, 2025' },
-    { thumb: 'assets/t2-reel5.jpg', title: 'PRESSURE CREATES CHAMPIONS',         date: 'Mar 28, 2025' },
+    { thumb: 'assets/t2-reel1.jpg', views: '5.4M', title: 'BEING THIS TALL IS A HACK',  date: 'Jan 16, 2026' },
+    { thumb: 'assets/t2-reel2.jpg', views: '4.1M', title: 'WELTERWEIGHT FRAME. GIANT REACH.', date: 'Dec 15, 2025' },
+    { thumb: 'assets/t2-reel3.jpg', views: '2.3M', title: 'DAVID VS GOLIATH',           date: 'Mar 1, 2026' },
+    { thumb: 'assets/t2-reel4.jpg', views: '1.5M', title: 'SHOULD THIS BE ALLOWED?',    date: 'Dec 17, 2025' },
+    { thumb: 'assets/t2-reel5.jpg', views: '1.4M', title: 'FUTURE CHAMPION IN THE MAKING', date: 'Feb 13, 2026' },
   ],
   // footer
   footTitle1: "LET'S BUILD",
@@ -137,7 +137,7 @@ export const fields = [
 
   { group: 'Top reels', key: 'reelsTitle', label: 'Title', type: 'text' },
   { group: 'Top reels', key: 'reelsSub', label: 'Subtitle (red)', type: 'text' },
-  ...listFields('Top reels', 'reels', 5, [['thumb', 'Thumbnail', 'image'], ['title', 'Title'], ['date', 'Date']]),
+  ...listFields('Top reels', 'reels', 5, [['thumb', 'Thumbnail', 'image'], ['views', 'Views'], ['title', 'Title'], ['date', 'Date']]),
 
   { group: 'Footer', key: 'footTitle1', label: 'Title 1', type: 'text' },
   { group: 'Footer', key: 'footTitle2', label: 'Title 2 (script)', type: 'text' },
@@ -254,7 +254,11 @@ export function render(content) {
       <h2 class="t2-sec">${txt(c.reelsTitle)} <span class="mp-red">${txt(c.reelsSub)}</span></h2>
       <div class="t2-reels-grid">
         ${rows(c.reels, (r, i) => `<div class="t2-reel">
-          <div class="t2-reel-thumb" data-img="${txt(r.thumb)}"></div>
+          <div class="t2-reel-thumb" data-img="${txt(r.thumb)}">
+            <span class="t2-reel-rank">${i + 1}</span>
+            <svg class="t2-reel-play" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="rgba(0,0,0,.5)"/><path d="M10 8.5l6 3.5-6 3.5z" fill="#fff"/></svg>
+            <span class="t2-reel-views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>${txt(r.views)}</span>
+          </div>
           <div class="t2-reel-title">${txt(r.title)}</div>
           <div class="t2-reel-date">${txt(r.date)}</div>
         </div>`)}

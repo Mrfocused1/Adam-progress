@@ -228,10 +228,17 @@
 .t2-num-stat { font-family:'Anton',sans-serif; font-size:42px; line-height:1; }
 .t2-num-label { color:var(--mp-textSec); font-size:16px; letter-spacing:.04em; margin-top:8px; }
 
-/* reels */
+/* reels (real Instagram thumbnails + rendered rank/play/views overlays) */
 .t2-reels { margin:0 var(--pad) 28px; }
 .t2-reels-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:18px; }
-.t2-reel-thumb { width:100%; aspect-ratio:182/130; background-size:cover; background-position:center; border-radius:6px; border:1px solid var(--mp-border); }
+.t2-reel-thumb { position:relative; width:100%; aspect-ratio:4/5; background-size:cover; background-position:center; border-radius:8px; border:1px solid var(--mp-border); overflow:hidden; }
+.t2-reel-rank { position:absolute; top:0; left:0; width:38px; height:38px; display:flex; align-items:center; justify-content:center;
+  background:var(--mp-red); color:#fff; font-family:'Anton',sans-serif; font-size:22px; border-bottom-right-radius:8px; }
+.t2-reel-play { position:absolute; top:8px; right:8px; width:30px; height:30px; }
+.t2-reel-views { position:absolute; left:0; right:0; bottom:0; display:flex; align-items:center; gap:6px;
+  padding:24px 12px 10px; color:#fff; font-weight:700; font-size:19px;
+  background:linear-gradient(transparent, rgba(0,0,0,.85)); }
+.t2-reel-views svg { width:15px; height:15px; flex:none; color:#fff; }
 .t2-reel-title { font-weight:700; font-size:17px; letter-spacing:.02em; margin:12px 0 4px; line-height:1.2; }
 .t2-reel-date { color:var(--mp-textMuted); font-size:15px; }
 

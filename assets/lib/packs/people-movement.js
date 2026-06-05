@@ -62,14 +62,13 @@ export const defaults = {
     { stat: '100%',  label: 'ORGANIC GROWTH' },
   ],
   // top 5 reels
-  reelsTitle: 'TOP 5 REELS OF ALL TIME',
+  reelsTitle: 'TOP 4 REELS OF ALL TIME',
   reelsSub: '(BY VIEWS)',
   reels: [
     { thumb: 'assets/t2-reel1.jpg', views: '5.4M', title: 'BEING THIS TALL IS A HACK',  date: 'Jan 16, 2026' },
-    { thumb: 'assets/t2-reel2.jpg', views: '4.1M', title: 'WELTERWEIGHT FRAME. GIANT REACH.', date: 'Dec 15, 2025' },
+    { thumb: 'assets/t2-reel2.jpg', views: '4.1M', title: 'WELTER / MIDDLEWEIGHT FRAME', date: 'Dec 15, 2025' },
     { thumb: 'assets/t2-reel3.jpg', views: '2.3M', title: 'DAVID VS GOLIATH',           date: 'Mar 1, 2026' },
     { thumb: 'assets/t2-reel4.jpg', views: '1.5M', title: 'SHOULD THIS BE ALLOWED?',    date: 'Dec 17, 2025' },
-    { thumb: 'assets/t2-reel5.jpg', views: '1.4M', title: 'FUTURE CHAMPION IN THE MAKING', date: 'Feb 13, 2026' },
   ],
   // footer
   footTitle1: "LET'S BUILD",
@@ -137,7 +136,7 @@ export const fields = [
 
   { group: 'Top reels', key: 'reelsTitle', label: 'Title', type: 'text' },
   { group: 'Top reels', key: 'reelsSub', label: 'Subtitle (red)', type: 'text' },
-  ...listFields('Top reels', 'reels', 5, [['thumb', 'Thumbnail', 'image'], ['views', 'Views'], ['title', 'Title'], ['date', 'Date']]),
+  ...listFields('Top reels', 'reels', 4, [['thumb', 'Thumbnail', 'image'], ['views', 'Views'], ['title', 'Title'], ['date', 'Date']]),
 
   { group: 'Footer', key: 'footTitle1', label: 'Title 1', type: 'text' },
   { group: 'Footer', key: 'footTitle2', label: 'Title 2 (script)', type: 'text' },

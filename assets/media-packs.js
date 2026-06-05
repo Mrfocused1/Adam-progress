@@ -18,6 +18,7 @@ export function mountMediaPacks(hostEl, { onDirty } = {}) {
       <select id="mpTemplate" class="mp-select"></select>
       <span id="mpDirty" class="mp-dirty" hidden>● Unsaved</span>
       <span class="mp-spacer"></span>
+      <button id="mpPreviewBtn" class="btn ghost mp-preview-btn">View preview</button>
       <button id="mpSave" class="btn">Save</button>
       <button id="mpPdf" class="btn ghost">Download PDF</button>
       <button id="mpPng" class="btn ghost">Download PNG</button>
@@ -26,12 +27,22 @@ export function mountMediaPacks(hostEl, { onDirty } = {}) {
     <div class="mp-split">
       <div id="mpForm" class="mp-form"></div>
       <div class="mp-preview-wrap"><div id="mpPreview" class="mp-preview"></div></div>
+    </div>
+    <div id="mpModal" class="mp-modal" hidden>
+      <div class="mp-modal-bar">
+        <span class="mp-modal-title">Preview</span>
+        <button id="mpModalClose" class="btn ghost">Close ✕</button>
+      </div>
+      <div class="mp-modal-scroll"><div id="mpModalWrap" class="mp-modal-wrap"><div id="mpModalStage" class="mp-modal-stage"></div></div></div>
     </div>`;
   $('#mpTemplate').innerHTML = TEMPLATES.map(t => `<option value="${t.key}">${escapeHtml(t.label)}</option>`).join('');
   $('#mpTemplate').addEventListener('change', e => selectTemplate(e.target.value));
   $('#mpSave').addEventListener('click', save);
   $('#mpPdf').addEventListener('click', () => download('pdf'));
   $('#mpPng').addEventListener('click', () => download('png'));
+  $('#mpPreviewBtn').addEventListener('click', openPreview);
+  $('#mpModalClose').addEventListener('click', closePreview);
+  $('#mpModal').addEventListener('click', e => { if (e.target.id === 'mpModal') closePreview(); });
   if (!mountMediaPacks._resizeBound) {
     window.addEventListener('resize', () => scalePreview());
     mountMediaPacks._resizeBound = true;  // bind once even if remounted
@@ -162,6 +173,32 @@ function scalePreview() {
   pv.style.width = current.size.w + 'px';
   pv.style.height = current.size.h + 'px';
   pv.parentElement.style.height = (current.size.h * scale + 24) + 'px';
+}
+
+// Mobile: open the poster full-screen, fit to viewport width, scrollable —
+// so the cramped inline column isn't the only way to view it.
+function openPreview() {
+  const stage = $('#mpModalStage'), wrap = $('#mpModalWrap'), modal = $('#mpModal');
+  stage.innerHTML = '';
+  const node = current.render(content);
+  node.style.width = current.size.w + 'px';
+  node.style.height = current.size.h + 'px';
+  stage.appendChild(node);
+  modal.hidden = false;
+  document.body.style.overflow = 'hidden';  // lock background scroll
+  // fit-to-width; the wrap takes the scaled box size so there's no stray scroll.
+  const scale = Math.min(1, (modal.clientWidth - 24) / current.size.w);
+  stage.style.transform = `scale(${scale})`;
+  stage.style.width = current.size.w + 'px';
+  stage.style.height = current.size.h + 'px';
+  wrap.style.width = (current.size.w * scale) + 'px';
+  wrap.style.height = (current.size.h * scale) + 'px';
+}
+
+function closePreview() {
+  $('#mpModal').hidden = true;
+  $('#mpModalStage').innerHTML = '';
+  document.body.style.overflow = '';
 }
 
 async function save() {

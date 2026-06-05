@@ -8,11 +8,27 @@
 .mp-split { display:grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap:24px; align-items:start; }
 .mp-form { max-height:calc(100vh - 220px); overflow:auto; padding-right:8px; }
 
-/* Stack the form above the preview on narrower screens. */
+/* The "View preview" button is mobile-only (desktop has the live inline pane). */
+.mp-preview-btn { display:none; }
+
+/* Stack on narrower screens; on mobile, swap the cramped inline preview for a
+   full-screen "View preview" modal so the poster shows properly and fully. */
 @media (max-width: 900px) {
   .mp-split { grid-template-columns: 1fr; }
   .mp-form { max-height:none; padding-right:0; }
+  .mp-preview-wrap { display:none; }
+  .mp-preview-btn { display:inline-flex; }
 }
+
+/* Full-screen preview modal */
+.mp-modal { position:fixed; inset:0; z-index:1000; background:#050505; display:flex; flex-direction:column; }
+.mp-modal[hidden] { display:none; }
+.mp-modal-bar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 16px; border-bottom:1px solid #232323; }
+.mp-modal-title { font-family:'Bebas Neue',sans-serif; letter-spacing:.08em; color:#F4F4F4; font-size:1.2rem; }
+.mp-modal-bar .btn { width:auto; padding:0.5rem 0.9rem; font-size:0.95rem; }
+.mp-modal-scroll { flex:1; overflow-x:hidden; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:12px; }
+.mp-modal-wrap { overflow:hidden; margin:0 auto; }
+.mp-modal-stage { transform-origin: top left; }
 .mp-group { border:1px solid #232323; margin-bottom:10px; padding:8px 12px; background:#0B0B0D; }
 .mp-group > summary { cursor:pointer; font-weight:600; letter-spacing:.05em; text-transform:uppercase; font-size:13px; color:#A8A8A8; }
 .mp-field { margin:10px 0; }

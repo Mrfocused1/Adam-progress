@@ -203,6 +203,7 @@ export function render(content) {
   root.innerHTML = `
     <div class="mp-hero">
       <div class="mp-hero-photo"></div>
+      <div class="mp-hero-grunge"></div>
       <div class="mp-hero-copy">
         <div class="mp-social">${SOC.ig}${SOC.tiktok}${SOC.yt}${SOC.x}<span class="mp-handle">${txt(c.socialHandle)}</span></div>
         <div class="mp-name-big">${txt(c.nameBig)}</div>
@@ -262,7 +263,7 @@ export function render(content) {
     </div>
 
     <div class="mp-panels mp-panels-3">
-      <div class="mp-panel">
+      <div class="mp-panel mp-map">
         <h3 class="mp-sec sm mp-red">TOP COUNTRIES</h3>
         ${rows(c.topCountries, (r) => `<div class="mp-line"><span>${txt(r.label)}</span><span class="mp-line-v">${txt(r.pct)}</span></div>`)}
       </div>

@@ -77,11 +77,19 @@
 .mp-hero { position:relative; min-height:840px; padding:48px 60px; }
 .mp-hero-photo { position:absolute; inset:0 0 0 45%; background-size:cover; background-position:center top;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 25%); mask-image:linear-gradient(90deg,transparent,#000 25%); }
+/* red paint-grunge atmosphere (cropped from the reference); screen blend so the
+   black of the texture drops out and only the red specks show. */
+.mp-hero-grunge { position:absolute; inset:0; background:url('mediapack-redgrunge.png') right center/cover; opacity:.9; pointer-events:none; mix-blend-mode:screen;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 55%); mask-image:linear-gradient(90deg,transparent,#000 55%); }
 .mp-hero-copy { position:relative; max-width:62%; }
 .mp-social { display:flex; align-items:center; gap:18px; margin-bottom:20px; }
 .mp-soc { width:30px; height:30px; color:var(--mp-white); flex:none; }
 .mp-handle { letter-spacing:.12em; color:var(--mp-white); font-weight:600; font-size:18px; border-bottom:3px solid var(--mp-red); padding-bottom:3px; }
-.mp-name-big { font-family:'Bebas Neue',sans-serif; font-size:200px; line-height:.8; letter-spacing:.02em; color:var(--mp-white); }
+/* concrete-textured wordmark fill (cropped from the reference) */
+.mp-name-big, .mp-slab-1 {
+  background:#eaeaea url('mediapack-concrete.png'); background-size:120px; background-blend-mode:multiply;
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.mp-name-big { font-family:'Bebas Neue',sans-serif; font-size:200px; line-height:.8; letter-spacing:.02em; }
 .mp-name-script { font-family:'Permanent Marker',cursive; font-size:108px; line-height:.9; color:var(--mp-red); margin-top:-4px; }
 .mp-eyebrow { font-family:'Bebas Neue',sans-serif; letter-spacing:.18em; font-size:30px; margin-top:18px; }
 .mp-intro { color:var(--mp-textSec); font-size:21px; line-height:1.5; margin:18px 0 0; }
@@ -110,6 +118,10 @@
 .mp-panels { display:grid; gap:32px; padding:0 60px 28px; }
 .mp-panels-3 { grid-template-columns:repeat(3,1fr); }
 .mp-panel { background:var(--mp-panel); border:1px solid var(--mp-border); padding:26px 28px; }
+/* faint dotted world map behind Top Countries (cropped from the reference) */
+.mp-map { position:relative; overflow:hidden; }
+.mp-map::before { content:''; position:absolute; inset:0; background:url('mediapack-worldmap.png') center/cover no-repeat; opacity:.28; pointer-events:none; }
+.mp-map > * { position:relative; z-index:1; }
 .mp-line { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--mp-border); font-size:19px; color:var(--mp-white); }
 .mp-line:last-child { border-bottom:none; }
 .mp-line-l { display:flex; align-items:center; gap:12px; }

@@ -193,6 +193,18 @@
 .t2-video-title { font-family:'Bebas Neue',sans-serif; font-size:42px; line-height:.95; margin:6px 0 16px; }
 .t2-video-img { width:100%; aspect-ratio:288/430; background-size:cover; background-position:center top; border-radius:16px; border:1px solid var(--mp-border); }
 
+/* celebrities & athletes */
+.t2-celebs { margin:0 var(--pad) 34px; }
+.t2-celebs-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:18px; }
+.t2-celeb { background:var(--mp-bg2); border:1px solid var(--mp-border); border-radius:8px; padding:20px; display:flex; flex-direction:column; }
+.t2-celeb-head { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.t2-celeb-av { width:50px; height:50px; border-radius:50%; background-size:cover; background-position:center; flex:none; border:1px solid var(--mp-border); }
+.t2-celeb-name { font-weight:700; font-size:18px; line-height:1.1; }
+.t2-celeb-handle { color:var(--mp-red); font-size:15px; margin-top:2px; }
+.t2-celeb-comment { color:var(--mp-textSec); font-size:16px; line-height:1.4; flex:1; }
+.t2-celeb-date { color:var(--mp-textMuted); font-size:14px; margin-top:14px; }
+.t2-celebs-more { text-align:center; color:var(--mp-red); font-weight:700; letter-spacing:.14em; font-size:16px; margin-top:18px; }
+
 /* mid: audience + quote */
 .t2-panel { background:var(--mp-panel); border:1px solid var(--mp-border); border-radius:6px; padding:32px; }
 .t2-mid { display:grid; grid-template-columns:1.5fr 1fr; gap:32px; padding:0 var(--pad) 32px; }

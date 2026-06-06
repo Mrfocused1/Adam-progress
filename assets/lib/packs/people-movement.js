@@ -28,6 +28,17 @@ export const defaults = {
   videoKicker: 'VIDEO HIGHLIGHT',
   videoTitle: 'JON JONES ON\nADAM PROGRESS',
   videoImage: 'assets/t2-jonjones.jpg',
+  // celebrities & athletes
+  celebsTitle: 'CELEBRITIES & ATHLETES',
+  celebsTitleRed: 'TALKING ABOUT ADAM',
+  celebsMore: 'AND MORE...',
+  celebs: [
+    { avatar: 'assets/instagram/avatars/jon-jones.jpg',          name: 'Jon Jones',          handle: '@jonnybones',       comment: 'Best prospect in all of combat sports.',                  date: 'Apr 2026' },
+    { avatar: 'assets/instagram/avatars/andrew-tate.jpg',        name: 'Andrew Tate',        handle: '@cobratate',        comment: 'Impressed watching his finish at DBX 6.',                 date: 'Apr 2026' },
+    { avatar: 'assets/instagram/avatars/tristan-tate.jpg',       name: 'Tristan Tate',       handle: '@tristantate',      comment: 'Phenomenal performance at Dirty Boxing 6.',               date: 'Apr 2026' },
+    { avatar: 'assets/instagram/avatars/nina-marie-daniele.jpg', name: 'Nina-Marie Daniele', handle: '@ninamariedaniele', comment: '"I love violence!" — ringside at #DBX6.',                  date: 'Apr 2026' },
+    { avatar: 'assets/instagram/avatars/boxing-social.jpg',      name: 'Alan Dawson',        handle: '@boxingsocial',     comment: 'A near-Sebastian Fundora-esque figure in combat sports.', date: '2026' },
+  ],
   // audience breakdown
   audienceTitle: 'WHO FOLLOWS ADAM',
   audienceSub: '(AUDIENCE BREAKDOWN)',
@@ -113,6 +124,11 @@ export const fields = [
   { group: 'Video highlight', key: 'videoTitle', label: 'Title', type: 'textarea', hint: 'Enter = line break.' },
   { group: 'Video highlight', key: 'videoImage', label: 'Video card image', type: 'image' },
 
+  { group: 'Celebrities', key: 'celebsTitle', label: 'Title', type: 'text' },
+  { group: 'Celebrities', key: 'celebsTitleRed', label: 'Title (red part)', type: 'text' },
+  { group: 'Celebrities', key: 'celebsMore', label: 'Footer label', type: 'text' },
+  ...listFields('Celebrities', 'celebs', 5, [['avatar', 'Photo', 'image'], ['name', 'Name'], ['handle', 'Handle'], ['comment', 'Comment', 'textarea'], ['date', 'Date']]),
+
   { group: 'Audience', key: 'audienceTitle', label: 'Title', type: 'text' },
   { group: 'Audience', key: 'audienceSub', label: 'Subtitle (red)', type: 'text' },
   ...listFields('Audience', 'audience', 4, [['stat', 'Stat'], ['label', 'Label'], ['desc', 'Description', 'textarea']]),
@@ -197,6 +213,21 @@ export function render(content) {
         <div class="t2-video-title">${nl(c.videoTitle)}</div>
         <div class="t2-video-img"></div>
       </div>
+    </div>
+
+    <div class="t2-celebs">
+      <h2 class="t2-sec">${txt(c.celebsTitle)} <span class="mp-red">${txt(c.celebsTitleRed)}</span></h2>
+      <div class="t2-celebs-grid">
+        ${rows(c.celebs, (cb) => `<div class="t2-celeb">
+          <div class="t2-celeb-head">
+            <div class="t2-celeb-av" data-img="${txt(cb.avatar)}"></div>
+            <div><div class="t2-celeb-name">${txt(cb.name)}</div><div class="t2-celeb-handle">${txt(cb.handle)}</div></div>
+          </div>
+          <div class="t2-celeb-comment">${txt(cb.comment)}</div>
+          <div class="t2-celeb-date">${txt(cb.date)}</div>
+        </div>`)}
+      </div>
+      <div class="t2-celebs-more">${txt(c.celebsMore)}</div>
     </div>
 
     <div class="t2-mid">

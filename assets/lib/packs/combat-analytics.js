@@ -43,6 +43,28 @@ export const defaults = {
   totalInteractions: '1,054,693',
   interFollowersPct: '10.7%',
   interNonFollowersPct: '89.3%',
+  // Editable section/stat labels — the fixed descriptive text in the layout.
+  overviewTitle: 'OVERVIEW',
+  lblTotalFollowers: 'TOTAL FOLLOWERS',
+  lblFollows: 'FOLLOWS',
+  lblUnfollows: 'UNFOLLOWS',
+  lblNetGrowth: 'NET GROWTH',
+  lblTotalViews: 'TOTAL VIEWS',
+  lblFollowers: 'FOLLOWERS',
+  lblNonFollowers: 'NON-FOLLOWERS',
+  lblTotalInteractions: 'TOTAL INTERACTIONS',
+  viewsPanelTitle: 'BY CONTENT TYPE',
+  viewsPanelTag: '(VIEWS)',
+  interPanelTitle: 'BY CONTENT TYPE',
+  interPanelTag: '(INTERACTIONS)',
+  topInterTitle: 'TOP INTERACTIONS',
+  topInterTag: '(ALL CONTENT)',
+  topCountriesTitle: 'TOP COUNTRIES',
+  topAgesTitle: 'TOP AGE RANGES',
+  growthTitle: 'GROWTH OVER TIME',
+  growthTag: '(FOLLOWERS)',
+  growthSpikeLabel: 'HIGHEST SPIKE',
+  growthPeriodLabel: 'PERIOD',
   viewsByType: [
     { label: 'REELS', pct: '86.6%' }, { label: 'STORIES', pct: '10.6%' },
     { label: 'POSTS', pct: '2.7%' }, { label: 'LIVE VIDEOS', pct: '0.0%' },
@@ -122,14 +144,35 @@ export const fields = [
   { group: 'Overview', key: 'totalInteractions', label: 'Total interactions', type: 'text' },
   { group: 'Overview', key: 'interFollowersPct', label: 'Interactions — followers %', type: 'text' },
   { group: 'Overview', key: 'interNonFollowersPct', label: 'Interactions — non-followers %', type: 'text' },
+  { group: 'Overview', key: 'overviewTitle', label: 'Section title', type: 'text' },
+  { group: 'Overview', key: 'lblTotalFollowers', label: 'Label — total followers', type: 'text' },
+  { group: 'Overview', key: 'lblFollows', label: 'Label — follows', type: 'text' },
+  { group: 'Overview', key: 'lblUnfollows', label: 'Label — unfollows', type: 'text' },
+  { group: 'Overview', key: 'lblNetGrowth', label: 'Label — net growth', type: 'text' },
+  { group: 'Overview', key: 'lblTotalViews', label: 'Label — total views', type: 'text' },
+  { group: 'Overview', key: 'lblFollowers', label: 'Label — followers (breakdown)', type: 'text' },
+  { group: 'Overview', key: 'lblNonFollowers', label: 'Label — non-followers (breakdown)', type: 'text' },
+  { group: 'Overview', key: 'lblTotalInteractions', label: 'Label — total interactions', type: 'text' },
 
+  { group: 'By content type (views)', key: 'viewsPanelTitle', label: 'Panel title', type: 'text' },
+  { group: 'By content type (views)', key: 'viewsPanelTag', label: 'Panel title (red)', type: 'text' },
   ...listFields('By content type (views)', 'viewsByType', 4, [['label', 'Label'], ['pct', '%']]),
+  { group: 'By content type (interactions)', key: 'interPanelTitle', label: 'Panel title', type: 'text' },
+  { group: 'By content type (interactions)', key: 'interPanelTag', label: 'Panel title (red)', type: 'text' },
   ...listFields('By content type (interactions)', 'interByType', 4, [['label', 'Label'], ['pct', '%']]),
+  { group: 'Top interactions', key: 'topInterTitle', label: 'Panel title', type: 'text' },
+  { group: 'Top interactions', key: 'topInterTag', label: 'Panel title (red)', type: 'text' },
   ...listFields('Top interactions', 'topInteractions', 5, [['label', 'Label'], ['value', 'Value']]),
+  { group: 'Top countries', key: 'topCountriesTitle', label: 'Panel title', type: 'text' },
   ...listFields('Top countries', 'topCountries', 4, [['label', 'Country'], ['pct', '%']]),
+  { group: 'Top age ranges', key: 'topAgesTitle', label: 'Panel title', type: 'text' },
   ...listFields('Top age ranges', 'topAges', 4, [['label', 'Range'], ['pct', '%']]),
 
+  { group: 'Growth', key: 'growthTitle', label: 'Panel title', type: 'text' },
+  { group: 'Growth', key: 'growthTag', label: 'Panel title (red)', type: 'text' },
+  { group: 'Growth', key: 'growthSpikeLabel', label: 'Label — highest spike', type: 'text' },
   { group: 'Growth', key: 'growthSpike', label: 'Highest spike', type: 'text' },
+  { group: 'Growth', key: 'growthPeriodLabel', label: 'Label — period', type: 'text' },
   { group: 'Growth', key: 'growthPeriod', label: 'Period', type: 'text' },
 
   { group: 'About', key: 'builtTitle1', label: 'Slab title 1', type: 'textarea', hint: 'Enter = line break.' },
@@ -218,64 +261,64 @@ export function render(content) {
     </div>
 
     <div class="mp-overview">
-      <h2 class="mp-sec">OVERVIEW <span class="mp-sec-sub">${txt(c.overviewPeriod)}</span></h2>
+      <h2 class="mp-sec">${txt(c.overviewTitle)} <span class="mp-sec-sub">${txt(c.overviewPeriod)}</span></h2>
       <div class="mp-ov-grid">
         <div class="mp-ov-col">
           <div class="mp-bignum">${txt(c.totalFollowers)}</div>
-          <div class="mp-lbl">TOTAL FOLLOWERS</div>
+          <div class="mp-lbl">${txt(c.lblTotalFollowers)}</div>
           <div class="mp-grow">${txt(c.followersGrowthPct)}</div>
           <div class="mp-muted">${txt(c.followersGrowthVs)}</div>
         </div>
         <div class="mp-ov-col mp-ov-mini">
-          <div><span class="mp-num-sm">${txt(c.follows)}</span><span class="mp-lbl">FOLLOWS</span></div>
-          <div><span class="mp-num-sm">${txt(c.unfollows)}</span><span class="mp-lbl">UNFOLLOWS</span></div>
-          <div><span class="mp-num-sm mp-red">${txt(c.netGrowth)}</span><span class="mp-lbl">NET GROWTH</span></div>
+          <div><span class="mp-num-sm">${txt(c.follows)}</span><span class="mp-lbl">${txt(c.lblFollows)}</span></div>
+          <div><span class="mp-num-sm">${txt(c.unfollows)}</span><span class="mp-lbl">${txt(c.lblUnfollows)}</span></div>
+          <div><span class="mp-num-sm mp-red">${txt(c.netGrowth)}</span><span class="mp-lbl">${txt(c.lblNetGrowth)}</span></div>
         </div>
         <div class="mp-ov-col">
           <div class="mp-bignum mp-red">${txt(c.totalViews)}</div>
-          <div class="mp-lbl">TOTAL VIEWS</div>
-          <div class="mp-pair"><span class="mp-num-sm">${txt(c.viewsFollowersPct)}</span><span class="mp-lbl">FOLLOWERS</span></div>
-          <div class="mp-pair"><span class="mp-num-sm">${txt(c.viewsNonFollowersPct)}</span><span class="mp-lbl">NON-FOLLOWERS</span></div>
+          <div class="mp-lbl">${txt(c.lblTotalViews)}</div>
+          <div class="mp-pair"><span class="mp-num-sm">${txt(c.viewsFollowersPct)}</span><span class="mp-lbl">${txt(c.lblFollowers)}</span></div>
+          <div class="mp-pair"><span class="mp-num-sm">${txt(c.viewsNonFollowersPct)}</span><span class="mp-lbl">${txt(c.lblNonFollowers)}</span></div>
           <div class="mp-pair"><span class="mp-num-sm">${txt(c.viewsValue)}</span><span class="mp-red mp-delta">${txt(c.viewsValueDelta)}</span></div>
         </div>
         <div class="mp-ov-col">
           <div class="mp-bignum mp-red">${txt(c.totalInteractions)}</div>
-          <div class="mp-lbl">TOTAL INTERACTIONS</div>
-          <div class="mp-pair"><span class="mp-num-sm">${txt(c.interFollowersPct)}</span><span class="mp-lbl">FOLLOWERS</span></div>
-          <div class="mp-pair"><span class="mp-num-sm">${txt(c.interNonFollowersPct)}</span><span class="mp-lbl">NON-FOLLOWERS</span></div>
+          <div class="mp-lbl">${txt(c.lblTotalInteractions)}</div>
+          <div class="mp-pair"><span class="mp-num-sm">${txt(c.interFollowersPct)}</span><span class="mp-lbl">${txt(c.lblFollowers)}</span></div>
+          <div class="mp-pair"><span class="mp-num-sm">${txt(c.interNonFollowersPct)}</span><span class="mp-lbl">${txt(c.lblNonFollowers)}</span></div>
         </div>
       </div>
     </div>
 
     <div class="mp-panels mp-panels-3">
       <div class="mp-panel">
-        <h3 class="mp-sec sm">BY CONTENT TYPE <span class="mp-red">(VIEWS)</span></h3>
+        <h3 class="mp-sec sm">${txt(c.viewsPanelTitle)} <span class="mp-red">${txt(c.viewsPanelTag)}</span></h3>
         ${rows(c.viewsByType, (r, idx) => `<div class="mp-line"><span class="mp-line-l">${rowIco(ctIcons[idx])}${txt(r.label)}</span><span class="mp-line-v">${txt(r.pct)}</span></div>`)}
       </div>
       <div class="mp-panel">
-        <h3 class="mp-sec sm">BY CONTENT TYPE <span class="mp-red">(INTERACTIONS)</span></h3>
+        <h3 class="mp-sec sm">${txt(c.interPanelTitle)} <span class="mp-red">${txt(c.interPanelTag)}</span></h3>
         ${rows(c.interByType, (r, idx) => `<div class="mp-line"><span class="mp-line-l">${rowIco(ctIcons[idx])}${txt(r.label)}</span><span class="mp-line-v">${txt(r.pct)}</span></div>`)}
       </div>
       <div class="mp-panel">
-        <h3 class="mp-sec sm">TOP INTERACTIONS <span class="mp-red">(ALL CONTENT)</span></h3>
+        <h3 class="mp-sec sm">${txt(c.topInterTitle)} <span class="mp-red">${txt(c.topInterTag)}</span></h3>
         ${rows(c.topInteractions, (r, idx) => `<div class="mp-line"><span class="mp-line-l">${rowIco(itIcons[idx], true)}${txt(r.label)}</span><span class="mp-line-v">${txt(r.value)}</span></div>`)}
       </div>
     </div>
 
     <div class="mp-panels mp-panels-3">
       <div class="mp-panel">
-        <h3 class="mp-sec sm mp-red">TOP COUNTRIES</h3>
+        <h3 class="mp-sec sm mp-red">${txt(c.topCountriesTitle)}</h3>
         ${rows(c.topCountries, (r) => `<div class="mp-line"><span>${txt(r.label)}</span><span class="mp-line-v">${txt(r.pct)}</span></div>`)}
       </div>
       <div class="mp-panel">
-        <h3 class="mp-sec sm mp-red">TOP AGE RANGES</h3>
+        <h3 class="mp-sec sm mp-red">${txt(c.topAgesTitle)}</h3>
         ${rows(c.topAges, (r) => `<div class="mp-line"><span>${txt(r.label)}</span><span class="mp-line-v">${txt(r.pct)}</span></div>`)}
       </div>
       <div class="mp-panel">
-        <h3 class="mp-sec sm mp-red">GROWTH OVER TIME <span class="mp-sec-sub">(FOLLOWERS)</span></h3>
-        <div class="mp-lbl">HIGHEST SPIKE</div>
+        <h3 class="mp-sec sm mp-red">${txt(c.growthTitle)} <span class="mp-sec-sub">${txt(c.growthTag)}</span></h3>
+        <div class="mp-lbl">${txt(c.growthSpikeLabel)}</div>
         <div class="mp-num-md">${txt(c.growthSpike)}</div>
-        <div class="mp-lbl mp-red">PERIOD</div>
+        <div class="mp-lbl mp-red">${txt(c.growthPeriodLabel)}</div>
         <div class="mp-muted">${txt(c.growthPeriod)}</div>
       </div>
     </div>

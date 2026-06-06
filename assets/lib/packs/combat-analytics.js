@@ -29,7 +29,7 @@ export const defaults = {
     { value: 'GERMANY', label: 'BASED' },
   ],
   overviewPeriod: '(LAST 90 DAYS)',
-  totalFollowers: '57,100',
+  totalFollowers: '57,300',
   followersGrowthPct: '+145.6%',
   followersGrowthVs: 'vs Mar 6',
   follows: '39,137',

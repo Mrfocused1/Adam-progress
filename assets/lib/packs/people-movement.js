@@ -207,9 +207,9 @@ export function render(content) {
       <div class="t2-panel t2-aud">
         <h2 class="t2-sec">${txt(c.audienceTitle)} <span class="mp-red">${txt(c.audienceSub)}</span></h2>
         <div class="t2-aud-grid">
-          ${rows(c.audience, (a) => `<div class="t2-aud-col">
+          ${rows(c.audience, (a) => `<div class="t2-aud-col${a.stat ? '' : ' t2-aud-col-nostat'}">
             ${audIco(a.icon)}
-            ${a.stat ? `<div class="t2-aud-stat">${txt(a.stat)}</div>` : '<div class="t2-aud-stat t2-aud-nostat"></div>'}
+            ${a.stat ? `<div class="t2-aud-stat">${txt(a.stat)}</div>` : ''}
             <div class="t2-aud-label">${txt(a.label)}</div>
             <div class="t2-aud-desc">${nl(a.desc)}</div>
           </div>`)}

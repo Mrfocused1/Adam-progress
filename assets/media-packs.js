@@ -226,6 +226,10 @@ async function download(kind) {
   node.style.width = current.size.w + 'px';
   stage.appendChild(node); document.body.appendChild(stage);
   try {
+    // Measure height AFTER the display fonts have swapped in — otherwise a
+    // cold-cache click reads the taller fallback-font layout while the capture
+    // happens post-swap, leaving a black gap at the bottom of the page.
+    if (document.fonts && document.fonts.ready) { try { await document.fonts.ready; } catch {} }
     const opts = { w: current.size.w, h: node.offsetHeight, scale: 2, filename: `adam-progress-${current.key}.${kind}` };
     if (kind === 'pdf') await exportPdf(node, opts); else await exportPng(node, opts);
     setStatus('Downloaded ✓', 'success');

@@ -17,7 +17,7 @@ export const defaults = {
   },
   // top bar
   topHandle: '@TIBABA.PRG',
-  topName1: 'ADAM', topName2: 'PROGRESS', topKit: 'MEDIA KIT 2025', pageNum: '02',
+  topName1: 'ADAM', topName2: 'PROGRESS', topKit: 'MEDIA KIT 2025', pageLabel: 'PAGE', pageNum: '02',
   // hero
   heroTitle1: 'THE PEOPLE.',
   heroTitle2: 'THE MOVEMENT.',
@@ -112,6 +112,7 @@ export const fields = [
   { group: 'Top bar', key: 'topName1', label: 'Name 1', type: 'text' },
   { group: 'Top bar', key: 'topName2', label: 'Name 2 (red)', type: 'text' },
   { group: 'Top bar', key: 'topKit', label: 'Kit label', type: 'text' },
+  { group: 'Top bar', key: 'pageLabel', label: 'Page word', type: 'text' },
   { group: 'Top bar', key: 'pageNum', label: 'Page number', type: 'text' },
 
   { group: 'Hero', key: 'heroTitle1', label: 'Title line 1', type: 'text' },
@@ -197,7 +198,7 @@ export function render(content) {
     <div class="t2-top">
       <div class="t2-top-l">${SOC.ig}${SOC.tiktok}${SOC.yt}${SOC.x}<span class="t2-handle">${txt(c.topHandle)}</span></div>
       <div class="t2-top-c"><span class="t2-tn1">${txt(c.topName1)}</span> <span class="t2-tn2">${txt(c.topName2)}</span> <span class="t2-tk">${txt(c.topKit)}</span></div>
-      <div class="t2-top-r">PAGE <span class="mp-red">${txt(c.pageNum)}</span></div>
+      <div class="t2-top-r">${txt(c.pageLabel)} <span class="mp-red">${txt(c.pageNum)}</span></div>
     </div>
 
     <div class="t2-hero">

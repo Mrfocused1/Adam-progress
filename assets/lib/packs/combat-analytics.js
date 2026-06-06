@@ -50,9 +50,11 @@ export const defaults = {
   lblUnfollows: 'UNFOLLOWS',
   lblNetGrowth: 'NET GROWTH',
   lblTotalViews: 'TOTAL VIEWS',
-  lblFollowers: 'FOLLOWERS',
-  lblNonFollowers: 'NON-FOLLOWERS',
+  viewsFollowersLabel: 'FOLLOWERS',
+  viewsNonFollowersLabel: 'NON-FOLLOWERS',
   lblTotalInteractions: 'TOTAL INTERACTIONS',
+  interFollowersLabel: 'FOLLOWERS',
+  interNonFollowersLabel: 'NON-FOLLOWERS',
   viewsPanelTitle: 'BY CONTENT TYPE',
   viewsPanelTag: '(VIEWS)',
   interPanelTitle: 'BY CONTENT TYPE',
@@ -150,9 +152,11 @@ export const fields = [
   { group: 'Overview', key: 'lblUnfollows', label: 'Label — unfollows', type: 'text' },
   { group: 'Overview', key: 'lblNetGrowth', label: 'Label — net growth', type: 'text' },
   { group: 'Overview', key: 'lblTotalViews', label: 'Label — total views', type: 'text' },
-  { group: 'Overview', key: 'lblFollowers', label: 'Label — followers (breakdown)', type: 'text' },
-  { group: 'Overview', key: 'lblNonFollowers', label: 'Label — non-followers (breakdown)', type: 'text' },
+  { group: 'Overview', key: 'viewsFollowersLabel', label: 'Label — views: followers', type: 'text' },
+  { group: 'Overview', key: 'viewsNonFollowersLabel', label: 'Label — views: non-followers', type: 'text' },
   { group: 'Overview', key: 'lblTotalInteractions', label: 'Label — total interactions', type: 'text' },
+  { group: 'Overview', key: 'interFollowersLabel', label: 'Label — interactions: followers', type: 'text' },
+  { group: 'Overview', key: 'interNonFollowersLabel', label: 'Label — interactions: non-followers', type: 'text' },
 
   { group: 'By content type (views)', key: 'viewsPanelTitle', label: 'Panel title', type: 'text' },
   { group: 'By content type (views)', key: 'viewsPanelTag', label: 'Panel title (red)', type: 'text' },
@@ -277,15 +281,15 @@ export function render(content) {
         <div class="mp-ov-col">
           <div class="mp-bignum mp-red">${txt(c.totalViews)}</div>
           <div class="mp-lbl">${txt(c.lblTotalViews)}</div>
-          <div class="mp-pair"><span class="mp-num-sm">${txt(c.viewsFollowersPct)}</span><span class="mp-lbl">${txt(c.lblFollowers)}</span></div>
-          <div class="mp-pair"><span class="mp-num-sm">${txt(c.viewsNonFollowersPct)}</span><span class="mp-lbl">${txt(c.lblNonFollowers)}</span></div>
+          <div class="mp-pair"><span class="mp-num-sm">${txt(c.viewsFollowersPct)}</span><span class="mp-lbl">${txt(c.viewsFollowersLabel)}</span></div>
+          <div class="mp-pair"><span class="mp-num-sm">${txt(c.viewsNonFollowersPct)}</span><span class="mp-lbl">${txt(c.viewsNonFollowersLabel)}</span></div>
           <div class="mp-pair"><span class="mp-num-sm">${txt(c.viewsValue)}</span><span class="mp-red mp-delta">${txt(c.viewsValueDelta)}</span></div>
         </div>
         <div class="mp-ov-col">
           <div class="mp-bignum mp-red">${txt(c.totalInteractions)}</div>
           <div class="mp-lbl">${txt(c.lblTotalInteractions)}</div>
-          <div class="mp-pair"><span class="mp-num-sm">${txt(c.interFollowersPct)}</span><span class="mp-lbl">${txt(c.lblFollowers)}</span></div>
-          <div class="mp-pair"><span class="mp-num-sm">${txt(c.interNonFollowersPct)}</span><span class="mp-lbl">${txt(c.lblNonFollowers)}</span></div>
+          <div class="mp-pair"><span class="mp-num-sm">${txt(c.interFollowersPct)}</span><span class="mp-lbl">${txt(c.interFollowersLabel)}</span></div>
+          <div class="mp-pair"><span class="mp-num-sm">${txt(c.interNonFollowersPct)}</span><span class="mp-lbl">${txt(c.interNonFollowersLabel)}</span></div>
         </div>
       </div>
     </div>

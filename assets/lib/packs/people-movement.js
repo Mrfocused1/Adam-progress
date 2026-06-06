@@ -43,10 +43,10 @@ export const defaults = {
   audienceTitle: 'WHO FOLLOWS ADAM',
   audienceSub: '(AUDIENCE BREAKDOWN)',
   audience: [
-    { icon: 'people', stat: '84%',   label: 'AGED 18–34',           desc: 'Young, active and highly engaged' },
+    { icon: 'people', stat: '85%',   label: 'AGED 18–44',           desc: 'Young, active and highly engaged' },
     { icon: 'male',   stat: '81.9%', label: 'MALE AUDIENCE',        desc: 'Highly relevant for fitness, fight & lifestyle brands' },
-    { icon: 'globe',  stat: '',      label: 'TOP MARKETS',          desc: 'USA, UK, Germany, Australia, France\n\nHigh-value CPM markets' },
-    { icon: 'heart',  stat: '93%',   label: 'ENGAGEMENT FROM REELS', desc: 'Optimized for discovery and virality' },
+    { icon: 'globe',  stat: '',      label: 'TOP MARKETS',          desc: 'USA, Brazil, India, UK, Germany\n\nHigh-value CPM markets' },
+    { icon: 'heart',  stat: '97%',   label: 'ENGAGEMENT FROM REELS', desc: 'Optimized for discovery and virality' },
   ],
   // quote
   quoteText: '18-year-old. Long reach. Very athletic. He put everything into every single punch. Future star. Build him here. Build him up here. He\'s going to be great.',

@@ -64,13 +64,13 @@ export const defaults = {
   // by the numbers
   numTitle: 'BY THE NUMBERS',
   numSub: '(ALL PLATFORMS)',
-  numBig: '12.2M+',
+  numBig: '30M+',
   numBigLabel: 'ORGANIC VIEWS',
   numBigDesc: 'Across Instagram Reels, TikTok & YouTube Shorts in the last 12 months.',
   numStats: [
     { stat: '920K+', label: 'FOLLOWERS' },
     { stat: '10%+',  label: 'ENGAGEMENT RATE ON REELS' },
-    { stat: '100%',  label: 'ORGANIC GROWTH' },
+    { stat: '7%+',   label: 'ORGANIC GROWTH' },
   ],
   // top 5 reels
   reelsTitle: 'TOP 4 REELS OF ALL TIME',

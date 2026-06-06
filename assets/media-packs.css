@@ -203,10 +203,12 @@
 .t2-aud-nostat { min-height:46px; }
 .t2-aud-label { font-weight:700; letter-spacing:.04em; font-size:17px; margin:8px 0 10px; }
 .t2-aud-desc { color:var(--mp-textSec); font-size:18px; line-height:1.45; }
-.t2-quote { padding:24px 8px 0; position:relative; }
-.t2-quote-mark { font-family:Georgia,serif; color:var(--mp-red); font-size:90px; line-height:0; display:inline-block; }
-.t2-quote-mark-end { margin-left:8px; }
-.t2-quote-text { font-size:30px; line-height:1.4; margin:14px 0 0; color:var(--mp-white); }
+.t2-quote { padding:24px 8px 0; }
+.t2-quote-body { position:relative; padding:54px 34px 44px 4px; }
+.t2-quote-mark { position:absolute; font-family:Georgia,serif; color:var(--mp-red); font-size:96px; line-height:1; }
+.t2-quote-mark-start { top:-6px; left:-6px; }
+.t2-quote-mark-end { bottom:-30px; right:0; }
+.t2-quote-text { font-size:30px; line-height:1.4; margin:0; color:var(--mp-white); }
 .t2-quote-name { font-family:'Bebas Neue',sans-serif; font-size:34px; letter-spacing:.04em; margin-top:24px; }
 .t2-quote-role { color:var(--mp-textSec); font-size:20px; margin-top:6px; }
 .t2-quote-sub { color:var(--mp-textMuted); font-size:18px; margin-top:2px; }

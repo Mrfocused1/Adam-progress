@@ -216,9 +216,11 @@ export function render(content) {
         </div>
       </div>
       <div class="t2-quote">
-        <span class="t2-quote-mark">&ldquo;</span>
-        <p class="t2-quote-text">${nl(c.quoteText)}</p>
-        <span class="t2-quote-mark t2-quote-mark-end">&rdquo;</span>
+        <div class="t2-quote-body">
+          <span class="t2-quote-mark t2-quote-mark-start">&ldquo;</span>
+          <p class="t2-quote-text">${nl(c.quoteText)}</p>
+          <span class="t2-quote-mark t2-quote-mark-end">&rdquo;</span>
+        </div>
         <div class="t2-quote-name mp-red">${txt(c.quoteName)}</div>
         <div class="t2-quote-role">${txt(c.quoteRole)}</div>
         <div class="t2-quote-sub">${txt(c.quoteSub)}</div>

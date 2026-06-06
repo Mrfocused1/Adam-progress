@@ -181,7 +181,7 @@
 .t2-top-r { font-family:'Bebas Neue',sans-serif; letter-spacing:.1em; font-size:28px; color:var(--mp-textSec); }
 
 /* hero */
-.t2-hero { position:relative; min-height:880px; padding:46px var(--pad) 24px; }
+.t2-hero { position:relative; min-height:560px; padding:46px var(--pad) 24px; }
 .t2-hero-copy { position:relative; z-index:2; width:48%; }
 .t2-h1 { font-family:'Bebas Neue',sans-serif; font-size:124px; line-height:.84; letter-spacing:.01em; color:var(--mp-white); }
 .t2-h2 { font-family:'Permanent Marker',cursive; font-size:80px; line-height:.95; color:var(--mp-red); margin-top:4px; border-bottom:5px solid var(--mp-red); padding-bottom:14px; display:inline-block; }
@@ -191,7 +191,7 @@
 .t2-video { position:absolute; z-index:3; right:var(--pad); top:40px; width:30%; }
 .t2-video-kicker { color:var(--mp-red); font-weight:700; letter-spacing:.08em; font-size:21px; }
 .t2-video-title { font-family:'Bebas Neue',sans-serif; font-size:42px; line-height:.95; margin:6px 0 16px; }
-.t2-video-img { width:100%; aspect-ratio:288/430; background-size:cover; background-position:center top; border-radius:16px; border:1px solid var(--mp-border); }
+.t2-video-img { width:100%; aspect-ratio:4/3; background-size:cover; background-position:center 28%; border-radius:16px; border:1px solid var(--mp-border); }
 
 /* celebrities & athletes */
 .t2-celebs { margin:0 var(--pad) 34px; }

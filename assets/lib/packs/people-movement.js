@@ -78,8 +78,6 @@ export const defaults = {
   footFollowTitle: 'FOLLOW ADAM',
   footFollow: '@tibaba.prg',
   footFollowDesc: 'For daily content, updates & behind the scenes.',
-  footQr: 'assets/t2-qr.png',
-  footScan: 'SCAN TO VIEW\nINSTAGRAM',
 };
 
 // ---- fields (dotted-path keys consumed by getByPath/setByPath) ----
@@ -145,8 +143,6 @@ export const fields = [
   { group: 'Footer', key: 'footFollowTitle', label: 'Follow title', type: 'text' },
   { group: 'Footer', key: 'footFollow', label: 'Follow handle', type: 'text' },
   { group: 'Footer', key: 'footFollowDesc', label: 'Follow description', type: 'textarea' },
-  { group: 'Footer', key: 'footQr', label: 'QR code image', type: 'image' },
-  { group: 'Footer', key: 'footScan', label: 'Scan label', type: 'textarea', hint: 'Enter = line break.' },
 ];
 
 // ---- icons ----
@@ -269,7 +265,6 @@ export function render(content) {
       <div class="t2-foot-build"><span class="t2-foot-crown">${CROWN}</span><div><div class="t2-foot-b1">${txt(c.footTitle1)}</div><div class="t2-foot-b2">${txt(c.footTitle2)}</div></div></div>
       <div class="t2-foot-col">${HANDSHAKE}<div><div class="t2-foot-h">${txt(c.footPartTitle)}</div><div class="t2-foot-muted">${nl(c.footPart)}</div></div></div>
       <div class="t2-foot-col">${IGFOOT}<div><div class="t2-foot-h">${txt(c.footFollowTitle)}</div><div class="t2-foot-handle">${txt(c.footFollow)}</div><div class="t2-foot-muted">${nl(c.footFollowDesc)}</div></div></div>
-      <div class="t2-foot-qr"><div class="t2-qr-img" data-img="${txt(c.footQr)}"></div><div class="t2-foot-scan">${nl(c.footScan)}</div></div>
     </div>
   `;
 

@@ -245,7 +245,7 @@
 .t2-reel-date { color:var(--mp-textMuted); font-size:15px; }
 
 /* footer */
-.t2-foot { margin-top:auto; display:grid; grid-template-columns:1.3fr 1fr 1.2fr 1fr; gap:24px; align-items:center; padding:30px var(--pad); border-top:1px solid var(--mp-border); background:var(--mp-bg2); }
+.t2-foot { margin-top:auto; display:grid; grid-template-columns:1.4fr 1fr 1.2fr; gap:32px; align-items:center; padding:30px var(--pad); border-top:1px solid var(--mp-border); background:var(--mp-bg2); }
 .t2-foot-ico { width:40px; height:40px; flex:none; fill:none; stroke:var(--mp-red); stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
 .t2-foot-build { display:flex; align-items:center; gap:16px; }
 .t2-foot-crown .t2-foot-ico { width:46px; height:46px; }

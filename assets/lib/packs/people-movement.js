@@ -17,7 +17,7 @@ export const defaults = {
   },
   // top bar
   topHandle: '@TIBABA.PRG',
-  topName1: 'ADAM', topName2: 'PROGRESS', topKit: 'MEDIA KIT 2025', pageLabel: 'PAGE', pageNum: '02',
+  topName1: 'ADAM', topName2: 'PROGRESS', topKit: 'MEDIA KIT 2026', pageLabel: 'PAGE', pageNum: '02',
   // hero
   heroTitle1: 'THE PEOPLE.',
   heroTitle2: 'THE MOVEMENT.',
@@ -45,7 +45,7 @@ export const defaults = {
   audience: [
     { icon: 'people', stat: '85%',   label: 'AGED 18–44',           desc: 'Young, active and highly engaged' },
     { icon: 'male',   stat: '81.9%', label: 'MALE AUDIENCE',        desc: 'Highly relevant for fitness, fight & lifestyle brands' },
-    { icon: 'globe',  stat: '',      label: 'TOP MARKETS',          desc: 'USA, Brazil, India, UK, Germany\n\nHigh-value CPM markets' },
+    { icon: 'globe',  stat: '',      label: 'TOP MARKETS',          desc: 'USA, Brazil, India, UK, Germany\nTop cities: Hamburg, London, Istanbul, Rio, São Paulo\nHigh-value CPM markets' },
     { icon: 'heart',  stat: '97%',   label: 'ENGAGEMENT FROM REELS', desc: 'Optimized for discovery and virality' },
   ],
   // quote
@@ -64,9 +64,9 @@ export const defaults = {
   // by the numbers
   numTitle: 'BY THE NUMBERS',
   numSub: '(ALL PLATFORMS)',
-  numBig: '30M+',
+  numBig: '32M+',
   numBigLabel: 'ORGANIC VIEWS',
-  numBigDesc: 'Across Instagram Reels, TikTok & YouTube Shorts in the last 12 months.',
+  numBigDesc: 'On Instagram in the last 90 days alone — plus TikTok & YouTube Shorts on top.',
   numStats: [
     { stat: '920K+', label: 'FOLLOWERS' },
     { stat: '10%+',  label: 'ENGAGEMENT RATE ON REELS' },

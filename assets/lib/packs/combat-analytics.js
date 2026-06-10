@@ -83,6 +83,7 @@ export const defaults = {
   topCountries: [
     { label: 'UNITED STATES', pct: '16.2%' }, { label: 'BRAZIL', pct: '12.2%' },
     { label: 'INDIA', pct: '9.6%' }, { label: 'UNITED KINGDOM', pct: '7.8%' },
+    { label: 'GERMANY', pct: '6.3%' },
   ],
   topAges: [
     { label: '18–24', pct: '19.8%' }, { label: '25–34', pct: '41.4%' },
@@ -168,7 +169,7 @@ export const fields = [
   { group: 'Top interactions', key: 'topInterTag', label: 'Panel title (red)', type: 'text' },
   ...listFields('Top interactions', 'topInteractions', 5, [['label', 'Label'], ['value', 'Value']]),
   { group: 'Top countries', key: 'topCountriesTitle', label: 'Panel title', type: 'text' },
-  ...listFields('Top countries', 'topCountries', 4, [['label', 'Country'], ['pct', '%']]),
+  ...listFields('Top countries', 'topCountries', 5, [['label', 'Country'], ['pct', '%']]),
   { group: 'Top age ranges', key: 'topAgesTitle', label: 'Panel title', type: 'text' },
   ...listFields('Top age ranges', 'topAges', 4, [['label', 'Range'], ['pct', '%']]),
 

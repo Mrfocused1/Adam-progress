@@ -1,4 +1,3 @@
-import { supabase, CONTENT_ROW_ID } from './lib/supabase.js';
 import { getByPath, formatInline, formatBlocks } from './lib/apply.js';
 import * as R from './lib/render.js';
 
@@ -55,9 +54,20 @@ function reveal() { document.documentElement.classList.remove('ap-pending'); }
 
 async function boot() {
   try {
-    const { data, error } = await supabase
-      .from('site_content').select('data').eq('id', CONTENT_ROW_ID).single();
-    if (error) throw error;
+    // The Supabase client (and its CDN bundle) is imported dynamically so a slow
+    // or blocked CDN can only delay the content overlay — it can never stall
+    // first paint, reveal(), or app.js (whose execution waits on this module's
+    // static import graph). The race caps worst-case blank/uninitialized time.
+    const cms = (async () => {
+      const { supabase, CONTENT_ROW_ID } = await import('./lib/supabase.js');
+      const { data, error } = await supabase
+        .from('site_content').select('data').eq('id', CONTENT_ROW_ID).single();
+      if (error) throw error;
+      return data;
+    })();
+    const timeout = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('cms fetch timed out')), 3500));
+    const data = await Promise.race([cms, timeout]);
     if (data && data.data) { applyScalars(data.data); applyLists(data.data); applySocials(data.data); }
   } catch (err) {
     console.warn('[content] using static fallback:', err?.message || err);

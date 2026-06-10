@@ -73,7 +73,7 @@ test('renderFullFight branches on kind and maps/falls back badge class', () => {
 
   const yt = renderFullFight({ kind: 'youtube', videoId: 'ID', badge1: '', badge1Class: 'event', badge2: 'IHC', title: 'T', meta: 'M' });
   assert.match(yt, /js-yt-player/);
-  assert.match(yt, /vi\/ID\/maxresdefault\.jpg/);
+  assert.match(yt, /vi\/ID\/hqdefault\.jpg/);
   assert.doesNotMatch(yt, /badge-win|badge-title/);   // empty badge1 omitted
 
   const unknown = renderFullFight({ kind: 'youtube', videoId: 'X', badge1: 'B', badge1Class: 'bogus', badge2: '', title: 'T', meta: 'M' });

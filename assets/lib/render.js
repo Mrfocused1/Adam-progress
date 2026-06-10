@@ -88,7 +88,7 @@ export function renderFullFight(f) {
   }
   return `<article class="fight-card-sm reveal js-yt-player" data-video-id="${e(f.videoId)}">
           <div class="fight-thumb">
-            <img src="https://img.youtube.com/vi/${e(f.videoId)}/maxresdefault.jpg" alt="${e(f.title)}" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
+            <img src="https://img.youtube.com/vi/${e(f.videoId)}/hqdefault.jpg" alt="${e(f.title)}" loading="lazy" decoding="async" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
             <div class="yt-overlay absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
             <button type="button" class="yt-play-btn absolute inset-0 flex items-center justify-center w-full h-full" aria-label="Play full fight">
               <span class="play-btn"></span>

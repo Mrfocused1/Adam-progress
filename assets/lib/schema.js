@@ -95,7 +95,7 @@ export const DEFAULT_CONTENT = {
     cta1Label: 'WATCH FIGHT', cta1Href: '#fights',
     cta2Label: 'WORK WITH ME', cta2Href: '#contact',
     ticker: 'DIRTY BOXING CHAMPIONSHIP · FIGHTZUMI · DBX 6 MIAMI',
-    portrait: 'assets/portrait-cutout.png',
+    portrait: 'assets/portrait-cutout.webp',
   },
   about: {
     eyebrow: 'ABOUT ADAM',

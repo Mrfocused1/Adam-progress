@@ -19,6 +19,15 @@ body {
   background-size: 220px 220px;
 }
 
+/* Skip link: visually hidden until keyboard focus */
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 70;
+  padding: 10px 16px; border-radius: 8px;
+  background: #D90429; color: #F2F2F2; font-weight: 600;
+  transform: translateY(-200%); transition: transform .15s ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
 /* =========================================================
    NAV
    ========================================================= */

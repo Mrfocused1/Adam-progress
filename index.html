@@ -3,7 +3,7 @@
 <head>
   <script>
     document.documentElement.classList.add('ap-pending');
-    setTimeout(function(){ document.documentElement.classList.remove('ap-pending'); }, 1500);
+    setTimeout(function(){ document.documentElement.classList.remove('ap-pending'); }, 1200);
   </script>
   <style>
     html.ap-pending body { opacity: 0; }
@@ -15,45 +15,39 @@
   <meta name="description" content="6'8&quot; combat sports athlete and content creator from Hamburg, Germany. Building a legacy inside and outside the ring." />
   <meta property="og:title" content="ADAM PROGRESS — Fighter. Creator. Future Champion." />
   <meta property="og:description" content="6'8&quot; combat sports athlete and creator. Dirty Boxing Championship. Fightzumi International. The future is not promised. It's earned." />
-  <meta property="og:image" content="assets/portrait.png" />
+  <meta property="og:image" content="https://www.adamprogress.com/assets/og-card.jpg" />
+  <meta property="og:url" content="https://www.adamprogress.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ADAM PROGRESS — Fighter. Creator. Future Champion." />
+  <meta name="twitter:description" content="6'8&quot; combat sports athlete and creator. Dirty Boxing Championship. Fightzumi International." />
+  <meta name="twitter:image" content="https://www.adamprogress.com/assets/og-card.jpg" />
+  <link rel="canonical" href="https://www.adamprogress.com/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet" />
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink:       '#050505',
-            ink2:      '#0D0D0D',
-            panel:     '#111111',
-            red:       '#D90429',
-            redHot:    '#FF2D2D',
-            redDeep:   '#B3001B',
-            text:      '#F2F2F2',
-            text2:     '#A0A0A0',
-            border:    '#2A2A2A'
-          },
-          fontFamily: {
-            display: ['"Anton"', '"Druk Condensed Super"', 'Impact', 'sans-serif'],
-            brush:   ['"Permanent Marker"', '"Brutal Brush"', '"Streetbrush"', 'cursive'],
-            sub:     ['"Bebas Neue"', '"Barlow Condensed"', 'sans-serif'],
-            body:    ['"Inter"', 'system-ui', 'sans-serif'],
-            stat:    ['"Montserrat"', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://cbdwugwwohykkzzsongl.supabase.co" crossorigin />
+  <link rel="preload" as="image" href="assets/portrait-cutout.webp" fetchpriority="high" />
+  <link rel="modulepreload" href="assets/content.js" />
+  <link rel="modulepreload" href="assets/lib/supabase.js" />
+  <link rel="modulepreload" href="assets/lib/apply.js" />
+  <link rel="modulepreload" href="assets/lib/render.js" />
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@400;600&family=Montserrat:wght@700;900&family=Permanent+Marker&display=swap" rel="stylesheet" />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Pre-built Tailwind (tailwind.config.js + tailwind-input.css -> assets/tailwind.css).
+       Rebuild with: npx -y tailwindcss@3 -c tailwind.config.js -i tailwind-input.css -o assets/tailwind.css --minify
+       MUST load AFTER styles.css: the old runtime Tailwind injected styles last, so
+       utilities win every equal-specificity tie against styles.css rules. -->
+  <link rel="stylesheet" href="assets/tailwind.css" />
 </head>
 
 <body class="bg-ink text-text font-body antialiased selection:bg-red selection:text-text">
+
+<a href="#home" class="skip-link">Skip to content</a>
 
 <!-- ============== NOISE / GRAIN OVERLAY ============== -->
 <div class="noise pointer-events-none fixed inset-0 z-[60] mix-blend-overlay opacity-[0.08]"></div>
@@ -166,7 +160,7 @@
       <div class="hero-portrait-col lg:col-span-5 fade-in-slow">
         <div class="hero-portrait-glow"></div>
         <div class="hero-portrait-wrap">
-          <img src="assets/portrait-cutout.png" alt="Adam Progress portrait" class="hero-portrait-img" data-edit="hero.portrait" data-edit-attr="src" />
+          <img src="assets/portrait-cutout.webp" alt="Adam Progress portrait" width="1418" height="2037" fetchpriority="high" decoding="async" class="hero-portrait-img" data-edit="hero.portrait" data-edit-attr="src" />
         </div>
       </div>
 
@@ -245,7 +239,7 @@
 
     <div class="lg:col-span-6 reveal">
       <div class="relative aspect-video group rounded-sm overflow-hidden ring-card js-yt-player" data-video-id="wvUeDtP5kew" data-edit="about.videoId" data-edit-attr="data-video-id">
-        <img src="assets/ring.jpg" alt="Adam Progress in the ring" class="yt-thumb absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-105" data-edit="about.thumb" data-edit-attr="src"/>
+        <img loading="lazy" decoding="async" src="assets/ring.jpg" alt="Adam Progress in the ring" class="yt-thumb absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-105" data-edit="about.thumb" data-edit-attr="src"/>
         <div class="yt-overlay absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
         <div class="yt-overlay absolute inset-0 bg-gradient-to-r from-ink/40 to-transparent"></div>
 
@@ -357,7 +351,7 @@
 
         <article class="fight-card-sm reveal js-local-player" data-video-src="assets/dbx6-tibaba-vs-lacaze.mp4" data-poster="assets/dbx6-poster.jpg">
           <div class="fight-thumb">
-            <img src="assets/dbx6-poster.jpg" alt="Tibaba Progress vs Blake Lacaze - DBX 6 Full Fight" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="assets/dbx6-poster.jpg" alt="Tibaba Progress vs Blake Lacaze - DBX 6 Full Fight" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
             <div class="yt-overlay absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
             <button type="button" class="yt-play-btn absolute inset-0 flex items-center justify-center w-full h-full" aria-label="Play full fight">
               <span class="play-btn"></span>
@@ -375,7 +369,7 @@
 
         <article class="fight-card-sm reveal js-yt-player" data-video-id="iOryqDVRyGk">
           <div class="fight-thumb">
-            <img src="https://img.youtube.com/vi/iOryqDVRyGk/maxresdefault.jpg" alt="Tibaba Progress vs Maroc Mauler - FZM 5.0" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/iOryqDVRyGk/hqdefault.jpg" alt="Tibaba Progress vs Maroc Mauler - FZM 5.0" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
             <div class="yt-overlay absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
             <button type="button" class="yt-play-btn absolute inset-0 flex items-center justify-center w-full h-full" aria-label="Play full fight">
               <span class="play-btn"></span>
@@ -393,7 +387,7 @@
 
         <article class="fight-card-sm reveal js-yt-player" data-video-id="g90LWGKtCYI">
           <div class="fight-thumb">
-            <img src="https://img.youtube.com/vi/g90LWGKtCYI/maxresdefault.jpg" alt="Burak Batmaz vs Tibaba Progress - IHC No.12" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/g90LWGKtCYI/hqdefault.jpg" alt="Burak Batmaz vs Tibaba Progress - IHC No.12" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
             <div class="yt-overlay absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
             <button type="button" class="yt-play-btn absolute inset-0 flex items-center justify-center w-full h-full" aria-label="Play full fight">
               <span class="play-btn"></span>
@@ -410,7 +404,7 @@
 
         <article class="fight-card-sm reveal js-yt-player" data-video-id="XJvXQ4820jk">
           <div class="fight-thumb">
-            <img src="https://img.youtube.com/vi/XJvXQ4820jk/maxresdefault.jpg" alt="Tibaba Progress vs Blake Lacaze - Pelea Completa - DBX 6" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/XJvXQ4820jk/hqdefault.jpg" alt="Tibaba Progress vs Blake Lacaze - Pelea Completa - DBX 6" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
             <div class="yt-overlay absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
             <button type="button" class="yt-play-btn absolute inset-0 flex items-center justify-center w-full h-full" aria-label="Play full fight - Spanish">
               <span class="play-btn"></span>
@@ -582,7 +576,7 @@
 
         <article class="short-play-card reveal js-yt-player" data-video-id="CeUsGUVu7F0">
           <div class="short-vert-thumb">
-            <img src="https://img.youtube.com/vi/CeUsGUVu7F0/hqdefault.jpg" alt="The Sheikh is impressed" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/CeUsGUVu7F0/hqdefault.jpg" alt="The Sheikh is impressed" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
             <div class="yt-overlay absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent"></div>
             <button type="button" class="yt-play-btn absolute inset-0 flex items-center justify-center w-full h-full" aria-label="Play short">
               <span class="play-btn"></span>
@@ -597,7 +591,7 @@
 
         <article class="short-play-card reveal js-yt-player" data-video-id="284Ms8VzPL0">
           <div class="short-vert-thumb">
-            <img src="https://img.youtube.com/vi/284Ms8VzPL0/hqdefault.jpg" alt="Was this a late shot by Tibaba?" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/284Ms8VzPL0/hqdefault.jpg" alt="Was this a late shot by Tibaba?" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
             <div class="yt-overlay absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent"></div>
             <button type="button" class="yt-play-btn absolute inset-0 flex items-center justify-center w-full h-full" aria-label="Play short">
               <span class="play-btn"></span>
@@ -612,7 +606,7 @@
 
         <article class="short-play-card reveal js-yt-player" data-video-id="Mq8p_wSTxeM">
           <div class="short-vert-thumb">
-            <img src="https://img.youtube.com/vi/Mq8p_wSTxeM/hqdefault.jpg" alt="Tallest boxer ever" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://img.youtube.com/vi/Mq8p_wSTxeM/hqdefault.jpg" alt="Tallest boxer ever" class="yt-thumb absolute inset-0 w-full h-full object-cover"/>
             <div class="yt-overlay absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent"></div>
             <button type="button" class="yt-play-btn absolute inset-0 flex items-center justify-center w-full h-full" aria-label="Play short">
               <span class="play-btn"></span>
@@ -1459,7 +1453,7 @@
 <section class="relative py-28 lg:py-32 bg-ink2 border-y border-border overflow-hidden">
 
   <div class="absolute left-0 top-0 w-[35%] h-[100%] hidden lg:block">
-    <img src="assets/training.jpg" alt="" class="w-full h-full object-cover object-center grayscale opacity-30"/>
+    <img loading="lazy" decoding="async" src="assets/training.jpg" alt="" class="w-full h-full object-cover object-center grayscale opacity-30"/>
     <div class="absolute inset-0 bg-gradient-to-r from-transparent via-ink2/80 to-ink2"></div>
   </div>
 
@@ -1493,7 +1487,7 @@
 <!-- ============== FINAL CTA + CONTACT FORM ============== -->
 <section id="contact" class="relative overflow-hidden">
   <div class="absolute inset-0">
-    <img src="assets/training.jpg" alt="" class="w-full h-full object-cover opacity-30 scale-110"/>
+    <img loading="lazy" decoding="async" src="assets/training.jpg" alt="" class="w-full h-full object-cover opacity-30 scale-110"/>
     <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/60"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-ink to-transparent"></div>
     <div class="absolute right-0 bottom-0 w-[50%] h-[60%] rounded-full bg-red/30 blur-[140px]"></div>

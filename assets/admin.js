@@ -18,7 +18,14 @@ async function login() {
   const btn = $('loginBtn'); btn.disabled = true; const label = btn.querySelector('.txt'); if (label) label.textContent = 'Logging in…';
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   btn.disabled = false; if (label) label.textContent = 'Log in';
-  if (error) { setStatus($('loginStatus'), /invalid login/i.test(error.message) ? 'Wrong email or password.' : error.message, 'error'); return; }
+  if (error) {
+    let msg = /invalid login/i.test(error.message)
+      ? 'Wrong email or password. Passwords are case-sensitive — check Caps Lock.'
+      : error.message;
+    // A leading/trailing space is almost always a copy-paste artifact, not the real password.
+    if (/^\s|\s$/.test(password)) msg += ' Your password starts or ends with a space — remove it and try again.';
+    setStatus($('loginStatus'), msg, 'error'); return;
+  }
   await showDashboard();
 }
 

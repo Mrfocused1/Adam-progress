@@ -90,10 +90,13 @@
       </button>
     </div>
   </div>
+</header>
 
-  <!-- Mobile menu (full screen overlay) -->
-  <div id="mobileNav" class="mobile-nav md:hidden" aria-hidden="true">
-    <nav class="mobile-nav-inner">
+<!-- Mobile menu (full screen overlay). Must stay OUTSIDE #siteHeader: the scrolled
+     header gains a backdrop-filter, which would re-contain this fixed overlay to
+     the header strip instead of the viewport. -->
+<div id="mobileNav" class="mobile-nav md:hidden" aria-hidden="true">
+  <nav class="mobile-nav-inner">
       <a href="#home"    class="mobile-link">HOME</a>
       <a href="#about"   class="mobile-link">ABOUT</a>
       <a href="#stats"   class="mobile-link">STATS</a>
@@ -109,9 +112,8 @@
           <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><path d="M19.6 8.5a6.7 6.7 0 0 1-4-1.3v7.4a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1V12a3 3 0 1 0 2 2.8V2h2.5a4.1 4.1 0 0 0 4.2 4z"/></svg>
         </a>
       </div>
-    </nav>
-  </div>
-</header>
+  </nav>
+</div>
 
 <!-- Back-to-top floating button -->
 <button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">

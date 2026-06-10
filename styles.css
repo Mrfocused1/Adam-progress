@@ -61,51 +61,57 @@ body {
   transform: translateY(-2px);
 }
 
-/* ====== HAMBURGER ====== */
+/* ====== MENU TOGGLE (mobile) ====== */
 .nav-toggle {
   position: relative;
   z-index: 55;             /* sit above mobile-nav overlay */
-  width: 38px; height: 38px;
-  border: 1px solid #2A2A2A;
+  width: 44px; height: 44px;   /* 44pt minimum tap target */
+  border: 1.5px solid #3A3A3A;
   border-radius: 999px;
-  background: rgba(5,5,5,0.85);
+  background: rgba(10,10,10,0.92);
   cursor: pointer;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  transition: all .25s ease;
+  gap: 6px;
+  touch-action: manipulation;             /* kills the double-tap-zoom tap delay */
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .1s ease, border-color .15s ease, background .15s ease;
 }
+.nav-toggle:active { transform: scale(0.9); }   /* instant press feedback */
 .nav-toggle.is-open {
   background: rgba(20,20,20,0.95);
   border-color: #D90429;
 }
-.nav-toggle:hover { border-color: #D90429; background: rgba(217,4,41,0.08); }
+/* hover only where hover exists — on touch screens it sticks after a tap */
+@media (hover: hover) {
+  .nav-toggle:hover { border-color: #D90429; background: rgba(217,4,41,0.08); }
+}
 .nav-toggle span {
-  width: 16px; height: 1.6px;
+  width: 18px; height: 2px;
+  border-radius: 2px;
   background: #F2F2F2;
   display: block;
-  transition: transform .3s ease, opacity .25s ease, background .25s ease;
+  transition: transform .18s ease, background .18s ease;
 }
-.nav-toggle.is-open span:nth-child(1) { transform: translateY(5.6px) rotate(45deg); background: #FF2D2D; }
-.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
-.nav-toggle.is-open span:nth-child(3) { transform: translateY(-5.6px) rotate(-45deg); background: #FF2D2D; }
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(4px) rotate(45deg); background: #FF2D2D; }
+.nav-toggle.is-open span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); background: #FF2D2D; }
 
 /* ====== MOBILE NAV OVERLAY ====== */
 .mobile-nav {
   position: fixed;
   inset: 0;
-  background: rgba(5,5,5,0.97);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  /* no backdrop-filter: behind a 98%-opaque bg the blur is invisible, but it
+     costs real GPU time on phones and made opening feel sluggish */
+  background: rgba(5,5,5,0.98);
   z-index: 48;             /* below the toggle (55) so the X stays clickable */
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .3s ease;
+  transition: opacity .2s ease;
 }
 .mobile-nav.is-open {
   opacity: 1;
